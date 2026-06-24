@@ -3,6 +3,17 @@
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Hero Background Video Randomizer ---
+  const videoPlayer = document.getElementById('hero-video-player');
+  const videoSource = document.getElementById('hero-video-source');
+  if (videoPlayer && videoSource) {
+    const videos = ['01.mp4', '02.mp4', '03.mp4'];
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    const prefix = document.documentElement.lang ? '../' : '';
+    videoSource.src = `${prefix}assets/gallery/${randomVideo}`;
+    videoPlayer.load();
+  }
+
   // --- Header Scroll Effect ---
   const header = document.querySelector('.header');
   const handleScroll = () => {

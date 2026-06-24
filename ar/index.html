@@ -13,7 +13,7 @@
 
   <!-- 🎯 SEO & Meta Tags -->
   <title>Vertex Etkinlikleri | Teknolojinin Zirvesinde Buluşalım</title>
-  <meta name="description" content="Vertex Corporation etkinlik platformu. Dünyanın en parlak genç zihinlerinin buluştuğu Vertex, teknoloji sektöründe devrim yaratıyor! Hackathonlar, teknoloji konferansları, atölyeler ve topluluk buluşmalarımıza katılın.">
+  <meta name="description" content="Vertex Corporation etkinlik platformu. Yeni nesil teknoloji şirketi Vertex, teknoloji sektöründe devrim yaratıyor! Teknoloji konferansları, atölyeler ve topluluk buluşmalarımıza katılın.">
   <meta name="keywords" content="vertex, vertex etkinlikleri, hackathon, yazılım kampı, yapay zeka buluşması, cortex, drome, mergen, teknoloji konferansı, genç girişimciler">
   <meta name="author" content="Vertex Corporation">
   <meta name="theme-color" content="#0a0a0a">
@@ -23,9 +23,9 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://events.vertexishere.com/">
   <meta property="og:title" content="Vertex Etkinlikleri | Teknolojinin Zirvesinde Buluşalım">
-  <meta property="og:description" content="Dünyanın en parlak genç zihinlerinin buluştuğu Vertex, teknoloji sektöründe devrim yaratıyor! Hackathonlar, konferanslar ve atölyelere katılın.">
+  <meta property="og:description" content="Yeni nesil teknoloji şirketi Vertex, teknoloji sektöründe devrim yaratıyor! Konferanslar ve atölyelere katılın.">
   <meta property="og:site_name" content="Vertex Corporation">
-  <meta property="og:image" content="assets/banner.png">
+  <meta property="og:image" content="https://www.vertexishere.com/assets/banner.png">
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="icon" type="image/png" href="../assets/favicon.webp">
+  <link rel="icon" type="image/png" href="https://www.vertexishere.com/assets/favicon.webp">
 </head>
 
 <body>
@@ -49,7 +49,7 @@
   <header class="header">
     <div class="container nav-container">
       <a href="index.html" class="logo">
-        <img src="../assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon">
+        <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon">
         Vertex <span class="badge-mini">Etkinlikler</span>
       </a>
 
@@ -129,8 +129,8 @@
     <section id="home" class="hero">
       <!-- Background Video -->
       <div class="hero-video-container">
-        <video class="hero-video" autoplay loop muted playsinline>
-          <source src="../assets/videos/party.mp4" type="video/mp4">
+        <video id="hero-video-player" class="hero-video" autoplay loop muted playsinline>
+          <source id="hero-video-source" src="../assets/gallery/01.mp4" type="video/mp4">
         </video>
         <div class="hero-video-overlay"></div>
       </div>
@@ -138,7 +138,7 @@
       <div class="hero-bg-glow"></div>
       <div class="container fade-up">
         <h1><span class="gradient-text" data-i18n="hero-title">فعاليات فيرتكس</span></h1>
-        <p data-i18n="hero-desc">فيرتكس، حيث تلتقي ألمع العقول الشابة في العالم، تجمع المطورين والمصممين وعشاق الذكاء الاصطناعي في لقاءات تتجاوز الحدود.</p>
+        <p data-i18n="hero-desc">بصفتها شركة تكنولوجيا من الجيل القادم، تجمع Vertex المطورين والمصممين وعشاق الذكاء الاصطناعي في لقاءات تتجاوز الحدود.</p>
         <div class="hero-buttons">
           <a href="#events-section" class="btn btn-primary" data-i18n="hero-btn-explore">اكتشف الفعاليات</a>
           <a href="#about" class="btn btn-outline" data-i18n="hero-btn-purpose">شاهد هدفنا</a>
@@ -306,7 +306,7 @@
           
           <div class="ticket-top">
             <div class="ticket-logo">
-              <img src="../assets/logo.svg" alt="Vertex" class="ticket-logo-img">
+              <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex" class="ticket-logo-img">
               <span data-i18n="ticket-pass-header">VERTEX // PASSPORT</span>
             </div>
             <div class="ticket-tier-badge" id="ticket-tier-badge" data-i18n="ticket-pass-free">دخول مجاني</div>
@@ -358,9 +358,9 @@
       <div class="footer-main-grid">
         <div class="footer-brand">
           <a href="https://www.vertexishere.com/" target="_blank" class="logo" style="font-size: 24px; margin-bottom: 16px; display: inline-flex;">
-            <img src="../assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
+            <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
           </a>
-          <p style="line-height: 1.6;" data-i18n="footer-brand-desc">فيرتكس تحدث ثورة في قطاع التكنولوجيا!</p>
+          <p style="line-height: 1.6;" data-i18n="footer-brand-desc">بصفتها شركة تكنولوجيا من الجيل القادم، فيرتكس تحدث ثورة في قطاع التكنولوجيا!</p>
         </div>
 
         <div class="footer-col">
@@ -376,9 +376,9 @@
         <div class="footer-col">
           <h3 data-i18n="footer-col-company">الشركة</h3>
           <ul class="footer-links">
-            <li><a data-i18n-href="href-about" data-i18n="footer-link-about" target="_blank">من نحن</a></li>
-            <li><a data-i18n-href="href-team" data-i18n="footer-link-team" target="_blank">فريق العمل</a></li>
-            <li><a data-i18n-href="href-vision" data-i18n="footer-link-vision" target="_blank">الرؤية</a></li>
+            <li><a data-i18n-href="href-about" data-i18n="footer-link-about" href="https://www.vertexishere.com/ar/#about" target="_blank">من نحن</a></li>
+            <li><a data-i18n-href="href-team" data-i18n="footer-link-team" href="https://www.vertexishere.com/ar/#team" target="_blank">فريق العمل</a></li>
+            <li><a data-i18n-href="href-vision" data-i18n="footer-link-vision" href="https://www.vertexishere.com/ar/#vision" target="_blank">الرؤية</a></li>
           </ul>
         </div>
 

@@ -1,7 +1,30 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import fs from 'fs'
+import path from 'path'
+
+function copyGalleryPlugin() {
+  return {
+    name: 'copy-gallery',
+    closeBundle() {
+      const srcDir = path.resolve(__dirname, 'assets/gallery')
+      const destDir = path.resolve(__dirname, 'dist/assets/gallery')
+      if (fs.existsSync(srcDir)) {
+        if (!fs.existsSync(destDir)) {
+          fs.mkdirSync(destDir, { recursive: true })
+        }
+        const files = fs.readdirSync(srcDir)
+        files.forEach(file => {
+          fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file))
+        })
+        console.log('Copied assets/gallery to dist/assets/gallery')
+      }
+    }
+  }
+}
 
 export default defineConfig({
+  plugins: [copyGalleryPlugin()],
   server: {
     port: 3000,
     open: true

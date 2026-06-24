@@ -51,8 +51,9 @@ LANGUAGES.forEach(lang => {
 
   // Translate static data-i18n-href elements
   html = html.replace(/(<[^>]*?data-i18n-href="([^"]+)"[^>]*?href=")([^"]*)("[^>]*?>)/g, (match, prefix, key, originalUrl, suffix) => {
-    if (trans[key]) {
-      return `${prefix}${trans[key]}${suffix}`;
+    const val = trans[key] || TRANSLATIONS['en'][key] || TRANSLATIONS['tr'][key];
+    if (val) {
+      return `${prefix}${val}${suffix}`;
     }
     return match;
   });
