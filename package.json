@@ -1,0 +1,22 @@
+{
+  "name": "vertex-eventsite",
+  "version": "1.0.0",
+  "description": "Vertex Corporation Event Platform",
+  "main": "js/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "vertex",
+    "events",
+    "hackathon",
+    "tech"
+  ],
+  "author": "Vertex Corporation",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

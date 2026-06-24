@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <script>
+    (function() {
+      const t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 🎯 SEO & Meta Tags -->
+  <title>Vertex Etkinlikleri | Teknolojinin Zirvesinde Buluşalım</title>
+  <meta name="description" content="Vertex Corporation etkinlik platformu. Dünyanın en parlak genç zihinlerinin buluştuğu Vertex, teknoloji sektöründe devrim yaratıyor! Hackathonlar, teknoloji konferansları, atölyeler ve topluluk buluşmalarımıza katılın.">
+  <meta name="keywords" content="vertex, vertex etkinlikleri, hackathon, yazılım kampı, yapay zeka buluşması, cortex, drome, mergen, teknoloji konferansı, genç girişimciler">
+  <meta name="author" content="Vertex Corporation">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="robots" content="index, follow">
+
+  <!-- 🖼️ Open Graph (Social Media) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://events.vertexishere.com/">
+  <meta property="og:title" content="Vertex Etkinlikleri | Teknolojinin Zirvesinde Buluşalım">
+  <meta property="og:description" content="Dünyanın en parlak genç zihinlerinin buluştuğu Vertex, teknoloji sektöründe devrim yaratıyor! Hackathonlar, konferanslar ve atölyelere katılın.">
+  <meta property="og:site_name" content="Vertex Corporation">
+  <meta property="og:image" content="assets/banner.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="icon" type="image/png" href="../assets/favicon.webp">
+</head>
+
+<body>
+  <!-- Geometric Background Glows -->
+  <div class="geo-bg">
+    <div class="geo-blob geo-blob-1"></div>
+    <div class="geo-blob geo-blob-2"></div>
+    <div class="geo-blob geo-blob-3"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="../assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon">
+        Vertex <span class="badge-mini">Etkinlikler</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home" class="nav-link" data-i18n="nav-home">Home</a>
+        <a href="#about" class="nav-link" data-i18n="nav-about">Our Purpose</a>
+        <a href="#events-section" class="nav-link" data-i18n="nav-events">Events</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Selector Dropdown -->
+        <div class="language-dropdown" id="language-dropdown">
+          <button class="lang-btn-trigger" id="lang-btn-trigger">
+            <span class="lang-text" id="active-lang-text">English</span>
+            <svg class="dropdown-arrow" viewBox="0 0 24 24" style="width: 10px; height: 10px; fill: currentColor; stroke: currentColor; stroke-width: 4px; stroke-linejoin: round;">
+              <path d="M5 7h14l-7 10z"></path>
+            </svg>
+          </button>
+          <div class="lang-menu">
+            <a href="../tr/" class="lang-item" data-lang="tr">Türkçe</a>
+            <a href="../en/" class="lang-item active" data-lang="en">English</a>
+            <a href="../de/" class="lang-item" data-lang="de">Deutsch</a>
+            <a href="../fr/" class="lang-item" data-lang="fr">Français</a>
+            <a href="../es/" class="lang-item" data-lang="es">Español</a>
+            <a href="../it/" class="lang-item" data-lang="it">Italiano</a>
+            <a href="../pt/" class="lang-item" data-lang="pt">Português</a>
+            <a href="../nl/" class="lang-item" data-lang="nl">Nederlands</a>
+            <a href="../id/" class="lang-item" data-lang="id">Indonesia</a>
+            <a href="../ru/" class="lang-item" data-lang="ru">Русский</a>
+            <a href="../ja/" class="lang-item" data-lang="ja">日本語</a>
+            <a href="../ko/" class="lang-item" data-lang="ko">한국어</a>
+            <a href="../zh/" class="lang-item" data-lang="zh">简体中文</a>
+            <a href="../hi/" class="lang-item" data-lang="hi">Hindi</a>
+            <a href="../ar/" class="lang-item" data-lang="ar">العربية</a>
+            <a href="../az/" class="lang-item" data-lang="az">Azərbaycan</a>
+          </div>
+        </div>
+
+        <button class="theme-toggle-btn btn-outline" aria-label="Temayı Değiştir"
+          style="padding: 8px; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+          <div class="theme-icon"></div>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Menüyü Aç">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div class="mobile-menu">
+    <nav class="mobile-nav-links">
+      <a href="#home" data-i18n="nav-home">Home</a>
+      <a href="#about" data-i18n="nav-about">Our Purpose</a>
+      <a href="#events-section" data-i18n="nav-events">Events</a>
+      <div class="mobile-lang-selector" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+        <a href="../tr/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">tr</a>
+        <a href="../en/" class="mobile-lang-item active" style="font-size: 14px; text-transform: uppercase;">en</a>
+        <a href="../de/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">de</a>
+        <a href="../fr/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">fr</a>
+        <a href="../es/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">es</a>
+        <a href="../it/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">it</a>
+        <a href="../pt/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">pt</a>
+        <a href="../nl/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">nl</a>
+        <a href="../id/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">id</a>
+        <a href="../ru/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">ru</a>
+        <a href="../ja/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">ja</a>
+        <a href="../ko/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">ko</a>
+        <a href="../zh/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">zh</a>
+        <a href="../hi/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">hi</a>
+        <a href="../ar/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">ar</a>
+        <a href="../az/" class="mobile-lang-item" style="font-size: 14px; text-transform: uppercase;">az</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <!-- Background Video -->
+      <div class="hero-video-container">
+        <video class="hero-video" autoplay loop muted playsinline>
+          <source src="../assets/videos/party.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
+      <div class="hero-bg-glow"></div>
+      <div class="container fade-up">
+        <h1><span class="gradient-text" data-i18n="hero-title">Vertex Events</span></h1>
+        <p data-i18n="hero-desc">Vertex, where the world's brightest young minds meet, brings developers, designers, and AI enthusiasts together in meetings that push boundaries.</p>
+        <div class="hero-buttons">
+          <a href="#events-section" class="btn btn-primary" data-i18n="hero-btn-explore">Explore Events</a>
+          <a href="#about" class="btn btn-outline" data-i18n="hero-btn-purpose">See Our Purpose</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Purpose Section (Amacımız) -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="purpose-section-header fade-up">
+          <div class="badge" data-i18n="purpose-badge">Vision & Community</div>
+          <h2 class="section-title text-center mb-4" data-i18n="purpose-title">Purpose of Our Events</h2>
+          <p class="section-subtitle text-center fade-up" style="color: var(--text-muted); max-width: 700px; margin: 0 auto 48px auto;" data-i18n="purpose-desc">We add value to the technology community with events where people who learn, produce, and share meet.</p>
+        </div>
+
+        <div class="purpose-bento-grid fade-up">
+          <!-- Left Large Card: Manifesto -->
+          <div class="card bento-card-large animated-border">
+            <div class="card-content">
+              <div class="manifesto-tag" data-i18n="bento-large-tag">// KNOWLEDGE & EXPERIENCE</div>
+              <h2 data-i18n="bento-large-title" style="margin-bottom: 20px;">Hands-on Workshops</h2>
+              <p class="manifesto-text" data-i18n="bento-large-desc" style="margin-bottom: 16px;">We share the experiences we gain from the products we develop within Vertex through hackathons, workshops, and technical sessions. We support participants in developing their own projects by moving from theory to practice.</p>
+              <p class="manifesto-text" data-i18n="bento-large-desc-2">We bring individuals interested in technology together, encouraging knowledge sharing, collaboration, and continuous improvement. We aim to create a community culture where ideas are valued and transformed into production.</p>
+            </div>
+          </div>
+
+          <!-- Right Column containing two smaller cards -->
+          <div class="bento-right-column">
+            <!-- Card 1: AI & Tech -->
+            <div class="card bento-card-small animated-border">
+              <div class="card-content">
+                <div class="card-icon-row">
+                  <div class="card-icon" style="margin-bottom: 0; margin-right: 16px;">
+                    <div class="visual-ai">
+                      <div class="ai-node"></div>
+                      <div class="ai-node"></div>
+                      <div class="ai-node"></div>
+                      <div class="ai-node"></div>
+                      <div class="ai-line"></div>
+                    </div>
+                  </div>
+                  <h3 style="font-size: 18px; font-weight: 700;" data-i18n="bento-right-1-title">AI and New Technologies</h3>
+                </div>
+                <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);" data-i18n="bento-right-1-desc">We aim to raise individuals who do not just use AI, but generate new solutions with it. In our events, we offer the opportunity to experience up-to-date technologies through real scenarios.</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Networking & Mentorship -->
+            <div class="card bento-card-small animated-border">
+              <div class="card-content">
+                <div class="card-icon-row">
+                  <div class="card-icon" style="margin-bottom: 0; margin-right: 16px;">
+                    <div class="visual-global">
+                      <div class="global-grid"></div>
+                      <div class="global-scan"></div>
+                      <div class="global-dot"></div>
+                    </div>
+                  </div>
+                  <h3 style="font-size: 18px; font-weight: 700;" data-i18n="bento-right-2-title">Community and Industry Networking</h3>
+                </div>
+                <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);" data-i18n="bento-right-2-desc">We bring developers, designers, entrepreneurs, and industry professionals together in the same environment. We build a community that encourages knowledge sharing, teamwork, and long-term collaborations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section Explorer -->
+    <section id="events-section" class="section section-dark">
+      <div class="container">
+        <h2 class="section-title fade-up text-center mb-6" style="font-size: 36px;" data-i18n="events-title">Event Agenda</h2>
+        
+        <!-- Past Events Toggle Option -->
+        <div class="past-toggle-container fade-up" style="margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 12px; user-select: none;">
+          <label class="switch">
+            <input type="checkbox" id="show-past-events">
+            <span class="slider"></span>
+          </label>
+          <span style="font-size: 15px; font-weight: 500; color: var(--text-muted); cursor: pointer;" id="show-past-label" data-i18n="events-toggle-label">Show past events too</span>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="grid-3" id="events-grid">
+          <!-- Rendered dynamically by js/events.js -->
+          <div class="loading-placeholder" data-i18n="events-loading">Loading events...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Event Details Modal -->
+  <div class="modal" id="event-detail-modal">
+    <div class="modal-content glass">
+      <button class="modal-close" id="modal-close-details">×</button>
+      <div id="modal-detail-body">
+        <!-- Rendered dynamically by js/events.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Registration Modal -->
+  <div class="modal" id="register-modal">
+    <div class="modal-content glass ticket-modal-width">
+      <button class="modal-close" id="modal-close-register">×</button>
+      
+      <!-- Registration Flow Page 1: Form -->
+      <div id="register-flow-form">
+        <h3 class="gradient-text mb-4" id="register-event-title" data-i18n="register-flow-title">Event Registration</h3>
+        <p class="mb-6" style="color: var(--text-muted); font-size: 14px;" data-i18n="register-flow-sub">Enter your details to generate your digital invitation.</p>
+        
+        <form id="registration-form">
+          <input type="hidden" id="register-event-id">
+          <div class="form-group">
+            <label for="reg-name" data-i18n="form-lbl-name">Your Name & Surname</label>
+            <input type="text" id="reg-name" required placeholder="Name & Surname">
+          </div>
+          <div class="form-group">
+            <label for="reg-email" data-i18n="form-lbl-email">Your Email Address</label>
+            <input type="email" id="reg-email" required placeholder="name@domain.com">
+          </div>
+
+          <!-- Checkout Details (Stripe Simulation) -->
+          <div id="stripe-checkout-section" class="stripe-checkout-container" style="display: none;">
+            <div class="checkout-divider"></div>
+            <h4 class="mb-4" data-i18n="form-stripe-header">💳 Stripe Payment Input</h4>
+            <div class="form-group">
+              <label for="card-number" data-i18n="form-lbl-card">Card Number</label>
+              <div class="stripe-input-wrapper">
+                <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19">
+                <span class="card-brand-icon">💳</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="card-expiry" data-i18n="form-lbl-expiry">Expiration (MM/YY)</label>
+                <input type="text" id="card-expiry" placeholder="12/28" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label for="card-cvc" data-i18n="form-lbl-cvc">CVC</label>
+                <input type="text" id="card-cvc" placeholder="123" maxlength="3">
+              </div>
+            </div>
+            <div class="checkout-summary mb-4">
+              <span data-i18n="form-total-summary">Total Price:</span>
+              <span id="stripe-checkout-price" class="gradient-text font-bold">120 TL</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full" style="margin-top: 15px;" id="submit-reg-btn" data-i18n="form-btn-submit-free">Create Ticket</button>
+        </form>
+      </div>
+
+      <!-- Registration Flow Page 2: Success & Ticket Showcase -->
+      <div id="register-flow-success" style="display: none; text-align: center;">
+        <div class="success-icon mb-4">🎉</div>
+        <h3 class="gradient-text mb-4" data-i18n="success-flow-title">Your Ticket Has Been Created!</h3>
+        <p class="mb-6" style="color: var(--text-muted); font-size: 14px;" data-i18n="success-flow-sub">Your ticket registration is processed. You can use your digital pass below for entry control on the event day.</p>
+
+        <!-- Digital Virtual Ticket (Glassmorphic Pass) -->
+        <div class="virtual-ticket" id="virtual-ticket">
+          <!-- Glow effects inside card -->
+          <div class="ticket-glow-effect"></div>
+          
+          <div class="ticket-top">
+            <div class="ticket-logo">
+              <img src="../assets/logo.svg" alt="Vertex" class="ticket-logo-img">
+              <span data-i18n="ticket-pass-header">VERTEX // PASSPORT</span>
+            </div>
+            <div class="ticket-tier-badge" id="ticket-tier-badge" data-i18n="ticket-pass-free">FREE PASS</div>
+          </div>
+          
+          <div class="ticket-middle">
+            <h4 id="ticket-event-name">VERTEX AI HACKATHON 2026</h4>
+            <div class="ticket-meta-grid">
+              <div>
+                <span class="label" data-i18n="ticket-lbl-participant">PARTICIPANT</span>
+                <span class="value" id="ticket-user-name">Arda Yılmaz</span>
+              </div>
+              <div>
+                <span class="label" data-i18n="ticket-lbl-date">DATE</span>
+                <span class="value" id="ticket-event-date">12-14 Temmuz 2026</span>
+              </div>
+              <div>
+                <span class="label" data-i18n="ticket-lbl-location">LOCATION</span>
+                <span class="value" id="ticket-event-loc">Vertex HQ / Online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-border-dash"></div>
+
+          <div class="ticket-bottom">
+            <div class="ticket-qr-container">
+              <!-- Inline SVG placeholder for QR Code generated by JS -->
+              <div id="ticket-qr-code"></div>
+            </div>
+            <div class="ticket-serial">
+              <span class="label">TICKET ID</span>
+              <span class="value font-mono" id="ticket-serial-id">VTX-9823-810A</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-actions mt-6">
+          <button class="btn btn-primary" id="download-ticket-btn" data-i18n="ticket-action-download">Download Ticket (PNG)</button>
+          <button class="btn btn-outline" id="close-success-btn" data-i18n="ticket-action-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-expanded">
+    <div class="container">
+      <div class="footer-main-grid">
+        <div class="footer-brand">
+          <a href="https://www.vertexishere.com/" target="_blank" class="logo" style="font-size: 24px; margin-bottom: 16px; display: inline-flex;">
+            <img src="../assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
+          </a>
+          <p style="line-height: 1.6;" data-i18n="footer-brand-desc">Vertex, where the world's brightest young minds meet, is revolutionizing the technology sector!</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footer-col-projects">Projects</h3>
+          <ul class="footer-links">
+            <li><a data-i18n-href="href-cortex" data-i18n="footer-link-cortex" target="_blank">Cortex</a></li>
+            <li><a href="https://github.com/SolarBrowser/" data-i18n="footer-link-solar" target="_blank">Solar Browser</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.VertexGames.AllStar" data-i18n="footer-link-allstar" target="_blank">All Star</a></li>
+            <li><a href="https://github.com/VertexCorporation/Mergen" data-i18n="footer-link-mergen" target="_blank">Mergen</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footer-col-company">Company</h3>
+          <ul class="footer-links">
+            <li><a data-i18n-href="href-about" data-i18n="footer-link-about" target="_blank">About Us</a></li>
+            <li><a data-i18n-href="href-team" data-i18n="footer-link-team" target="_blank">Team</a></li>
+            <li><a data-i18n-href="href-vision" data-i18n="footer-link-vision" target="_blank">Vision</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footer-col-contact">Contact</h3>
+          <ul class="footer-links">
+            <li><a href="mailto:contact@vertexishere.com" data-i18n="footer-link-email">Send Email</a></li>
+            <li><a href="https://www.linkedin.com/company/106897671/" data-i18n="footer-link-linkedin" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/vertex.23/" data-i18n="footer-link-instagram" target="_blank">Instagram</a></li>
+            <li><a href="#" data-i18n="footer-link-discord">Discord</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="copyright">
+          <span data-i18n="footer-copyright">© 2026 Vertex Corporation Ltd. All Rights Reserved.</span>
+          <span data-i18n="footer-address" style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 8px;">20 Wenlock Road, London, N1 7GU, United Kingdom</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#" data-i18n="footer-link-privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer-link-terms">Terms of Use</a>
+          <a href="#" data-i18n="footer-link-cookies">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/translations.js"></script>
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/events.js"></script>
+</body>
+
+</html>

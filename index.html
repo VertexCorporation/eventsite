@@ -1,1 +1,160 @@
-// HERE WE GO
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+    (function() {
+      const t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO & Crawler settings -->
+    <meta name="robots" content="index, follow">
+    <title>Vertex Events | The Peak of Technology</title>
+    <meta name="description" content="Vertex Events Platform. Redirecting to your local version...">
+    <meta name="author" content="Vertex Corporation">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.webp">
+
+    <!-- Styles for fallback page -->
+    <style>
+        html,
+        body {
+            background-color: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #fff;
+        }
+
+        .noscript-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .noscript-container h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .noscript-container p {
+            margin-bottom: 2rem;
+            color: #888;
+        }
+
+        .noscript-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .noscript-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .noscript-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+
+    <!-- Redirect logic -->
+    <script>
+        (function () {
+            const SUPPORTED_LANGS = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'az'];
+            const DEFAULT_LANG = 'en';
+            const STORAGE_KEY = 'vtx_lang';
+
+            function getBasePath() {
+                const path = window.location.pathname;
+                if (path.includes('/eventsite/')) return '/eventsite';
+                if (window.location.protocol === 'file:') {
+                    return path.substring(0, path.lastIndexOf('/')).replace(/\/index\.html$/, '');
+                }
+                return '';
+            }
+
+            try {
+                const savedLang = localStorage.getItem(STORAGE_KEY);
+                const userLang = navigator.language || navigator.userLanguage;
+                const shortLang = userLang ? userLang.substring(0, 2) : 'en';
+
+                let targetLang = DEFAULT_LANG;
+
+                if (savedLang && SUPPORTED_LANGS.includes(savedLang)) {
+                    targetLang = savedLang;
+                } else if (SUPPORTED_LANGS.includes(shortLang)) {
+                    targetLang = shortLang;
+                }
+
+                localStorage.setItem(STORAGE_KEY, targetLang);
+
+                const basePath = getBasePath();
+                const targetUrl = `${window.location.origin}${basePath}/${targetLang}/`;
+
+                window.location.replace(targetUrl);
+            } catch (e) {
+                console.error("Redirect logic failed", e);
+                window.location.replace('./en/');
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <noscript>
+        <div class="noscript-container">
+            <h1>Vertex Events</h1>
+            <p>Please select your language / Lütfen dilinizi seçin:</p>
+            <div class="noscript-links">
+                <a href="./en/">English</a>
+                <a href="./tr/">Türkçe</a>
+                <a href="./de/">Deutsch</a>
+                <a href="./fr/">Français</a>
+                <a href="./es/">Español</a>
+                <a href="./it/">Italiano</a>
+                <a href="./pt/">Português</a>
+                <a href="./nl/">Nederlands</a>
+                <a href="./id/">Indonesia</a>
+                <a href="./ru/">Русский</a>
+                <a href="./ja/">日本語</a>
+                <a href="./ko/">한국어</a>
+                <a href="./zh/">简体中文</a>
+                <a href="./hi/">Hindi</a>
+                <a href="./ar/">العربية</a>
+                <a href="./az/">Azərbaycan</a>
+            </div>
+        </div>
+    </noscript>
+</body>
+
+</html>
