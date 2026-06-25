@@ -3,15 +3,44 @@
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Hero Background Video Randomizer ---
-  const videoPlayer = document.getElementById('hero-video-player');
-  const videoSource = document.getElementById('hero-video-source');
-  if (videoPlayer && videoSource) {
-    const videos = ['01.mp4', '02.mp4', '03.mp4'];
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+  // --- Hero Background Video Randomizer & Crossfade ---
+  const video1 = document.getElementById('hero-video-player-1');
+  const video2 = document.getElementById('hero-video-player-2');
+  if (video1 && video2) {
+    const videos = ['yacht-1.mp4', 'yacht-2.mp4', 'yacht-3.mp4'];
+    let currentVideo = videos[Math.floor(Math.random() * videos.length)];
+    let activePlayer = 1;
     const prefix = document.documentElement.lang ? '../' : '';
-    videoSource.src = `${prefix}assets/gallery/${randomVideo}`;
-    videoPlayer.load();
+
+    video1.src = `${prefix}assets/gallery/${currentVideo}`;
+    video1.load();
+
+    const playNext = () => {
+      let nextVideo;
+      do {
+        nextVideo = videos[Math.floor(Math.random() * videos.length)];
+      } while (nextVideo === currentVideo);
+      currentVideo = nextVideo;
+
+      if (activePlayer === 1) {
+        video2.src = `${prefix}assets/gallery/${currentVideo}`;
+        video2.load();
+        video2.play();
+        video2.classList.add('active');
+        video1.classList.remove('active');
+        activePlayer = 2;
+      } else {
+        video1.src = `${prefix}assets/gallery/${currentVideo}`;
+        video1.load();
+        video1.play();
+        video1.classList.add('active');
+        video2.classList.remove('active');
+        activePlayer = 1;
+      }
+    };
+
+    video1.addEventListener('ended', playNext);
+    video2.addEventListener('ended', playNext);
   }
 
   // --- Header Scroll Effect ---

@@ -3,11 +3,53 @@
    ========================================= */
 
 // --- Default Event Data ---
-const DEFAULT_EVENTS = [];
+const DEFAULT_EVENTS = [
+  {
+    id: "evt_yat_kutlamasi",
+    title: "Vertex Yat Kutlaması",
+    title_en: "Vertex Yacht Celebration",
+    desc: "Vertex'in ilk resmi kutlaması, 3 yıllık yoğun çalışmaların sonucunda; Cortex'in 100000 indirme barajını geçmesini, Vertex'in Teknopark İstanbul'a kabul almasını, fal.ai gibi büyük şirketlerle yaptığı ortaklıkları ve daha nice başarıyı toplamak için yapılmıştır.",
+    desc_en: "Vertex's first official celebration, following 3 years of intense work; gathered to celebrate Cortex surpassing 100,000 downloads, Vertex's acceptance into Teknopark Istanbul, partnerships with major companies like fal.ai, and many more successes.",
+    date: "2026-06-19",
+    dateText: "19 Haziran 2026",
+    dateText_en: "June 19, 2026",
+    location: "Türkiye, İstanbul, Beylerbeyi, Beylerbeyi Parkı 34676",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Beylerbeyi+Parkı,+İstanbul,+Türkiye",
+    location_en: "Beylerbeyi Park, Istanbul, Turkey 34676",
+    price: 0,
+    images: [
+      "../assets/gallery/yacht-1.jpeg",
+      "../assets/gallery/yacht-2.jpeg",
+      "../assets/gallery/yacht-3.jpeg",
+      "../assets/gallery/yacht-4.jpeg",
+      "../assets/gallery/yacht-5.jpeg",
+      "../assets/gallery/yacht-6.jpeg",
+      "../assets/gallery/yacht-7.jpg"
+    ]
+  },
+  {
+    id: "evt_tech_summit",
+    title: "Vertex Teknoloji Zirvesi '26",
+    title_en: "Vertex Tech Summit '26",
+    desc: "Teknoloji dünyasının önde gelen isimleri ile birlikte geleceğin teknolojilerini tartışacağımız büyük zirve. Yapay zeka, Web3 ve daha fazlası hakkında paneller, networking fırsatları ve atölyeler sizi bekliyor.",
+    desc_en: "The great summit where we will discuss future technologies with leading names of the tech world. Panels on AI, Web3 and more, networking opportunities and workshops await you.",
+    date: "2026-08-15",
+    dateText: "Ağustos 2026",
+    dateText_en: "August 2026",
+    location: "Türkiye, İstanbul, Pendik, Teknopark İstanbul 34912",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Teknopark+İstanbul,+Pendik,+Türkiye",
+    location_en: "Teknopark Istanbul, Pendik, Turkey 34912",
+    price: 0,
+    banner: "url('../assets/gallery/teknopark.jpg') center/cover",
+    detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlanıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
+    type: "ZİRVE",
+    disableRegister: true
+  }
+];
 
 // --- Application State ---
 let events = [...DEFAULT_EVENTS];
-let showPastEvents = false;
+let showPastEvents = true;
 let isStripeMode = false;
 let selectedEvent = null;
 
@@ -141,6 +183,18 @@ if (cardCvcInput) {
 
 // --- Render Functions ---
 
+
+window.moveCarousel = (id, direction) => {
+  const container = document.getElementById('carousel-' + id);
+  if (!container) return;
+  const slides = container.querySelectorAll('.carousel-slide');
+  let current = parseInt(container.getAttribute('data-current') || '0');
+  slides[current].classList.remove('active');
+  current = (current + direction + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  container.setAttribute('data-current', current);
+};
+
 const renderEvents = () => {
   eventsGrid.innerHTML = '';
   
@@ -164,7 +218,7 @@ const renderEvents = () => {
   filtered.forEach(event => {
     const isPast = isPastDate(event.date);
     const card = document.createElement('div');
-    card.className = 'card event-card animated-border';
+    card.className = 'card event-card horizontal-card animated-border';
 
     const title = lang === 'en' ? (event.title_en || event.title) : event.title;
     const desc = lang === 'en' ? (event.desc_en || event.desc) : event.desc;
@@ -176,24 +230,32 @@ const renderEvents = () => {
     
     card.innerHTML = `
       <div class="event-img-container">
-        <div class="event-banner-art" style="background: ${event.banner};">
-          <span class="event-banner-logo">${event.type}</span>
-        </div>
+        ${event.images && event.images.length > 0 ? `
+          <div class="event-carousel" id="carousel-${event.id}" data-current="0">
+            ${event.images.map((img, i) => `<div class="carousel-slide ${i === 0 ? 'active' : ''}" style="background-image: url('${img}')"></div>`).join('')}
+            <button class="carousel-btn prev-btn" onclick="moveCarousel('${event.id}', -1)">❮</button>
+            <button class="carousel-btn next-btn" onclick="moveCarousel('${event.id}', 1)">❯</button>
+          </div>
+        ` : `
+          <div class="event-banner-art" style="background: ${event.banner || 'var(--bg-secondary)'};">
+            <span class="event-banner-logo">${event.type || ''}</span>
+          </div>
+        `}
         <span class="event-status-badge ${isPast ? 'status-past' : 'status-upcoming'}">
           ${statusText}
         </span>
       </div>
       <div class="event-body">
-        <div class="event-date">📅 ${dateText}</div>
+        <div class="event-date"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px; transform: translateY(2px);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>${dateText}</div>
         <h3 class="event-title">${title}</h3>
         <p class="event-desc">${desc}</p>
         <div class="event-meta">
-          <span>📍 ${location}</span>
-          <span class="event-price">${priceText}</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px; transform: translateY(2px);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>${event.mapUrl ? `<a href="${event.mapUrl}" target="_blank" style="color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 4px; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">${location}</a>` : location}</span>
+          
         </div>
         <div class="event-card-actions">
           <button class="btn btn-outline btn-sm view-details-btn" data-id="${event.id}">${trans["event-btn-details"]}</button>
-          ${!isPast ? `<button class="btn btn-primary btn-sm register-btn" data-id="${event.id}">${trans["event-btn-register"]}</button>` : ''}
+          ${!isPast ? `<button class="btn btn-primary btn-sm register-btn" data-id="${event.id}" ${event.disableRegister ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>${trans["event-btn-register"]}</button>` : ''}
         </div>
       </div>
     `;
@@ -266,25 +328,35 @@ const openDetailModal = (eventId) => {
   }
 
   modalDetailBody.innerHTML = `
-    <div class="modal-detail-banner" style="background: ${event.banner};">
-      <span class="event-banner-logo" style="font-size: 32px; color: rgba(255,255,255,0.3);">${event.type}</span>
-    </div>
+    ${event.images && event.images.length > 0 ? `
+      <div style="position: relative; height: 180px; margin-bottom: 24px; border-radius: 12px; overflow: hidden; width: 100%;">
+        <div class="event-carousel" id="carousel-modal-${event.id}" data-current="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+          ${event.images.map((img, i) => `<div class="carousel-slide ${i === 0 ? 'active' : ''}" style="background-image: url('${img}')"></div>`).join('')}
+          <button class="carousel-btn prev-btn" onclick="moveCarousel('modal-${event.id}', -1)">❮</button>
+          <button class="carousel-btn next-btn" onclick="moveCarousel('modal-${event.id}', 1)">❯</button>
+        </div>
+      </div>
+    ` : `
+      <div class="modal-detail-banner" style="background: ${event.banner || 'var(--bg-secondary)'};">
+        <span class="event-banner-logo" style="font-size: 32px; color: rgba(255,255,255,0.3);">${event.type || ''}</span>
+      </div>
+    `}
     <h3 class="modal-detail-title gradient-text">${title}</h3>
     <div class="modal-detail-meta-row">
-      <div class="modal-detail-meta-item">📅 ${dateText}</div>
-      <div class="modal-detail-meta-item">📍 ${location}</div>
-      <div class="modal-detail-meta-item">💳 ${priceText}</div>
+      <div class="modal-detail-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px; transform: translateY(2px);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>${dateText}</div>
+      <div class="modal-detail-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px; transform: translateY(2px);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>${event.mapUrl ? `<a href="${event.mapUrl}" target="_blank" style="color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 4px; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">${location}</a>` : location}</div>
+      
     </div>
     <div class="modal-detail-content">
-      <p>${desc}</p>
+      <p>${event.detailDesc ? event.detailDesc : desc}</p>
     </div>
     
     ${agendaHTML}
     ${speakersHTML}
 
     <div style="margin-top: 32px; display: flex; gap: 12px;">
-      ${!isPast ? `<button class="btn btn-primary" style="flex: 1;" onclick="document.getElementById('modal-close-details').click(); document.querySelector('.register-btn[data-id=\\'${event.id}\\']').click();">${trans["modal-detail-btn-register"]}</button>` : ''}
-      <button class="btn btn-outline" style="flex: 1;" onclick="document.getElementById('modal-close-details').click();">${trans["modal-detail-btn-back"]}</button>
+      ${!isPast ? `<button class="btn btn-primary" style="flex: 1;" onclick="document.getElementById('event-detail-modal').classList.remove('active'); document.querySelector('.register-btn[data-id=\\'${event.id}\\']').click();">${trans["modal-detail-btn-register"]}</button>` : ''}
+      <button class="btn btn-outline" style="flex: 1;" onclick="document.getElementById('event-detail-modal').classList.remove('active');">${trans["modal-detail-btn-back"]}</button>
     </div>
   `;
 
@@ -294,6 +366,13 @@ const openDetailModal = (eventId) => {
 const openRegisterModal = (eventId) => {
   const event = events.find(e => e.id === eventId);
   if (!event) return;
+
+  // Stripe Payment Links Integration
+  if (event.price > 0) {
+    const link = event.stripeLink || "https://buy.stripe.com/test_placeholder";
+    window.open(link, '_blank');
+    return;
+  }
 
   selectedEvent = event;
   const lang = window.currentLanguage || 'tr';
@@ -391,7 +470,7 @@ registrationForm.addEventListener('submit', (e) => {
 });
 
 // Close Modals
-modalCloseDetails.addEventListener('click', () => detailModal.classList.remove('active'));
+if (modalCloseDetails) modalCloseDetails.addEventListener('click', () => detailModal.classList.remove('active'));
 modalCloseRegister.addEventListener('click', () => registerModal.classList.remove('active'));
 document.getElementById('close-success-btn').addEventListener('click', () => registerModal.classList.remove('active'));
 

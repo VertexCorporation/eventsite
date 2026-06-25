@@ -34,6 +34,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="https://www.vertexishere.com/assets/favicon.webp">
 </head>
 
@@ -48,9 +49,12 @@
   <!-- Header -->
   <header class="header">
     <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon">
-        Vertex <span class="badge-mini">Etkinlikler</span>
+      <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center;">
+          <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 6px;">
+          Vertex
+        </div>
+        <span style="font-size: 26px; font-family: 'BeauRivage', cursive; font-size: 24px !important; color: var(--text-muted); transform: translateY(2px);" data-i18n="header-events-italic">Etkinlikleri</span>
       </a>
 
       <nav class="nav-links">
@@ -129,16 +133,15 @@
     <section id="home" class="hero">
       <!-- Background Video -->
       <div class="hero-video-container">
-        <video id="hero-video-player" class="hero-video" autoplay loop muted playsinline>
-          <source id="hero-video-source" src="../assets/gallery/01.mp4" type="video/mp4">
-        </video>
+        <video id="hero-video-player-1" class="hero-video active" autoplay muted playsinline></video>
+        <video id="hero-video-player-2" class="hero-video" autoplay muted playsinline></video>
         <div class="hero-video-overlay"></div>
       </div>
 
       <div class="hero-bg-glow"></div>
       <div class="container fade-up">
-        <h1><span class="gradient-text" data-i18n="hero-title">Мероприятия Vertex</span></h1>
-        <p data-i18n="hero-desc">Как технологическая компания нового поколения, Vertex объединяет разработчиков, дизайнеров и энтузиастов ИИ на встречах, расширяющих границы.</p>
+        <h1><span data-i18n="hero-title" style="color: var(--text-main);">Мероприятия Vertex</span></h1>
+        <p data-i18n="hero-desc">Vertex, matematikte iki doğrunun kesiştiği en uç nokta demektir; etkinliklerimiz ile tüm doğruları uç noktalarda kesiştiriyoruz.</p>
         <div class="hero-buttons">
           <a href="#events-section" class="btn btn-primary" data-i18n="hero-btn-explore">Исследовать события</a>
           <a href="#about" class="btn btn-outline" data-i18n="hero-btn-purpose">Узнать нашу цель</a>
@@ -150,60 +153,13 @@
     <section id="about" class="section">
       <div class="container">
         <div class="purpose-section-header fade-up">
-          <div class="badge" data-i18n="purpose-badge">Видение и Сообщество</div>
-          <h2 class="section-title text-center mb-4" data-i18n="purpose-title">Цель наших мероприятий</h2>
-          <p class="section-subtitle text-center fade-up" style="color: var(--text-muted); max-width: 700px; margin: 0 auto 48px auto;" data-i18n="purpose-desc">Мы развиваем техно-сообщество благодаря мероприятиям для обмена знаниями и обучения.</p>
+          <h2 class="section-title text-center mb-4" data-i18n="purpose-vision-title">Vizyonumuz ve Misyonumuz</h2>
         </div>
-
-        <div class="purpose-bento-grid fade-up">
-          <!-- Left Large Card: Manifesto -->
-          <div class="card bento-card-large animated-border">
-            <div class="card-content">
-              <div class="manifesto-tag" data-i18n="bento-large-tag">// ЗНАНИЯ И ОПЫТ</div>
-              <h2 data-i18n="bento-large-title" style="margin-bottom: 20px;">Практические семинары</h2>
-              <p class="manifesto-text" data-i18n="bento-large-desc" style="margin-bottom: 16px;">Мы делимся опытом разработки продуктов Vertex в рамках хакатонов и мастер-классов.</p>
-              <p class="manifesto-text" data-i18n="bento-large-desc-2">Мы стимулируем обмен знаниями, совместную работу и непрерывный рост.</p>
-            </div>
-          </div>
-
-          <!-- Right Column containing two smaller cards -->
-          <div class="bento-right-column">
-            <!-- Card 1: AI & Tech -->
-            <div class="card bento-card-small animated-border">
-              <div class="card-content">
-                <div class="card-icon-row">
-                  <div class="card-icon" style="margin-bottom: 0; margin-right: 16px;">
-                    <div class="visual-ai">
-                      <div class="ai-node"></div>
-                      <div class="ai-node"></div>
-                      <div class="ai-node"></div>
-                      <div class="ai-node"></div>
-                      <div class="ai-line"></div>
-                    </div>
-                  </div>
-                  <h3 style="font-size: 18px; font-weight: 700;" data-i18n="bento-right-1-title">ИИ и Новые Технологии</h3>
-                </div>
-                <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);" data-i18n="bento-right-1-desc">Мы обучаем создавать новые решения на базе ИИ, а не просто быть пользователями.</p>
-              </div>
-            </div>
-
-            <!-- Card 2: Networking & Mentorship -->
-            <div class="card bento-card-small animated-border">
-              <div class="card-content">
-                <div class="card-icon-row">
-                  <div class="card-icon" style="margin-bottom: 0; margin-right: 16px;">
-                    <div class="visual-global">
-                      <div class="global-grid"></div>
-                      <div class="global-scan"></div>
-                      <div class="global-dot"></div>
-                    </div>
-                  </div>
-                  <h3 style="font-size: 18px; font-weight: 700;" data-i18n="bento-right-2-title">Сообщество и Нетворкинг</h3>
-                </div>
-                <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);" data-i18n="bento-right-2-desc">Мы объединяем разработчиков и профессионалов сферы для долгосрочного сотрудничества.</p>
-              </div>
-            </div>
-          </div>
+        <div class="fade-up" style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted); line-height: 1.8; font-size: 16px;">
+          <p data-i18n="purpose-vision-p1" style="margin-bottom: 20px;">Vertex, iki doğrunun kesiştiği en uç noktadır.</p>
+          <p data-i18n="purpose-vision-p2" style="margin-bottom: 20px;">Bu Vertex’in sadece matematikteki anlamıdır; anatomide bedenin ve zihnin en üst bölgesi, gökbiliminde evrenin başucu noktası, uzay geometrisinde en temel yapı taşı, ağ teorisinde tüm kilit bağlantıların birleştiği merkez düğüm, optikte ışığın merceği kestiği mutlak odaktır.</p>
+          <p data-i18n="purpose-vision-p3" style="margin-bottom: 20px;">İşte biz de ismimizi tüm bu anlamların ve fazlasının oluşturduğu kolektif mânâdan aldık; insanlar olarak potansiyelimizin ve sınırlarımızın en üst seviyesini gösterip hep birlikte zirveye ulaşacağız!</p>
+          <p data-i18n="purpose-vision-p4">Bu vizyon doğrultusunda, Vertex Etkinlikleri'ni başlatmaktan mutluluk duyuyoruz; misyonumuz, bu vizyon doğrultusunda insanları birleştirerek hep beraber teknoloji sektöründe gelişmek ve sektörü geliştirmektir.</p>
         </div>
       </div>
     </section>
@@ -213,17 +169,7 @@
       <div class="container">
         <h2 class="section-title fade-up text-center mb-6" style="font-size: 36px;" data-i18n="events-title">Календарь событий</h2>
         
-        <!-- Past Events Toggle Option -->
-        <div class="past-toggle-container fade-up" style="margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 12px; user-select: none;">
-          <label class="switch">
-            <input type="checkbox" id="show-past-events">
-            <span class="slider"></span>
-          </label>
-          <span style="font-size: 15px; font-weight: 500; color: var(--text-muted); cursor: pointer;" id="show-past-label" data-i18n="events-toggle-label">Показать прошедшие</span>
-        </div>
-
-        <!-- Events Grid -->
-        <div class="grid-3" id="events-grid">
+        <div class="grid-1" id="events-grid">
           <!-- Rendered dynamically by js/events.js -->
           <div class="loading-placeholder" data-i18n="events-loading">Загрузка мероприятий...</div>
         </div>
@@ -234,7 +180,7 @@
   <!-- Event Details Modal -->
   <div class="modal" id="event-detail-modal">
     <div class="modal-content glass">
-      <button class="modal-close" id="modal-close-details">×</button>
+      
       <div id="modal-detail-body">
         <!-- Rendered dynamically by js/events.js -->
       </div>
@@ -265,12 +211,12 @@
           <!-- Checkout Details (Stripe Simulation) -->
           <div id="stripe-checkout-section" class="stripe-checkout-container" style="display: none;">
             <div class="checkout-divider"></div>
-            <h4 class="mb-4" data-i18n="form-stripe-header">💳 Оплата через Stripe</h4>
+            <h4 class="mb-4" data-i18n="form-stripe-header"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; transform: translateY(3px);"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> Оплата через Stripe</h4>
             <div class="form-group">
               <label for="card-number" data-i18n="form-lbl-card">Номер карты</label>
               <div class="stripe-input-wrapper">
                 <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19">
-                <span class="card-brand-icon">💳</span>
+                <span class="card-brand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; transform: translateY(3px);"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
               </div>
             </div>
             <div class="form-row">
@@ -295,7 +241,7 @@
 
       <!-- Registration Flow Page 2: Success & Ticket Showcase -->
       <div id="register-flow-success" style="display: none; text-align: center;">
-        <div class="success-icon mb-4">🎉</div>
+        <div class="success-icon mb-4"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#party-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px;"><defs><linearGradient id="party-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b82f6" /><stop offset="100%" stop-color="#8b5cf6" /></linearGradient></defs><polyline points="4 14 2 22 10 20"></polyline><line x1="2" y1="22" x2="11" y2="13"></line><path d="M15 5l2-2 4 4-2 2"></path><path d="M20 7l-9 9"></path><path d="M14 16l-3 3"></path><path d="M8 10l-3 3"></path></svg></div>
         <h3 class="gradient-text mb-4" data-i18n="success-flow-title">Билет успешно создан!</h3>
         <p class="mb-6" style="color: var(--text-muted); font-size: 14px;" data-i18n="success-flow-sub">Регистрация прошла успешно. Используйте цифровой пропуск при входе.</p>
 
@@ -357,10 +303,13 @@
     <div class="container">
       <div class="footer-main-grid">
         <div class="footer-brand">
-          <a href="https://www.vertexishere.com/" target="_blank" class="logo" style="font-size: 24px; margin-bottom: 16px; display: inline-flex;">
-            <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
-          </a>
-          <p style="line-height: 1.6;" data-i18n="footer-brand-desc">Как технологическая компания нового поколения, Vertex совершает революцию в сфере технологий!</p>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <a href="https://www.vertexishere.com/" target="_blank" class="logo" style="font-size: 24px; display: inline-flex; align-items: center; line-height: 1;">
+              <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
+            </a>
+            <span style="font-size: 32px !important; font-family: 'BeauRivage', cursive; color: var(--text-main); transform: translateY(4px);" data-i18n="header-events-italic">Etkinlikleri</span>
+          </div>
+          <p style="color: var(--text-muted); line-height: 1.6; max-width: 400px;" data-i18n="hero-desc">Vertex, matematikte iki doğrunun kesiştiği en uç nokta demektir; etkinliklerimiz ile tüm doğruları uç noktalarda kesiştiriyoruz.</p>
         </div>
 
         <div class="footer-col">
@@ -395,13 +344,13 @@
 
       <div class="footer-bottom-row">
         <div class="copyright">
-          <span data-i18n="footer-copyright">© 2026 Vertex Corporation Ltd. Все права защищены.</span>
+          <span data-i18n="footer-copyright">© 2026 Vertex Corporation, tüm hakları saklıdır.</span>
           <span data-i18n="footer-address" style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 8px;">20 Wenlock Road, London, N1 7GU, United Kingdom</span>
         </div>
         <div class="footer-legal-links">
           <a href="#" data-i18n="footer-link-privacy">Конфиденциальность</a>
           <a href="#" data-i18n="footer-link-terms">Условия использования</a>
-          <a href="#" data-i18n="footer-link-cookies">Файлы cookie</a>
+          
         </div>
       </div>
     </div>
