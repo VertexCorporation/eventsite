@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  
+  <script>
+    (function() {
+      const t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 🎯 SEO & Meta Tags -->
+  <title>利用規約 | Vertex Events</title>
+  <meta name="description" content="Vertex Corporation etkinlik platformu. Yeni nesil teknoloji şirketi Vertex, teknoloji sektöründe devrim yaratıyor! Teknoloji konferansları, atölyeler ve topluluk buluşmalarımıza katılın.">
+  <meta name="keywords" content="vertex, vertex etkinlikleri, hackathon, yazılım kampı, yapay zeka buluşması, cortex, drome, mergen, teknoloji konferansı, genç girişimciler">
+  <meta name="author" content="Vertex Corporation">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="robots" content="index, follow">
+
+  <!-- 🖼️ Open Graph (Social Media) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://events.vertexishere.com/">
+  <meta property="og:title" content="利用規約 | Vertex Events">
+  <meta property="og:description" content="Yeni nesil teknoloji şirketi Vertex, teknoloji sektöründe devrim yaratıyor! Konferanslar ve atölyelere katılın.">
+  <meta property="og:site_name" content="Vertex Corporation">
+  <meta property="og:image" content="https://www.vertexishere.com/assets/banner.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://www.vertexishere.com/assets/favicon.webp">
+
+  <style>
+    :root {
+      --background-color: #f4f7f9;
+      --content-bg-color: #ffffff;
+      --text-primary-color: #1a202c;
+      --text-secondary-color: #4a5568;
+      --link-color: #3182ce;
+      --link-hover-color: #2b6cb0;
+      --shadow-color: rgba(0, 0, 0, 0.05);
+      --triangle-color: rgba(0, 0, 0, 0.04);
+      --warning-bg-color: #fffaf0;
+      --warning-border-color: #f6e05e;
+      --border-color: #e2e8f0;
+    }
+
+    [data-theme="dark"] {
+      --background-color: #050505;
+      --content-bg-color: #0c0c0d;
+      --text-primary-color: #f4f4f5;
+      --text-secondary-color: #a1a1aa;
+      --link-color: #60a5fa;
+      --link-hover-color: #93c5fd;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --triangle-color: rgba(255, 255, 255, 0.03);
+      --warning-bg-color: #1c1917;
+      --warning-border-color: #ca8a04;
+      --border-color: #27272a;
+    }
+
+    html, body {
+      background-color: var(--background-color) !important;
+      color: var(--text-primary-color) !important;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .legal-container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: var(--content-bg-color);
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      position: relative;
+      z-index: 5;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .legal-container h1 {
+      text-align: center;
+      font-size: 2.6em;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+      color: var(--text-primary-color);
+    }
+
+    .legal-container h2 {
+      font-size: 1.7em;
+      margin-top: 40px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-primary-color);
+      letter-spacing: -0.5px;
+    }
+
+    .legal-container p,
+    .legal-container ul,
+    .legal-container li {
+      color: var(--text-secondary-color);
+      font-size: 1.05em;
+    }
+
+    .legal-container p {
+      margin: 20px 0;
+    }
+
+    .legal-container ul {
+      margin-left: 25px;
+      padding-left: 10px;
+    }
+
+    .legal-container li {
+      margin-bottom: 12px;
+    }
+
+    .legal-container a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .legal-container a:hover {
+      color: var(--link-hover-color);
+      text-decoration: underline;
+    }
+
+    .disclaimer {
+      background-color: var(--warning-bg-color);
+      border-left: 4px solid var(--warning-border-color);
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .disclaimer p {
+      margin: 10px 0;
+      color: var(--text-secondary-color);
+    }
+    
+    .disclaimer p:first-child {
+      margin-top: 0;
+    }
+    
+    .disclaimer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .triangles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .triangles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: var(--triangle-color);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation: triangleAnimate 25s linear infinite;
+      bottom: -180px;
+    }
+
+    .triangles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+    .triangles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+    .triangles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+    .triangles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+    .triangles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+    .triangles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+    .triangles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+    .triangles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+    .triangles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+    .triangles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+    @keyframes triangleAnimate {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+      100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; border-radius: 50%; }
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .legal-container {
+        padding: 30px;
+        margin: 40px 16px;
+      }
+      .legal-container h1 { font-size: 2.1em; }
+      .legal-container h2 { font-size: 1.4em; }
+    }
+  </style>
+  
+</head>
+<body>
+  
+  <div class="geo-bg">
+    <div class="geo-blob geo-blob-1"></div>
+    <div class="geo-blob geo-blob-2"></div>
+    <div class="geo-blob geo-blob-3"></div>
+  </div>
+  
+  <main>
+    
+    
+  <ul class="triangles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
+    <div class="legal-container">
+      <h1>利用規約</h1>
+      <p style="text-align: center; font-style: italic; color: var(--text-secondary-color); margin-top: 5px; margin-bottom: 30px;">Vertex Corporation LTDが主催するイベントへの参加およびチケットに関する規約。</p>
+  
+      <h2>1. 一般規則と参加者の行為</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">参加者は主催者が定める規則に従うものとします。秩序を乱す参加者は返金なしで退場処分となる場合があります。</p>
+
+      
+      <h2>2. チケットと入場条件</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">チケットは記名式であり、第三者への譲渡・転売は禁止されています。入場には有効なチケットの提示が必要です。</p>
+
+      
+      <h2>3. イベントの変更および払い戻し方針</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">イベントはいかなる場合も中止されません。日時や場所が変更される場合がありますが、払い戻しは一切行いません。</p>
+
+      
+      <h2>4. 免責事項</h2>
+      <div class="disclaimer">
+        <p style="margin: 16px 0; line-height: 1.7;">会場内での私物の紛失、盗難、破損について、Vertexおよびそのスタッフは一切の責任を负いません。</p>
+
+      </div>
+      
+      <h2>5. 知的財産権</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">イベント内のすべてのコンテンツおよびロゴはVertexに帰属します。事前の書面による許可なく複製・転載することを禁じます。</p>
+
+      
+      <h2>6. プログラム等の変更権</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">主催者は予告なくプログラム、登壇者、パートナーを変更する権利を留保します。</p>
+
+      
+      <h2>7. 準拠法および管轄裁判所</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">本規約はイングランド法に準拠します。一切の紛争はイングランドおよびウェールズの裁判所を専属的管轄とします。</p>
+
+      
+      <h2>8. 規約の変更</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">本規約は主催者が必要と判断した際、事前の予告なく変更されることがあります。</p>
+
+      
+      <h2>9. 同意</h2>
+      <p style="margin: 16px 0; line-height: 1.7;">チケットの購入または登録を完了した時点で、参加者は本規約およびプライバシーポリシーに同意したものとみなされます。</p>
+
+      
+    </div>
+  
+  </main>
+</body>
+</html>
