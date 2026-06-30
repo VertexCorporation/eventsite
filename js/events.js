@@ -28,9 +28,9 @@ const DEFAULT_EVENTS = [
     ]
   },
   {
-    id: "evt_tech_summit_standart",
-    title: "Vertex Teknoloji Zirvesi '26 | Standart Bilet",
-    title_en: "Vertex Tech Summit '26 | Standart Pass",
+    id: "evt_tech_summit",
+    title: "Vertex Teknoloji Zirvesi '26",
+    title_en: "Vertex Tech Summit '26",
     desc: "Teknoloji dünyasının önde gelen isimleri ile birlikte geleceğin teknolojilerini tartışacağımız büyük zirve. Yapay zeka, Web3 ve daha fazlası hakkında paneller, networking fırsatları ve atölyeler sizi bekliyor.",
     desc_en: "The great summit where we will discuss future technologies with leading names of the tech world. Panels on AI, Web3 and more, networking opportunities and workshops await you.",
     date: "2026-09-27",
@@ -39,30 +39,12 @@ const DEFAULT_EVENTS = [
     location: "Türkiye, İstanbul, Pendik, Teknopark İstanbul 34912",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Teknopark+İstanbul,+Pendik,+Türkiye",
     location_en: "Teknopark Istanbul, Pendik, Turkey 34912",
-    price: 500,
-    stripeLink: "https://buy.stripe.com/7sYaEY3Dw9Zz5V98hleIw00",
+    price: "multiple",
+    stripeLinkStandart: "https://buy.stripe.com/7sYaEY3Dw9Zz5V98hleIw00",
+    stripeLinkSpesiyal: "https://buy.stripe.com/5kQcN65LE9Zz5V9cxBeIw01",
     banner: "url('../assets/gallery/teknopark.jpg') center/cover",
     detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
-    type: "STANDART BİLET",
-    disableRegister: false
-  },
-  {
-    id: "evt_tech_summit_spesiyal",
-    title: "Vertex Teknoloji Zirvesi '26 | Spesiyal Bilet",
-    title_en: "Vertex Tech Summit '26 | Special Pass",
-    desc: "Teknoloji dünyasının önde gelen isimleri ile birlikte geleceğin teknolojilerini tartışacağımız büyük zirve. Yapay zeka, Web3 ve daha fazlası hakkında paneller, networking fırsatları ve atölyeler sizi bekliyor.",
-    desc_en: "The great summit where we will discuss future technologies with leading names of the tech world. Panels on AI, Web3 and more, networking opportunities and workshops await you.",
-    date: "2026-09-27",
-    dateText: "27 Eylül 2026",
-    dateText_en: "September 27, 2026",
-    location: "Türkiye, İstanbul, Pendik, Teknopark İstanbul 34912",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Teknopark+İstanbul,+Pendik,+Türkiye",
-    location_en: "Teknopark Istanbul, Pendik, Turkey 34912",
-    price: 1000,
-    stripeLink: "https://buy.stripe.com/5kQcN65LE9Zz5V9cxBeIw01",
-    banner: "url('../assets/gallery/teknopark.jpg') center/cover",
-    detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
-    type: "SPESİYAL BİLET",
+    type: "BİLETLİ ETKİNLİK",
     disableRegister: false
   }
 ];
@@ -246,7 +228,14 @@ const renderEvents = () => {
     const dateText = lang === 'en' ? (event.dateText_en || event.dateText) : event.dateText;
     
     const statusText = isPast ? trans["event-status-past"] : trans["event-status-upcoming"];
-    const priceText = event.price === 0 ? trans["event-price-free"] : `${event.price} TL`;
+    let priceText = "";
+    if (event.price === "multiple") {
+      priceText = "Bilet Seçenekleri";
+    } else if (event.price === 0) {
+      priceText = trans["event-price-free"];
+    } else {
+      priceText = `${event.price} TL`;
+    }
     
     card.innerHTML = `
       <div class="event-img-container">
@@ -387,17 +376,55 @@ const openRegisterModal = (eventId) => {
   const event = events.find(e => e.id === eventId);
   if (!event) return;
 
-  // Stripe Payment Links Integration
-  if (event.price > 0) {
+  const lang = window.currentLanguage || 'tr';
+  const trans = window.TRANSLATIONS[lang];
+  const title = lang === 'en' ? (event.title_en || event.title) : event.title;
+
+  // Özel bilet seçim paneli: Vertex Teknoloji Zirvesi '26 için
+  if (event.id === "evt_tech_summit") {
+    registerEventTitle.textContent = `${title} - Bilet Seçimi`;
+    
+    // Normal formu gizle
+    registrationForm.style.display = 'none';
+    registerFlowForm.style.display = 'block';
+    registerFlowSuccess.style.display = 'none';
+    
+    // Butonları enjekte edeceğimiz div
+    let ticketSelectionDiv = document.getElementById('ticket-selection-div');
+    if (!ticketSelectionDiv) {
+      ticketSelectionDiv = document.createElement('div');
+      ticketSelectionDiv.id = 'ticket-selection-div';
+      ticketSelectionDiv.style.display = 'flex';
+      ticketSelectionDiv.style.flexDirection = 'column';
+      ticketSelectionDiv.style.gap = '15px';
+      ticketSelectionDiv.style.marginTop = '20px';
+      registerFlowForm.appendChild(ticketSelectionDiv);
+    }
+    
+    ticketSelectionDiv.innerHTML = `
+      <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">Lütfen satın almak istediğiniz bilet türünü seçin:</p>
+      <button class="btn btn-primary" onclick="window.open('${event.stripeLinkStandart}', '_blank')" style="padding: 15px; font-size: 16px;">Standart Bilet Satın Al (500 TL)</button>
+      <button class="btn btn-outline" onclick="window.open('${event.stripeLinkSpesiyal}', '_blank')" style="padding: 15px; font-size: 16px; border-color: var(--primary); color: var(--text);">Spesiyal Bilet Satın Al (1000 TL)</button>
+    `;
+    ticketSelectionDiv.style.display = 'flex';
+    
+    registerModal.classList.add('active');
+    return;
+  }
+
+  // Stripe Payment Links Integration for normal paid events
+  if (event.price > 0 && event.price !== "multiple") {
     const link = event.stripeLink || "https://buy.stripe.com/test_placeholder";
     window.open(link, '_blank');
     return;
   }
 
+  // Default flow for free events
+  const ticketSelectionDiv = document.getElementById('ticket-selection-div');
+  if (ticketSelectionDiv) ticketSelectionDiv.style.display = 'none';
+  registrationForm.style.display = 'block';
+
   selectedEvent = event;
-  const lang = window.currentLanguage || 'tr';
-  const trans = window.TRANSLATIONS[lang];
-  const title = lang === 'en' ? (event.title_en || event.title) : event.title;
 
   registerEventTitle.textContent = `${title} - ${trans["register-flow-title"]}`;
   registerEventId.value = event.id;
