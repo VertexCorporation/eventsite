@@ -62,12 +62,12 @@ const DEFAULT_EVENTS = [
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Anıtkabir,+Ankara,+Türkiye",
     location_en: "Anıtkabir, Ankara, Turkey",
     price: 0,
-    banner: "url('../assets/gallery/mauseloum.jpg') center/cover",
+    banner: "url('../assets/gallery/anıtkabir.jpg') center/cover",
     detailDesc: "Ulu önderimiz Mustafa Kemal Atatürk'ün ebedi istirahatgahı olan Anıtkabir'i ziyaret ederek, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Cumhuriyetimizin temel değerlerini ve ilerleme vizyonunu kendi vizyonumuzla harmanlayarak geleceğe daha emin adımlarla yürüyoruz. Ekibimizle bir araya gelip bu tarihi ve manevi atmosferi hep birlikte soluyacağız.",
     type: "ÜCRETSİZ ETKİNLİK",
     type_en: "FREE EVENT",
     detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision. We will gather with our team and breathe in this historical and spiritual atmosphere together.",
-    disableRegister: false
+    disableRegister: true
   }
 ];
 
