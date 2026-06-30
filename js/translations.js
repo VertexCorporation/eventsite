@@ -172,8 +172,8 @@ window.TRANSLATIONS = {
     // Event Card / Detail labels
     "event-btn-details": "Details",
     "event-btn-register": "Get Ticket",
-    "event-status-upcoming": "YAKLAŞAN ETKİNLİK",
-    "event-status-past": "GEÇMİŞ ETKİNLİK",
+    "event-status-upcoming": "UPCOMING EVENT",
+    "event-status-past": "PAST EVENT",
     "event-price-free": "Free",
     "event-price-free-detail": "Free Admission",
     

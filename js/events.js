@@ -382,7 +382,10 @@ const openRegisterModal = (eventId) => {
 
   // Özel bilet seçim paneli: Vertex Teknoloji Zirvesi '26 için
   if (event.id === "evt_tech_summit") {
-    registerEventTitle.textContent = `${title} - Bilet Seçimi`;
+    registerEventTitle.textContent = lang === 'en' ? `${title} - Ticket Selection` : `${title} - Bilet Seçimi`;
+    registerEventTitle.style.textAlign = 'center';
+    const subTitle = document.querySelector('#register-flow-form p');
+    if (subTitle) subTitle.style.textAlign = 'center';
     
     // Normal formu gizle
     registrationForm.style.display = 'none';
@@ -401,10 +404,22 @@ const openRegisterModal = (eventId) => {
       registerFlowForm.appendChild(ticketSelectionDiv);
     }
     
+    const ticketSelectText = lang === 'en' ? 'Please select the ticket type you want to buy:' : 'Lütfen satın almak istediğiniz bilet türünü seçin:';
+    
+    const standartDisabled = event.standartSoldOut ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
+    const standartText = event.standartSoldOut 
+      ? (lang === 'en' ? 'Standard Ticket Sold Out' : 'Standart Bilet Tükendi') 
+      : (lang === 'en' ? 'Buy Standard Ticket (500 TL)' : 'Standart Bilet Satın Al (500 TL)');
+    
+    const spesiyalDisabled = event.spesiyalSoldOut ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
+    const spesiyalText = event.spesiyalSoldOut 
+      ? (lang === 'en' ? 'Special Ticket Sold Out' : 'Spesiyal Bilet Tükendi') 
+      : (lang === 'en' ? 'Buy Special Ticket (1000 TL)' : 'Spesiyal Bilet Satın Al (1000 TL)');
+    
     ticketSelectionDiv.innerHTML = `
-      <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">Lütfen satın almak istediğiniz bilet türünü seçin:</p>
-      <button class="btn btn-primary" onclick="window.open('${event.stripeLinkStandart}', '_blank')" style="padding: 15px; font-size: 16px;">Standart Bilet Satın Al (500 TL)</button>
-      <button class="btn btn-outline" onclick="window.open('${event.stripeLinkSpesiyal}', '_blank')" style="padding: 15px; font-size: 16px; border-color: var(--primary); color: var(--text);">Spesiyal Bilet Satın Al (1000 TL)</button>
+      <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">${ticketSelectText}</p>
+      <button class="btn btn-outline" ${spesiyalDisabled ? '' : `onclick="window.open('${event.stripeLinkSpesiyal}', '_blank')"`} ${spesiyalDisabled} style="padding: 15px; font-size: 16px; border-color: var(--primary); color: var(--text);">${spesiyalText}</button>
+      <button class="btn btn-primary" ${standartDisabled ? '' : `onclick="window.open('${event.stripeLinkStandart}', '_blank')"`} ${standartDisabled} style="padding: 15px; font-size: 16px;">${standartText}</button>
     `;
     ticketSelectionDiv.style.display = 'flex';
     
@@ -420,13 +435,16 @@ const openRegisterModal = (eventId) => {
   }
 
   // Default flow for free events
-  const ticketSelectionDiv = document.getElementById('ticket-selection-div');
-  if (ticketSelectionDiv) ticketSelectionDiv.style.display = 'none';
+  const ticketSelectionDivLocal = document.getElementById('ticket-selection-div');
+  if (ticketSelectionDivLocal) ticketSelectionDivLocal.style.display = 'none';
   registrationForm.style.display = 'block';
 
   selectedEvent = event;
 
   registerEventTitle.textContent = `${title} - ${trans["register-flow-title"]}`;
+  registerEventTitle.style.textAlign = 'left';
+  const subTitleLocal = document.querySelector('#register-flow-form p');
+  if (subTitleLocal) subTitleLocal.style.textAlign = 'left';
   registerEventId.value = event.id;
 
   registerFlowForm.style.display = 'block';
