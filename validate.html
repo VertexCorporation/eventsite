@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilet Doğrulama - Vertex</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      text-align: center;
+      padding: 20px;
+    }
+    .validate-container {
+      background: var(--bg-card);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 100%;
+    }
+    .status-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 40px;
+    }
+    .status-success {
+      background-color: rgba(46, 213, 115, 0.2);
+      color: #2ed573;
+      border: 2px solid #2ed573;
+    }
+    .status-error {
+      background-color: rgba(255, 71, 87, 0.2);
+      color: #ff4757;
+      border: 2px solid #ff4757;
+    }
+    .ticket-id {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 20px 0;
+      word-break: break-all;
+      background: rgba(140, 82, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .warning-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="validate-container" id="result-box">
+    <!-- İçerik JS ile buraya yüklenecek -->
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ticketId = urlParams.get('id');
+      const resultBox = document.getElementById('result-box');
+
+      if (ticketId) {
+        resultBox.innerHTML = `
+          <div class="status-icon status-success">✓</div>
+          <h2 style="margin-bottom: 10px;">GEÇERLİ FORMAT</h2>
+          <p>Bilet Kimliği (ID):</p>
+          <div class="ticket-id">${ticketId}</div>
+          <p class="warning-text">Lütfen bu kimliği (ID) veya davetli ismini kapıdaki Stripe listesiyle teyit ederek giriş onayı verin. Aynı biletin başkasına kopyalanmış olma ihtimaline karşı elinizdeki listeye "Girdi" işareti koymayı unutmayın.</p>
+        `;
+      } else {
+        resultBox.innerHTML = `
+          <div class="status-icon status-error">✗</div>
+          <h2 style="margin-bottom: 10px;">GEÇERSİZ BİLET</h2>
+          <p style="color: var(--text-muted);">Bu QR kod okunamadı veya bir bilet ID'si içermiyor. Lütfen biletin orijinal olduğundan emin olun.</p>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
