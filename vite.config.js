@@ -6,7 +6,8 @@ import path from 'path'
 const LANGUAGES = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'az'];
 
 const input = {
-  main: resolve(__dirname, 'index.html')
+  main: resolve(__dirname, 'index.html'),
+  validate: resolve(__dirname, 'validate.html')
 };
 
 LANGUAGES.forEach(lang => {
