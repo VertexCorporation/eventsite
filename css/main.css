@@ -1611,7 +1611,7 @@ input:checked + .slider:before {
    ========================================= */
 
 .footer-expanded {
-  padding: 80px 0 40px;
+  padding: 60px 0 40px;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
 }

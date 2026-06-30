@@ -31,8 +31,8 @@ const DEFAULT_EVENTS = [
     id: "evt_tech_summit",
     title: "Vertex Teknoloji Zirvesi '26",
     title_en: "Vertex Tech Summit '26",
-    desc: "Teknoloji dünyasının önde gelen isimleri ile birlikte geleceğin teknolojilerini tartışacağımız büyük zirve. Yapay zeka, Web3 ve daha fazlası hakkında paneller, networking fırsatları ve atölyeler sizi bekliyor.",
-    desc_en: "The great summit where we will discuss future technologies with leading names of the tech world. Panels on AI, Web3 and more, networking opportunities and workshops await you.",
+    desc: "Teknolojinin sınırlarının aşılacağı bu zirvede, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve benzersiz etkinliklerle katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz; sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.",
+    desc_en: "At this summit where the boundaries of technology will be pushed, we aim to open new windows for our participants with inspiring presentations by visionary speakers and unique events; every success and experience story from industry pioneers will become a powerful source of motivation for each participant striving to reach their own summit.",
     date: "2026-09-27",
     dateText: "27 Eylül 2026",
     dateText_en: "September 27, 2026",
@@ -45,6 +45,8 @@ const DEFAULT_EVENTS = [
     banner: "url('../assets/gallery/teknopark.jpg') center/cover",
     detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
     type: "BİLETLİ ETKİNLİK",
+    type_en: "TICKETED EVENT",
+    detailDesc_en: "This exciting gathering, bringing together future leaders and technology enthusiasts, is preparing to open its doors on September 27, 2026. At our summit where the heart of technology beats, we aim to open new horizons for our participants through inspiring presentations and eye-opening talks by visionary speakers. Every success and experience story shared by industry pioneers will serve as powerful motivation for every attendee seeking to reach their own peak.<br><br>To fully embrace this unique experience and keep productivity at the highest level, we will start the day with a dynamic morning breakfast. Between intense and inspiring sessions, we will refresh our energy with our lunch service. Our uninterrupted technology journey starting at exactly 9:00 AM will conclude with a grand closing at 7:00 PM, following all-day networking opportunities and educational panels.<br><br>At this inaugural summit that will shape the future of the industry, we plan to host 200 attendees to create an exclusive and focused community. While our main target audience is high school students, our doors are also wide open to all university students who wish to join our vision. With the unifying power of Vertex, we are counting the days to meet at the absolute focus of technology and march to the summit together.<br><br>Despite being in our early years, dozens of visionary organizations including the billion-dollar AI giant fal.ai are supporting this grand gathering. Together with our approximately 50-person organization team, we will be united as a massive 250-person technology community on summit day.",
     disableRegister: false
   }
 ];
@@ -222,15 +224,15 @@ const renderEvents = () => {
     const card = document.createElement('div');
     card.className = 'card event-card horizontal-card animated-border';
 
-    const title = lang === 'en' ? (event.title_en || event.title) : event.title;
-    const desc = lang === 'en' ? (event.desc_en || event.desc) : event.desc;
-    const location = lang === 'en' ? (event.location_en || event.location) : event.location;
-    const dateText = lang === 'en' ? (event.dateText_en || event.dateText) : event.dateText;
+    const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
+    const desc = lang !== 'tr' ? (event.desc_en || event.desc) : event.desc;
+    const location = lang !== 'tr' ? (event.location_en || event.location) : event.location;
+    const dateText = lang !== 'tr' ? (event.dateText_en || event.dateText) : event.dateText;
     
     const statusText = isPast ? trans["event-status-past"] : trans["event-status-upcoming"];
     let priceText = "";
     if (event.price === "multiple") {
-      priceText = "Bilet Seçenekleri";
+      priceText = lang !== 'tr' ? 'Ticket Options' : 'Bilet Seçenekleri';
     } else if (event.price === 0) {
       priceText = trans["event-price-free"];
     } else {
@@ -247,7 +249,7 @@ const renderEvents = () => {
           </div>
         ` : `
           <div class="event-banner-art" style="background: ${event.banner || 'var(--bg-secondary)'};">
-            <span class="event-banner-logo">${event.type || ''}</span>
+            <span class="event-banner-logo">${lang !== 'tr' ? (event.type_en || event.type || '') : (event.type || '')}</span>
           </div>
         `}
         <span class="event-status-badge ${isPast ? 'status-past' : 'status-upcoming'}">
@@ -290,10 +292,10 @@ const openDetailModal = (eventId) => {
   const lang = window.currentLanguage || 'tr';
   const trans = window.TRANSLATIONS[lang];
   
-  const title = lang === 'en' ? (event.title_en || event.title) : event.title;
-  const desc = lang === 'en' ? (event.desc_en || event.desc) : event.desc;
-  const location = lang === 'en' ? (event.location_en || event.location) : event.location;
-  const dateText = lang === 'en' ? (event.dateText_en || event.dateText) : event.dateText;
+  const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
+  const desc = lang !== 'tr' ? (event.desc_en || event.desc) : event.desc;
+  const location = lang !== 'tr' ? (event.location_en || event.location) : event.location;
+  const dateText = lang !== 'tr' ? (event.dateText_en || event.dateText) : event.dateText;
   const priceText = event.price === 0 ? trans["event-price-free-detail"] : `${event.price} TL`;
 
   let speakersHTML = "";
@@ -302,7 +304,7 @@ const openDetailModal = (eventId) => {
       <div class="agenda-title" style="margin-top: 32px;">${trans["modal-detail-speakers"]}</div>
       <div class="speakers-row mb-6">
         ${event.speakers.map(s => {
-          const sRole = lang === 'en' ? (s.role_en || s.role) : s.role;
+          const sRole = lang !== 'tr' ? (s.role_en || s.role) : s.role;
           return `
             <div class="speaker-card">
               <img src="${s.img}" alt="${s.name}" class="speaker-img" onerror="this.src='../assets/favicon.webp'">
@@ -323,8 +325,8 @@ const openDetailModal = (eventId) => {
       <div class="modal-detail-agenda">
         <div class="agenda-title">${trans["modal-detail-agenda"]}</div>
         ${event.agenda.map(a => {
-          const aTime = lang === 'en' ? (a.time_en || a.time) : a.time;
-          const aDesc = lang === 'en' ? (a.desc_en || a.desc) : a.desc;
+          const aTime = lang !== 'tr' ? (a.time_en || a.time) : a.time;
+          const aDesc = lang !== 'tr' ? (a.desc_en || a.desc) : a.desc;
           return `
             <div class="agenda-item">
               <span class="agenda-time">${aTime}</span>
@@ -347,7 +349,7 @@ const openDetailModal = (eventId) => {
       </div>
     ` : `
       <div class="modal-detail-banner" style="background: ${event.banner || 'var(--bg-secondary)'};">
-        <span class="event-banner-logo" style="font-size: 32px; color: rgba(255,255,255,0.3);">${event.type || ''}</span>
+        <span class="event-banner-logo" style="font-size: 32px; color: rgba(255,255,255,0.3);">${lang !== 'tr' ? (event.type_en || event.type || '') : (event.type || '')}</span>
       </div>
     `}
     <h3 class="modal-detail-title gradient-text">${title}</h3>
@@ -357,7 +359,7 @@ const openDetailModal = (eventId) => {
       
     </div>
     <div class="modal-detail-content">
-      <p>${event.detailDesc ? event.detailDesc : desc}</p>
+      <p>${event.detailDesc ? (lang !== 'tr' ? (event.detailDesc_en || event.detailDesc) : event.detailDesc) : desc}</p>
     </div>
     
     ${agendaHTML}
@@ -378,11 +380,11 @@ const openRegisterModal = (eventId) => {
 
   const lang = window.currentLanguage || 'tr';
   const trans = window.TRANSLATIONS[lang];
-  const title = lang === 'en' ? (event.title_en || event.title) : event.title;
+  const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
 
   // Özel bilet seçim paneli: Vertex Teknoloji Zirvesi '26 için
   if (event.id === "evt_tech_summit") {
-    registerEventTitle.textContent = lang === 'en' ? `${title} - Ticket Selection` : `${title} - Bilet Seçimi`;
+    registerEventTitle.textContent = lang !== 'tr' ? `${title} - Ticket Selection` : `${title} - Bilet Seçimi`;
     registerEventTitle.style.textAlign = 'center';
     const subTitle = document.querySelector('#register-flow-form p');
     if (subTitle) subTitle.style.textAlign = 'center';
@@ -404,17 +406,17 @@ const openRegisterModal = (eventId) => {
       registerFlowForm.appendChild(ticketSelectionDiv);
     }
     
-    const ticketSelectText = lang === 'en' ? 'Please select the ticket type you want to buy:' : 'Lütfen satın almak istediğiniz bilet türünü seçin:';
+    const ticketSelectText = lang !== 'tr' ? 'Please select the ticket type you want to buy:' : 'Lütfen satın almak istediğiniz bilet türünü seçin:';
     
     const standartDisabled = event.standartSoldOut ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
     const standartText = event.standartSoldOut 
-      ? (lang === 'en' ? 'Standard Ticket Sold Out' : 'Standart Bilet Tükendi') 
-      : (lang === 'en' ? 'Buy Standard Ticket (500 TL)' : 'Standart Bilet Satın Al (500 TL)');
+      ? (lang !== 'tr' ? 'Standard Ticket Sold Out' : 'Standart Bilet Tükendi') 
+      : (lang !== 'tr' ? 'Buy Standard Ticket (500 TL)' : 'Standart Bilet Satın Al (500 TL)');
     
     const spesiyalDisabled = event.spesiyalSoldOut ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
     const spesiyalText = event.spesiyalSoldOut 
-      ? (lang === 'en' ? 'Special Ticket Sold Out' : 'Spesiyal Bilet Tükendi') 
-      : (lang === 'en' ? 'Buy Special Ticket (1000 TL)' : 'Spesiyal Bilet Satın Al (1000 TL)');
+      ? (lang !== 'tr' ? 'Special Ticket Sold Out' : 'Spesiyal Bilet Tükendi') 
+      : (lang !== 'tr' ? 'Buy Special Ticket (1000 TL)' : 'Spesiyal Bilet Satın Al (1000 TL)');
     
     ticketSelectionDiv.innerHTML = `
       <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">${ticketSelectText}</p>
@@ -504,9 +506,9 @@ registrationForm.addEventListener('submit', (e) => {
     
     const name = document.getElementById('reg-name').value;
 
-    const title = lang === 'en' ? (selectedEvent.title_en || selectedEvent.title) : selectedEvent.title;
-    const dateText = lang === 'en' ? (selectedEvent.dateText_en || selectedEvent.dateText) : selectedEvent.dateText;
-    const location = lang === 'en' ? (selectedEvent.location_en || selectedEvent.location) : selectedEvent.location;
+    const title = lang !== 'tr' ? (selectedEvent.title_en || selectedEvent.title) : selectedEvent.title;
+    const dateText = lang !== 'tr' ? (selectedEvent.dateText_en || selectedEvent.dateText) : selectedEvent.dateText;
+    const location = lang !== 'tr' ? (selectedEvent.location_en || selectedEvent.location) : selectedEvent.location;
     
     ticketEventName.textContent = title.toUpperCase();
     ticketUserName.textContent = name;
