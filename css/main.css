@@ -356,18 +356,65 @@ a {
 }
 
 /* --- Theme Icon (Sun/Moon Toggle) --- */
-.theme-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  position: relative;
-  background: var(--text-main);
-  transition: var(--transition-smooth);
+.theme-toggle-btn {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  border: 1px solid transparent !important;
+  background: transparent;
 }
 
+.theme-toggle-btn:hover {
+  border-color: var(--text-main) !important;
+  background: rgba(128, 128, 128, 0.1);
+}
+
+/* Theme Icon Animation (Sun/Moon) */
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+}
+
+/* SUN STATE (Light Mode) */
+[data-theme="light"] .theme-icon {
+  background: black;
+  box-shadow: none;
+  transform: scale(0.55);
+}
+
+[data-theme="light"] .theme-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  box-shadow:
+      0 -11px 0 -3.5px black,
+      0 11px 0 -3.5px black,
+      11px 0 0 -3.5px black,
+      -11px 0 0 -3.5px black,
+      7.5px 7.5px 0 -3.5px black,
+      -7.5px -7.5px 0 -3.5px black,
+      7.5px -7.5px 0 -3.5px black,
+      -7.5px 7.5px 0 -3.5px black;
+  animation: rotate-sun 12s linear infinite;
+}
+
+/* MOON STATE (Dark Mode) */
 [data-theme="dark"] .theme-icon {
   background: transparent;
-  box-shadow: inset -4px -4px 0 0 var(--text-main);
+  box-shadow: inset 8px -4px 0px 0px white;
+  transform: rotate(-30deg) scale(0.9);
+}
+
+@keyframes rotate-sun {
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* --- Hero Section --- */
