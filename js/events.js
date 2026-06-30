@@ -48,6 +48,26 @@ const DEFAULT_EVENTS = [
     type_en: "TICKETED EVENT",
     detailDesc_en: "This exciting gathering, bringing together future leaders and technology enthusiasts, is preparing to open its doors on September 27, 2026. At our summit where the heart of technology beats, we aim to open new horizons for our participants through inspiring presentations and eye-opening talks by visionary speakers. Every success and experience story shared by industry pioneers will serve as powerful motivation for every attendee seeking to reach their own peak.<br><br>To fully embrace this unique experience and keep productivity at the highest level, we will start the day with a dynamic morning breakfast. Between intense and inspiring sessions, we will refresh our energy with our lunch service. Our uninterrupted technology journey starting at exactly 9:00 AM will conclude with a grand closing at 7:00 PM, following all-day networking opportunities and educational panels.<br><br>At this inaugural summit that will shape the future of the industry, we plan to host 200 attendees to create an exclusive and focused community. While our main target audience is high school students, our doors are also wide open to all university students who wish to join our vision. With the unifying power of Vertex, we are counting the days to meet at the absolute focus of technology and march to the summit together.<br><br>Despite being in our early years, dozens of visionary organizations including the billion-dollar AI giant fal.ai are supporting this grand gathering. Together with our approximately 50-person organization team, we will be united as a massive 250-person technology community on summit day.",
     disableRegister: false
+  },
+  {
+    id: "evt_anitkabir",
+    title: "Anıtkabir Ziyareti",
+    title_en: "Anıtkabir Visit",
+    desc: "Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz.",
+    desc_en: "We will closely witness how Vertex was born.",
+    date: "2026-07-31",
+    dateText: "31 Temmuz 2026",
+    dateText_en: "July 31, 2026",
+    location: "Türkiye, Ankara, Anıtkabir",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Anıtkabir,+Ankara,+Türkiye",
+    location_en: "Anıtkabir, Ankara, Turkey",
+    price: 0,
+    banner: "url('../assets/gallery/mauseloum.jpg') center/cover",
+    detailDesc: "Ulu önderimiz Mustafa Kemal Atatürk'ün ebedi istirahatgahı olan Anıtkabir'i ziyaret ederek, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Cumhuriyetimizin temel değerlerini ve ilerleme vizyonunu kendi vizyonumuzla harmanlayarak geleceğe daha emin adımlarla yürüyoruz. Ekibimizle bir araya gelip bu tarihi ve manevi atmosferi hep birlikte soluyacağız.",
+    type: "ÜCRETSİZ ETKİNLİK",
+    type_en: "FREE EVENT",
+    detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision. We will gather with our team and breathe in this historical and spiritual atmosphere together.",
+    disableRegister: false
   }
 ];
 
