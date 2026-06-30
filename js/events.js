@@ -28,22 +28,42 @@ const DEFAULT_EVENTS = [
     ]
   },
   {
-    id: "evt_tech_summit",
-    title: "Vertex Teknoloji Zirvesi '26",
-    title_en: "Vertex Tech Summit '26",
+    id: "evt_tech_summit_standart",
+    title: "Vertex Teknoloji Zirvesi '26 | Standart Bilet",
+    title_en: "Vertex Tech Summit '26 | Standart Pass",
     desc: "Teknoloji dünyasının önde gelen isimleri ile birlikte geleceğin teknolojilerini tartışacağımız büyük zirve. Yapay zeka, Web3 ve daha fazlası hakkında paneller, networking fırsatları ve atölyeler sizi bekliyor.",
     desc_en: "The great summit where we will discuss future technologies with leading names of the tech world. Panels on AI, Web3 and more, networking opportunities and workshops await you.",
-    date: "2026-08-15",
-    dateText: "Ağustos 2026",
-    dateText_en: "August 2026",
+    date: "2026-09-27",
+    dateText: "27 Eylül 2026",
+    dateText_en: "September 27, 2026",
     location: "Türkiye, İstanbul, Pendik, Teknopark İstanbul 34912",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Teknopark+İstanbul,+Pendik,+Türkiye",
     location_en: "Teknopark Istanbul, Pendik, Turkey 34912",
-    price: 0,
+    price: 500,
+    stripeLink: "https://buy.stripe.com/7sYaEY3Dw9Zz5V98hleIw00",
     banner: "url('../assets/gallery/teknopark.jpg') center/cover",
-    detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlanıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
-    type: "ZİRVE",
-    disableRegister: true
+    detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
+    type: "STANDART BİLET",
+    disableRegister: false
+  },
+  {
+    id: "evt_tech_summit_spesiyal",
+    title: "Vertex Teknoloji Zirvesi '26 | Spesiyal Bilet",
+    title_en: "Vertex Tech Summit '26 | Special Pass",
+    desc: "Teknoloji dünyasının önde gelen isimleri ile birlikte geleceğin teknolojilerini tartışacağımız büyük zirve. Yapay zeka, Web3 ve daha fazlası hakkında paneller, networking fırsatları ve atölyeler sizi bekliyor.",
+    desc_en: "The great summit where we will discuss future technologies with leading names of the tech world. Panels on AI, Web3 and more, networking opportunities and workshops await you.",
+    date: "2026-09-27",
+    dateText: "27 Eylül 2026",
+    dateText_en: "September 27, 2026",
+    location: "Türkiye, İstanbul, Pendik, Teknopark İstanbul 34912",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Teknopark+İstanbul,+Pendik,+Türkiye",
+    location_en: "Teknopark Istanbul, Pendik, Turkey 34912",
+    price: 1000,
+    stripeLink: "https://buy.stripe.com/5kQcN65LE9Zz5V9cxBeIw01",
+    banner: "url('../assets/gallery/teknopark.jpg') center/cover",
+    detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
+    type: "SPESİYAL BİLET",
+    disableRegister: false
   }
 ];
 

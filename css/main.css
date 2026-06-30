@@ -1803,7 +1803,7 @@ input:checked + .slider:before {
 
 @font-face {
   font-family: 'BeauRivage';
-  src: url('../assets/gallery/fonts/BeauRivage-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/BeauRivage-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
