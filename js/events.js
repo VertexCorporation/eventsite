@@ -231,7 +231,7 @@ const renderEvents = () => {
     return showPastEvents ? true : !past;
   });
 
-  const lang = window.currentLanguage || 'tr';
+  const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang];
 
   if (filtered.length === 0) {
@@ -309,7 +309,7 @@ const openDetailModal = (eventId) => {
   if (!event) return;
 
   const isPast = isPastDate(event.date);
-  const lang = window.currentLanguage || 'tr';
+  const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang];
   
   const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
@@ -398,7 +398,7 @@ const openRegisterModal = (eventId) => {
   const event = events.find(e => e.id === eventId);
   if (!event) return;
 
-  const lang = window.currentLanguage || 'tr';
+  const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang];
   const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
 
@@ -481,7 +481,7 @@ const openRegisterModal = (eventId) => {
 const updateStripeVisibility = () => {
   isStripeMode = selectedEvent && selectedEvent.price > 0;
   const submitBtn = document.getElementById('submit-reg-btn');
-  const lang = window.currentLanguage || 'tr';
+  const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang];
 
   if (isStripeMode) {
@@ -510,7 +510,7 @@ registrationForm.addEventListener('submit', (e) => {
   
   const submitBtn = document.getElementById('submit-reg-btn');
   const originalText = submitBtn.textContent;
-  const lang = window.currentLanguage || 'tr';
+  const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang];
   
   submitBtn.disabled = true;
@@ -569,7 +569,7 @@ window.addEventListener('click', (e) => {
 // Download ticket simulation
 document.getElementById('download-ticket-btn').addEventListener('click', () => {
   const btn = document.getElementById('download-ticket-btn');
-  const lang = window.currentLanguage || 'tr';
+  const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang];
 
   btn.textContent = trans["ticket-action-download-success"];
