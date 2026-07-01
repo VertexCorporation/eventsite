@@ -56,18 +56,20 @@ const DEFAULT_EVENTS = [
     desc: "Ulu önderimiz Atatürk'ün huzurunda, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Tarihi atmosferi hep birlikte soluyacağız.",
     desc_en: "In the presence of our great leader Atatürk, we will closely witness how Vertex was born. We will breathe in this historical atmosphere together.",
     date: "2026-07-31",
-    dateText: "31 Temmuz 2026",
-    dateText_en: "July 31, 2026",
+    dateText: "31 Temmuz 2026, 07.00 - 21.00",
+    dateText_en: "July 31, 2026, 07:00 AM - 09:00 PM",
     location: "Türkiye, Ankara, Anıtkabir",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Anıtkabir,+Ankara,+Türkiye",
     location_en: "Anıtkabir, Ankara, Turkey",
-    price: 0,
+    price: "YHT BİLETLİ",
+    price_en: "YHT TICKET",
+    stripeLink: "https://buy.stripe.com/00w8wQ6PI8VvfvJcxBeIw02",
     banner: "url('../assets/gallery/anıtkabir.jpg') center/cover",
-    detailDesc: "Ulu önderimiz Mustafa Kemal Atatürk'ün ebedi istirahatgahı olan Anıtkabir'i ziyaret ederek, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Cumhuriyetimizin temel değerlerini ve ilerleme vizyonunu kendi vizyonumuzla harmanlayarak geleceğe daha emin adımlarla yürüyoruz. Ekibimizle bir araya gelip bu tarihi ve manevi atmosferi hep birlikte soluyacağız.",
-    type: "ÜCRETSİZ ETKİNLİK",
-    type_en: "FREE EVENT",
-    detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision. We will gather with our team and breathe in this historical and spiritual atmosphere together.",
-    disableRegister: true
+    detailDesc: "Ulu önderimiz Mustafa Kemal Atatürk'ün ebedi istirahatgahı olan Anıtkabir'i ziyaret ederek, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Cumhuriyetimizin temel değerlerini ve ilerleme vizyonunu kendi vizyonumuzla harmanlayarak geleceğe daha emin adımlarla yürüyoruz.<br><br><b>Program Detayları:</b> Saat 07.00 ile 21.00 arasında gerçekleşecek bu özel ziyaretimizde YHT (Yüksek Hızlı Tren) kullanacağız. Maksimum kontenjanımız <b>20 kişi</b> ile sınırlıdır. Gün içinde Anıtkabir'in yanı sıra Vertex'in doğduğu toprakların başkentini de çok farklı perspektiflerden, dolu dolu tanıyacağız.",
+    type: "BİLETLİ ETKİNLİK",
+    type_en: "TICKETED EVENT",
+    detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision.<br><br><b>Program Details:</b> In this special visit taking place between 07:00 AM and 09:00 PM, we will use the High-Speed Train (YHT). Our maximum capacity is limited to <b>20 people</b>. During the day, in addition to Anıtkabir, we will explore the capital where Vertex was born from very different perspectives.",
+    disableRegister: false
   }
 ];
 
@@ -255,6 +257,8 @@ const renderEvents = () => {
       priceText = lang !== 'tr' ? 'Ticket Options' : 'Bilet Seçenekleri';
     } else if (event.price === 0) {
       priceText = trans["event-price-free"];
+    } else if (typeof event.price === 'string') {
+      priceText = lang !== 'tr' && event.price_en ? event.price_en : event.price;
     } else {
       priceText = `${event.price} TL`;
     }
@@ -438,8 +442,16 @@ const openRegisterModal = (eventId) => {
       ? (lang !== 'tr' ? 'Special Ticket Sold Out' : 'Spesiyal Bilet Tükendi') 
       : (lang !== 'tr' ? 'Buy Special Ticket (1000 TL)' : 'Spesiyal Bilet Satın Al (1000 TL)');
     
+    const benefitsTr = "<b>🌟 Spesiyal Bilet Avantajları (+500 TL):</b> Daha zengin yiyecek/içecek menüsü, VIP açılış ve kapanış konuşmalarında yer alma, sana özel basılı bilet ve yaka kartı, VIP alana ve özel gruba erişim, ön sıra garantisi ve sıra beklemeden VIP geçiş hakkı!";
+    const benefitsEn = "<b>🌟 Special Ticket Benefits (+500 TL):</b> Richer food/beverage menu, take part in VIP opening and closing speeches, custom printed ticket and badge, access to VIP area and special group, front row guarantee and fast-track VIP entry!";
+    
     ticketSelectionDiv.innerHTML = `
       <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">${ticketSelectText}</p>
+      
+      <div style="background: rgba(203, 108, 230, 0.1); border: 1px solid var(--primary); border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: left; font-size: 13px; line-height: 1.5; color: var(--text);">
+        ${lang !== 'tr' ? benefitsEn : benefitsTr}
+      </div>
+
       <button class="btn btn-outline" ${spesiyalDisabled ? '' : `onclick="window.open('${event.stripeLinkSpesiyal}', '_blank')"`} ${spesiyalDisabled} style="padding: 15px; font-size: 16px; border-color: var(--primary); color: var(--text);">${spesiyalText}</button>
       <button class="btn btn-primary" ${standartDisabled ? '' : `onclick="window.open('${event.stripeLinkStandart}', '_blank')"`} ${standartDisabled} style="padding: 15px; font-size: 16px;">${standartText}</button>
     `;
@@ -450,8 +462,8 @@ const openRegisterModal = (eventId) => {
   }
 
   // Stripe Payment Links Integration for normal paid events
-  if (event.price > 0 && event.price !== "multiple") {
-    const link = event.stripeLink || "https://buy.stripe.com/test_placeholder";
+  if (event.stripeLink && event.price !== "multiple") {
+    const link = event.stripeLink;
     window.open(link, '_blank');
     return;
   }
