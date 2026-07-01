@@ -442,8 +442,9 @@ const openRegisterModal = (eventId) => {
       ? (lang !== 'tr' ? 'Special Ticket Sold Out' : 'Spesiyal Bilet Tükendi') 
       : (lang !== 'tr' ? 'Buy Special Ticket (1000 TL)' : 'Spesiyal Bilet Satın Al (1000 TL)');
     
-    const benefitsTr = "<b>🌟 Spesiyal Bilet Avantajları (+500 TL):</b> Daha zengin yiyecek/içecek menüsü, VIP açılış ve kapanış konuşmalarında yer alma, sana özel basılı bilet ve yaka kartı, VIP alana ve özel gruba erişim, ön sıra garantisi ve sıra beklemeden VIP geçiş hakkı!";
-    const benefitsEn = "<b>🌟 Special Ticket Benefits (+500 TL):</b> Richer food/beverage menu, take part in VIP opening and closing speeches, custom printed ticket and badge, access to VIP area and special group, front row guarantee and fast-track VIP entry!";
+    const checkIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-bottom; margin-right: 6px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+    const benefitsTr = `<b>${checkIcon}Spesiyal Bilet Avantajları (+500 TL):</b> Daha zengin yiyecek/içecek menüsü, spesiyal açılış ve kapanış konuşmalarında yer alma, sana özel basılı bilet ve yaka kartı, spesiyal alana ve özel gruba erişim, ön sıra garantisi ve sıra beklemeden hızlı geçiş hakkı!`;
+    const benefitsEn = `<b>${checkIcon}Special Ticket Benefits (+500 TL):</b> Richer food/beverage menu, take part in special opening and closing speeches, custom printed ticket and badge, access to special area and group, front row guarantee and fast-track entry without waiting in line!`;
     
     ticketSelectionDiv.innerHTML = `
       <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">${ticketSelectText}</p>

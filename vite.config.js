@@ -44,6 +44,16 @@ function copyGalleryPlugin() {
         })
         console.log('Copied assets/gallery to dist/assets/gallery')
       }
+      
+      const faviconSrc = path.resolve(__dirname, 'assets/favicon.png')
+      const faviconDest = path.resolve(__dirname, 'dist/assets/favicon.png')
+      if (fs.existsSync(faviconSrc)) {
+        if (!fs.existsSync(path.dirname(faviconDest))) {
+          fs.mkdirSync(path.dirname(faviconDest), { recursive: true })
+        }
+        fs.copyFileSync(faviconSrc, faviconDest)
+        console.log('Copied assets/favicon.png to dist/assets/favicon.png')
+      }
     }
   }
 }
