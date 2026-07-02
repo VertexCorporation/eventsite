@@ -93,9 +93,9 @@ const DEFAULT_EVENTS = [
     disableRegister: true
   },
   {
-    id: "evt_coffee_network",
-    title: "Vertex Coffee & Network",
-    title_en: "Vertex Coffee & Network",
+    id: "evt_coffee_day",
+    title: "Vertex Coffee Day",
+    title_en: "Vertex Coffee Day",
     desc: "Dünya Kahve Günü'ne özel, 20 kişilik butik bir networking ve teknoloji sohbeti buluşması.",
     desc_en: "A boutique networking and tech chat meetup for 20 people, special for World Coffee Day.",
     date: "2026-10-01",
