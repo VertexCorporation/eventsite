@@ -119,7 +119,11 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/tr/indir.html",
     "href-about": "https://www.vertexishere.com/tr/#about",
     "href-team": "https://www.vertexishere.com/tr/#team",
-    "href-vision": "https://www.vertexishere.com/tr/#vision"
+    "href-vision": "https://www.vertexishere.com/tr/#vision",
+    "footer-link-privacy-url": "yinsi-zhengce.html",
+    "footer-link-terms-url": "fuwu-tiaokuan.html",
+    "footer-link-privacy-url": "gizlilik-politikasi.html",
+    "footer-link-terms-url": "hizmet-sartlari.html"
   },
   en: {
     "header-events-italic": "Events",
@@ -237,7 +241,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/en/download.html",
     "href-about": "https://www.vertexishere.com/en/#about",
     "href-team": "https://www.vertexishere.com/en/#team",
-    "href-vision": "https://www.vertexishere.com/en/#vision"
+    "href-vision": "https://www.vertexishere.com/en/#vision",
+    "footer-link-privacy-url": "privacy-policy.html",
+    "footer-link-terms-url": "terms-of-service.html"
   },
   de: {
     "header-events-italic": "Events",
@@ -330,7 +336,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/de/download.html",
     "href-about": "https://www.vertexishere.com/de/#about",
     "href-team": "https://www.vertexishere.com/de/#team",
-    "href-vision": "https://www.vertexishere.com/de/#vision"
+    "href-vision": "https://www.vertexishere.com/de/#vision",
+    "footer-link-privacy-url": "datenschutzrichtlinie.html",
+    "footer-link-terms-url": "nutzungsbedingungen.html"
   },
   fr: {
     "header-events-italic": "Événements",
@@ -423,7 +431,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/fr/download.html",
     "href-about": "https://www.vertexishere.com/fr/#about",
     "href-team": "https://www.vertexishere.com/fr/#team",
-    "href-vision": "https://www.vertexishere.com/fr/#vision"
+    "href-vision": "https://www.vertexishere.com/fr/#vision",
+    "footer-link-privacy-url": "politique-de-confidentialite.html",
+    "footer-link-terms-url": "conditions-d-utilisation.html"
   },
   es: {
     "header-events-italic": "Eventos",
@@ -516,7 +526,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/es/download.html",
     "href-about": "https://www.vertexishere.com/es/#about",
     "href-team": "https://www.vertexishere.com/es/#team",
-    "href-vision": "https://www.vertexishere.com/es/#vision"
+    "href-vision": "https://www.vertexishere.com/es/#vision",
+    "footer-link-privacy-url": "politica-de-privacidad.html",
+    "footer-link-terms-url": "terminos-de-servicio.html"
   },
   it: {
     "header-events-italic": "Eventi",
@@ -609,7 +621,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/it/download.html",
     "href-about": "https://www.vertexishere.com/it/#about",
     "href-team": "https://www.vertexishere.com/it/#team",
-    "href-vision": "https://www.vertexishere.com/it/#vision"
+    "href-vision": "https://www.vertexishere.com/it/#vision",
+    "footer-link-privacy-url": "informativa-sulla-privacy.html",
+    "footer-link-terms-url": "termini-di-servizio.html"
   },
   pt: {
     "header-events-italic": "Eventos",
@@ -702,7 +716,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/pt/download.html",
     "href-about": "https://www.vertexishere.com/pt/#about",
     "href-team": "https://www.vertexishere.com/pt/#team",
-    "href-vision": "https://www.vertexishere.com/pt/#vision"
+    "href-vision": "https://www.vertexishere.com/pt/#vision",
+    "footer-link-privacy-url": "politica-de-privacidade.html",
+    "footer-link-terms-url": "termos-de-servico.html"
   },
   nl: {
     "header-events-italic": "Evenementen",
@@ -795,7 +811,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/nl/download.html",
     "href-about": "https://www.vertexishere.com/nl/#about",
     "href-team": "https://www.vertexishere.com/nl/#team",
-    "href-vision": "https://www.vertexishere.com/nl/#vision"
+    "href-vision": "https://www.vertexishere.com/nl/#vision",
+    "footer-link-privacy-url": "privacybeleid.html",
+    "footer-link-terms-url": "servicevoorwaarden.html"
   },
   id: {
     "header-events-italic": "Acara",
@@ -888,7 +906,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/id/download.html",
     "href-about": "https://www.vertexishere.com/id/#about",
     "href-team": "https://www.vertexishere.com/id/#team",
-    "href-vision": "https://www.vertexishere.com/id/#vision"
+    "href-vision": "https://www.vertexishere.com/id/#vision",
+    "footer-link-privacy-url": "kebijakan-privasi.html",
+    "footer-link-terms-url": "syarat-layanan.html"
   },
   ru: {
     "header-events-italic": "События",
@@ -981,7 +1001,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/ru/download.html",
     "href-about": "https://www.vertexishere.com/ru/#about",
     "href-team": "https://www.vertexishere.com/ru/#team",
-    "href-vision": "https://www.vertexishere.com/ru/#vision"
+    "href-vision": "https://www.vertexishere.com/ru/#vision",
+    "footer-link-privacy-url": "politika-konfidencialnosti.html",
+    "footer-link-terms-url": "usloviya-obsluzhivaniya.html"
   },
   ja: {
     "header-events-italic": "イベント",
@@ -1074,7 +1096,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/ja/download.html",
     "href-about": "https://www.vertexishere.com/ja/#about",
     "href-team": "https://www.vertexishere.com/ja/#team",
-    "href-vision": "https://www.vertexishere.com/ja/#vision"
+    "href-vision": "https://www.vertexishere.com/ja/#vision",
+    "footer-link-privacy-url": "puraibashi-porishi.html",
+    "footer-link-terms-url": "riyou-kiyaku.html"
   },
   ko: {
     "header-events-italic": "이벤트",
@@ -1167,7 +1191,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/ko/download.html",
     "href-about": "https://www.vertexishere.com/ko/#about",
     "href-team": "https://www.vertexishere.com/ko/#team",
-    "href-vision": "https://www.vertexishere.com/ko/#vision"
+    "href-vision": "https://www.vertexishere.com/ko/#vision",
+    "footer-link-privacy-url": "gaein-jeongbo-cheori-bangchim.html",
+    "footer-link-terms-url": "iyong-yakgwan.html"
   },
   hi: {
     "header-events-italic": "आयोजन",
@@ -1260,7 +1286,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/hi/download.html",
     "href-about": "https://www.vertexishere.com/hi/#about",
     "href-team": "https://www.vertexishere.com/hi/#team",
-    "href-vision": "https://www.vertexishere.com/hi/#vision"
+    "href-vision": "https://www.vertexishere.com/hi/#vision",
+    "footer-link-privacy-url": "gopaniyata-niti.html",
+    "footer-link-terms-url": "seva-ki-shartein.html"
   },
   ar: {
     "header-events-italic": "الفعاليات",
@@ -1353,7 +1381,9 @@ window.TRANSLATIONS = {
     "href-cortex": "https://www.vertexishere.com/ar/download.html",
     "href-about": "https://www.vertexishere.com/ar/#about",
     "href-team": "https://www.vertexishere.com/ar/#team",
-    "href-vision": "https://www.vertexishere.com/ar/#vision"
+    "href-vision": "https://www.vertexishere.com/ar/#vision",
+    "footer-link-privacy-url": "siyasat-al-khususiyya.html",
+    "footer-link-terms-url": "shurut-al-khidma.html"
   },
   az: {
     "header-events-italic": "Tədbirlər",

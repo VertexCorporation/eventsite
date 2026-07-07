@@ -10,10 +10,77 @@ const input = {
   validate: resolve(__dirname, 'validate.html')
 };
 
+const mapping = {
+  "ar": {
+    "terms": "shurut-al-khidma.html",
+    "privacy": "siyasat-al-khususiyya.html"
+  },
+  "az": {
+    "terms": "xidmet-sertleri.html",
+    "privacy": "mexfilik-siyaseti.html"
+  },
+  "de": {
+    "terms": "nutzungsbedingungen.html",
+    "privacy": "datenschutzrichtlinie.html"
+  },
+  "en": {
+    "terms": "terms-of-service.html",
+    "privacy": "privacy-policy.html"
+  },
+  "es": {
+    "terms": "terminos-de-servicio.html",
+    "privacy": "politica-de-privacidad.html"
+  },
+  "fr": {
+    "terms": "conditions-d-utilisation.html",
+    "privacy": "politique-de-confidentialite.html"
+  },
+  "hi": {
+    "terms": "seva-ki-shartein.html",
+    "privacy": "gopaniyata-niti.html"
+  },
+  "id": {
+    "terms": "syarat-layanan.html",
+    "privacy": "kebijakan-privasi.html"
+  },
+  "it": {
+    "terms": "termini-di-servizio.html",
+    "privacy": "informativa-sulla-privacy.html"
+  },
+  "ja": {
+    "terms": "riyou-kiyaku.html",
+    "privacy": "puraibashi-porishi.html"
+  },
+  "ko": {
+    "terms": "iyong-yakgwan.html",
+    "privacy": "gaein-jeongbo-cheori-bangchim.html"
+  },
+  "nl": {
+    "terms": "servicevoorwaarden.html",
+    "privacy": "privacybeleid.html"
+  },
+  "pt": {
+    "terms": "termos-de-servico.html",
+    "privacy": "politica-de-privacidade.html"
+  },
+  "ru": {
+    "terms": "usloviya-obsluzhivaniya.html",
+    "privacy": "politika-konfidencialnosti.html"
+  },
+  "tr": {
+    "terms": "hizmet-sartlari.html",
+    "privacy": "gizlilik-politikasi.html"
+  },
+  "zh": {
+    "terms": "fuwu-tiaokuan.html",
+    "privacy": "yinsi-zhengce.html"
+  }
+};
+
 LANGUAGES.forEach(lang => {
   input[`${lang}_index`] = resolve(__dirname, `${lang}/index.html`);
-  input[`${lang}_privacy`] = resolve(__dirname, `${lang}/privacy.html`);
-  input[`${lang}_terms`] = resolve(__dirname, `${lang}/terms.html`);
+  input[`${lang}_privacy`] = resolve(__dirname, `${lang}/${mapping[lang].privacy}`);
+  input[`${lang}_terms`] = resolve(__dirname, `${lang}/${mapping[lang].terms}`);
 });
 
 function copyGalleryPlugin() {
