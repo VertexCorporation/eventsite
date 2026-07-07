@@ -120,8 +120,6 @@ window.TRANSLATIONS = {
     "href-about": "https://www.vertexishere.com/tr/#about",
     "href-team": "https://www.vertexishere.com/tr/#team",
     "href-vision": "https://www.vertexishere.com/tr/#vision",
-    "footer-link-privacy-url": "yinsi-zhengce.html",
-    "footer-link-terms-url": "fuwu-tiaokuan.html",
     "footer-link-privacy-url": "gizlilik-politikasi.html",
     "footer-link-terms-url": "hizmet-sartlari.html"
   },
@@ -1489,3 +1487,9 @@ window.TRANSLATIONS.hi = window.TRANSLATIONS.hi || window.TRANSLATIONS.en;
 window.TRANSLATIONS.ar = window.TRANSLATIONS.ar || window.TRANSLATIONS.en;
 window.TRANSLATIONS.zh = window.TRANSLATIONS.zh || window.TRANSLATIONS.en;
 window.TRANSLATIONS.ko = window.TRANSLATIONS.ko || window.TRANSLATIONS.ja;
+
+window.TRANSLATIONS.az['footer-link-privacy-url'] = 'mexfilik-siyaseti.html';
+window.TRANSLATIONS.az['footer-link-terms-url'] = 'xidmet-sertleri.html';
+
+window.TRANSLATIONS.zh['footer-link-privacy-url'] = 'yinsi-zhengce.html';
+window.TRANSLATIONS.zh['footer-link-terms-url'] = 'fuwu-tiaokuan.html';
