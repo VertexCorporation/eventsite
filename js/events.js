@@ -70,28 +70,6 @@ const DEFAULT_EVENTS = [
     type_en: "TICKETED EVENT",
     detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision.<br><br><b>Program Details:</b> In this special visit taking place between 07:00 AM and 09:00 PM, we will use the High-Speed Train (YHT). Our maximum capacity is limited to <b>20 people</b>. During the day, in addition to Anıtkabir, we will explore the capital where Vertex was born from very different perspectives.",
     disableRegister: false
-  },
-  {
-    id: "evt_summer_bbq",
-    title: "Vertex Summer BBQ",
-    title_en: "Vertex Summer BBQ",
-    desc: "Pendik Korusu'nun yeşillikleri arasında, doğalgazlı mangalın başında teknoloji ve girişimciliği konuşuyoruz.",
-    desc_en: "Amidst the greenery of Pendik Korusu, we discuss technology and entrepreneurship by the barbecue.",
-    date: "2026-08-16",
-    dateText: "16 Ağustos 2026",
-    dateText_en: "August 16, 2026",
-    location: "Türkiye, İstanbul, Pendik Korusu",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Pendik+Korusu,+İstanbul,+Türkiye",
-    location_en: "Pendik Korusu, Istanbul, Turkey",
-    price: "ÇOK YAKINDA",
-    price_en: "COMING SOON",
-    banner: "url('../assets/gallery/grove.webp') center/cover",
-    detailDesc: "Vertex ruhunu sıcak yaz aylarında da canlı tutmak için harika bir barbekü etkinliği düzenliyoruz! Pendik Korusu'nun bize sunduğu \"Doğalgazlı Mangal Alanı\" sayesinde, duman ve ateşle uğraşmadan etlerimizi pişirecek, doğanın içinde Amerikan Silikon Vadisi tadında bir networking buluşması gerçekleştireceğiz.<br><br>Girişimcilerin, teknoloji tutkunlarının ve Vertex ekibinin bir araya geleceği bu etkinlikte, lezzetli yemekler eşliğinde yeni projeler konuşacak, Eylül'deki büyük zirve öncesi bolca enerji depolayacağız. Kontenjan ve bilet detayları çok yakında açıklanacaktır.",
-    type: "BİLETLİ ETKİNLİK",
-    type_en: "TICKETED EVENT",
-    detailDesc_en: "We are organizing a fantastic barbecue event to keep the Vertex spirit alive during the hot summer months! Thanks to the \"Natural Gas BBQ Area\" in Pendik Korusu, we will cook our meats without the hassle of smoke and fire, and have a networking meetup in nature with an American Silicon Valley flavor.<br><br>At this event where entrepreneurs, tech enthusiasts, and the Vertex team will come together, we will discuss new projects accompanied by delicious food, and store up plenty of energy before the big summit in September. Capacity and ticket details will be announced very soon.",
-    disableRegister: true
-  },
   {
     id: "evt_coffee_day",
     title: "Vertex Coffee Day",
