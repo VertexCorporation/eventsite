@@ -70,6 +70,7 @@ const DEFAULT_EVENTS = [
     type_en: "TICKETED EVENT",
     detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision.<br><br><b>Program Details:</b> In this special visit taking place between 07:00 AM and 09:00 PM, we will use the High-Speed Train (YHT). Our maximum capacity is limited to <b>20 people</b>. During the day, in addition to Anıtkabir, we will explore the capital where Vertex was born from very different perspectives.",
     disableRegister: false
+  },
   {
     id: "evt_coffee_day",
     title: "Vertex Coffee Day",
