@@ -66,11 +66,13 @@
       <div class="header-actions">
         <!-- Language Selector Dropdown -->
         <div class="language-dropdown" id="language-dropdown">
-          <button class="lang-btn-trigger" id="lang-btn-trigger">
-            <span class="lang-text" id="active-lang-text">العربية</span>
-            <svg class="dropdown-arrow" viewBox="0 0 24 24" style="width: 10px; height: 10px; fill: currentColor; stroke: currentColor; stroke-width: 4px; stroke-linejoin: round;">
-              <path d="M5 7h14l-7 10z"></path>
+          <button class="lang-btn-trigger" id="lang-btn-trigger" aria-label="Dil Seçimi" title="Dil Seçimi">
+            <svg class="globe-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
+            <span class="lang-text" id="active-lang-text" style="display: none;">Türkçe</span>
           </button>
           <div class="lang-menu">
             <a href="../tr/" class="lang-item" data-lang="tr">Türkçe</a>

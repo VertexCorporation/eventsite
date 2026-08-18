@@ -1328,6 +1328,14 @@ a {
   .mobile-menu-btn {
     display: block;
   }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .logo span[data-i18n="header-events-italic"] {
+    font-size: 18px !important;
+  }
 }
 
 /* Event Detail elements style */
@@ -1435,25 +1443,40 @@ a {
 /* --- Language selector dropdown --- */
 .language-dropdown {
   position: relative;
+  z-index: 1001;
 }
 
 .lang-btn-trigger {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 8px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   font-size: 14px;
   transition: var(--transition-smooth);
 }
 
 .lang-btn-trigger:hover {
-  background: rgba(var(--primary-rgb), 0.1);
+  background: rgba(var(--primary-rgb), 0.15);
   border-color: var(--text-muted);
+  color: var(--primary);
+}
+
+.globe-icon {
+  display: block;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+.language-dropdown.active .globe-icon {
+  transform: rotate(180deg);
+  color: var(--primary);
 }
 
 .lang-menu {
@@ -1468,13 +1491,35 @@ a {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 6px;
-  min-width: 140px;
+  min-width: 150px;
+  max-height: 320px;
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: var(--transition-smooth);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 1002;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Custom sleek scrollbar for lang-menu */
+.lang-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lang-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lang-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.lang-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .language-dropdown.active .lang-menu {
