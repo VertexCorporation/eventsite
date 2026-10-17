@@ -31,7 +31,7 @@ test('mobile menu is exclusive, keyboard-accessible, scrollable and tablet-safe'
  assert.match(js,/event\.key === 'Escape'/);
  assert.match(js,/window\.innerWidth > 1100/);
  assert.match(css,/@media\(max-width:1100px\)/);
- assert.match(css,/\.header\.scrolled \+ \.mobile-menu\{--mobile-header-bottom:var\(--nav-h-shrunk\)\}/);
+ assert.match(css,/\.header\.scrolled \+ \.mobile-menu\{\s*--mobile-header-bottom:var\(--nav-h-shrunk\)/);
  assert.match(css,/overscroll-behavior:contain/);
  assert.match(css,/100dvh - var\(--mobile-header-bottom\)/);
  assert.match(css,/env\(safe-area-inset-bottom,0px\)/);
@@ -59,9 +59,10 @@ test('all 16 localized eventsite pages keep the same valid section anchors',()=>
 
 test('mobile panel reveals downwards, preserves translucent hero and localized script titles',()=>{
  const css=read('css/main.css'),template=read('index_template.html');
- assert.match(css,/clip-path:inset\(0 0 100% 0\)/);
- assert.match(css,/clip-path:inset\(0 0 0 0\)/);
- assert.match(css,/background:rgba\(10,10,10,\.28\)/);
+ assert.match(css,/grid-template-rows:0fr/);
+ assert.match(css,/grid-template-rows:1fr/);
+ assert.match(css,/background:rgba\(10,10,10,\.18\)/);
+ assert.doesNotMatch(css,/translateX\(-103%\)|transition:left|clip-path:inset\(0 0 100% 0\)/);
  assert.match(css,/\.header\.scrolled \+ \.mobile-menu/);
  assert.doesNotMatch(css,/translateX\(-103%\)/);
  assert.match(css,/\.header \.logo-vertex-word\{display:none\}/);
@@ -74,4 +75,13 @@ test('mobile panel reveals downwards, preserves translucent hero and localized s
   assert.match(html,/id="language-dropdown"/,lang);
  }
  assert.doesNotMatch(template,/mobile-lang-selector|mobile-lang-item/);
+});
+
+test('footer brand is actually centered on small screens, independently from other columns',()=>{
+ const css=read('css/main.css');
+ assert.match(css,/\.footer-expanded \.footer-brand>div:first-child\{/);
+ assert.match(css,/justify-content:center/);
+ assert.match(css,/\.footer-expanded \.footer-brand p\{/);
+ assert.match(css,/text-align:center/);
+ for(const lang of langs)assert.match(read(lang+'/index.html'),/class="footer-brand"/,lang);
 });
