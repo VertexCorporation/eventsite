@@ -1975,8 +1975,8 @@ body {overflow-x:clip}
 @media(max-width:768px){.header .logo-events{font-size:26px!important}.header.scrolled .logo-events{font-size:23px!important}.header .logo{font-size:18px}}
 
 /* Hero fade must land on the actual page colour. */
-.hero-video-overlay {background:linear-gradient(to bottom,rgba(15,15,16,.45) 0%,rgba(15,15,16,0) 30%,rgba(15,15,16,.8) 80%,#0f0f10 100%)}
-[data-theme="light"] .hero-video-overlay {background:linear-gradient(to bottom,rgba(248,249,250,.5) 0%,rgba(248,249,250,0) 30%,rgba(248,249,250,.8) 80%,#f8f9fa 100%)}
+.hero-video-overlay {background:linear-gradient(to bottom,rgba(5,5,5,.45) 0%,rgba(5,5,5,0) 30%,rgba(5,5,5,.8) 80%,#050505 100%)}
+[data-theme="light"] .hero-video-overlay {background:linear-gradient(to bottom,rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,.8) 80%,#ffffff 100%)}
 
 /* Cards and controls follow the vertexite ecosystem-card motion. */
 .event-card {transition:border-color var(--ix-time) var(--ix-ease) var(--ix-delay),background-color var(--ix-time) var(--ix-ease) var(--ix-delay);transform:none}

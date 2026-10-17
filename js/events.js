@@ -349,12 +349,12 @@ const openRegisterModal = (eventId) => {
     
     const ticketSelectText = lang !== 'tr' ? 'Please select the ticket type you want to buy:' : 'Lütfen satın almak istediğiniz bilet türünü seçin:';
     
-    const standartDisabled = event.standartSoldOut ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
+    const standartDisabled = event.standartSoldOut || !event.stripeLinkStandart ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
     const standartText = event.standartSoldOut 
       ? (lang !== 'tr' ? 'Standard Ticket Sold Out' : 'Standart Bilet Tükendi') 
       : (lang !== 'tr' ? 'Buy Standard Ticket (500 TL)' : 'Standart Bilet Satın Al (500 TL)');
     
-    const spesiyalDisabled = event.spesiyalSoldOut ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
+    const spesiyalDisabled = event.spesiyalSoldOut || !event.stripeLinkSpesiyal ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : '';
     const spesiyalText = event.spesiyalSoldOut 
       ? (lang !== 'tr' ? 'Special Ticket Sold Out' : 'Spesiyal Bilet Tükendi') 
       : (lang !== 'tr' ? 'Buy Special Ticket (1000 TL)' : 'Spesiyal Bilet Satın Al (1000 TL)');
@@ -427,7 +427,8 @@ registrationForm.addEventListener('submit', async (e) => {
     const result = await api('registerForEvent', {eventId:selectedEvent.id, name:document.getElementById('reg-name').value, email:document.getElementById('reg-email').value});
     ticketEventName.textContent = displayText(selectedEvent.title);
     ticketUserName.textContent = document.getElementById('reg-name').value;
-    ticketEventDate.textContent = selectedEvent.dateText;
+    const ticketLang = document.documentElement.lang || 'tr';
+    ticketEventDate.textContent = (ticketLang !== 'tr' ? selectedEvent.dateText_en : selectedEvent.dateText) || formatEventDate(selectedEvent, ticketLang);
     ticketEventLoc.textContent = displayText(selectedEvent.location);
     ticketSerialId.textContent = result.registrationId;
     ticketQrCode.replaceChildren();
