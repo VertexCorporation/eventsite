@@ -111,7 +111,7 @@ const renderEvents = () => {
   filtered.forEach(event => {
     const isPast = isPastDate(event.date, event);
     const card = document.createElement('div');
-    card.className = 'card event-card';
+    card.className = 'card event-card horizontal-card';
 
     const title = event.translations?.[lang]?.title || (lang !== 'tr' ? (event.title_en || event.title) : event.title);
     const desc = event.translations?.[lang]?.desc || (lang !== 'tr' ? (event.desc_en || event.desc) : event.desc);
