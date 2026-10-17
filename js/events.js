@@ -115,8 +115,31 @@ window.moveCarousel = (id, direction) => {
   container.setAttribute('data-current', current);
 };
 
-const renderEvents = () => {
-  eventsGrid.innerHTML = '';
+const revealLoadedEvents = skeleton => {
+  if (!skeleton) {
+    // A successful retry after an error should still enter gently.
+    eventsGrid.classList.add('events-direct-reveal');
+    window.setTimeout(() => eventsGrid.classList.remove('events-direct-reveal'), 600);
+    return;
+  }
+  eventsGrid.classList.add('events-transitioning');
+  // Establish the starting opacity before the next frame, even on fast APIs.
+  void eventsGrid.offsetWidth;
+  window.requestAnimationFrame(() => {
+    eventsGrid.classList.add('events-visible');
+    window.setTimeout(() => {
+      skeleton.remove();
+      eventsGrid.classList.remove('events-transitioning', 'events-visible');
+    }, 560);
+  });
+};
+
+const renderEvents = (reveal = false) => {
+  const skeleton = reveal ? eventsGrid.querySelector('.events-loading-skeleton') : null;
+  if (!skeleton) {
+    eventsGrid.replaceChildren();
+    eventsGrid.classList.remove('events-transitioning', 'events-visible');
+  }
   
   // Sort events chronologically by date
   const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -135,7 +158,9 @@ const renderEvents = () => {
     notice.className = 'events-empty';
     notice.setAttribute('role', 'status');
     notice.textContent = lang === 'tr' ? 'Henüz yayımlanmış etkinlik bulunmuyor.' : 'No events have been published yet.';
-    eventsGrid.replaceChildren(notice);
+    if(skeleton) eventsGrid.appendChild(notice);
+    else eventsGrid.replaceChildren(notice);
+    if(reveal) revealLoadedEvents(skeleton);
     return;
   }
 
@@ -202,6 +227,7 @@ const renderEvents = () => {
   document.querySelectorAll('.register-btn').forEach(btn => {
     btn.addEventListener('click', () => openRegisterModal(btn.dataset.id));
   });
+  if(reveal) revealLoadedEvents(skeleton);
 };
 
 // --- Modal Handlers ---
@@ -466,8 +492,9 @@ const loadEvents = async () => {
     events = result.events
       .filter(event => event && typeof event === 'object' && /^[A-Za-z0-9_-]{1,100}$/.test(event.id) && /^\d{4}-\d{2}-\d{2}$/.test(event.date))
       .map(preparePublicEvent);
+    const firstReveal = eventsGrid.dataset.state !== 'ready';
     eventsGrid.dataset.state = 'ready';
-    renderEvents();
+    renderEvents(firstReveal);
   } catch (error) {
     console.error('[VERTEX EVENTS] Public events could not be loaded:', error);
     if (!events.length) {
@@ -476,7 +503,13 @@ const loadEvents = async () => {
       notice.setAttribute('role', 'alert');
       const lang = document.documentElement.lang || 'tr';
       notice.textContent = (window.TRANSLATIONS[lang] || window.TRANSLATIONS.en)['event-service-unavailable'];
-      eventsGrid.replaceChildren(notice);
+      const skeleton = eventsGrid.querySelector('.events-loading-skeleton');
+      if(skeleton) {
+        eventsGrid.appendChild(notice);
+        revealLoadedEvents(skeleton);
+      } else {
+        eventsGrid.replaceChildren(notice);
+      }
       eventsGrid.dataset.state = 'error';
     }
   } finally {
@@ -490,7 +523,7 @@ setInterval(loadEvents, 60000);
 if (showPastEventsCheckbox) {
   showPastEventsCheckbox.addEventListener('change', (e) => {
     showPastEvents = e.target.checked;
-    renderEvents();
+    if (eventsGrid.dataset.state === 'ready') renderEvents();
   });
 }
 
@@ -498,14 +531,14 @@ if (showPastLabel && showPastEventsCheckbox) {
   showPastLabel.addEventListener('click', () => {
     showPastEventsCheckbox.checked = !showPastEventsCheckbox.checked;
     showPastEvents = showPastEventsCheckbox.checked;
-    renderEvents();
+    if (eventsGrid.dataset.state === 'ready') renderEvents();
   });
 }
 
 // --- Initialize ---
 const init = () => {
+  // Keep three genuine loading skeletons until the first API response.
   loadEvents();
-  renderEvents();
 };
 
 init();

@@ -71,6 +71,10 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
    assert.ok(shape.pathCount>=1);
  }
  await assertThemeIcon('initial mode');
+ assert.equal(await controls.locator('#language-dropdown a.lang-item[data-lang="en"]').evaluate(el=>el.firstChild.textContent.trim()),'İngilizce');
+ assert.equal(await controls.locator('#language-dropdown a.lang-item[data-lang="de"]').evaluate(el=>el.firstChild.textContent.trim()),'Almanca');
+ assert.equal(await controls.locator('.header .brand-logo-crossfade').count(),1);
+ assert.equal(await controls.locator('footer .brand-logo-crossfade').count(),1);
  assert.equal(await controls.locator('footer .footer-brand .logo-events').count(),1);
  assert.equal(await controls.locator('footer .footer-col a[href*="x.com/VertexCorpLTD"]').count(),1);
  assert.equal(await controls.locator('footer .footer-col a[href*="/tr/#projects"]').count(),1);
@@ -82,11 +86,17 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="light"]').click();
  assert.equal(await controls.locator('html').getAttribute('data-theme'),'light');
  await assertThemeIcon('light mode');
+ await controls.waitForTimeout(360);
+ const lightLogo=await controls.locator('.header .brand-logo-light').evaluate(el=>Number(getComputedStyle(el).opacity));
+ assert.equal(lightLogo,1);
  await controls.locator('.theme-toggle-btn').click();
  await controls.waitForSelector('#eventsite-theme-menu.is-open');
  await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="dark"]').click();
  assert.equal(await controls.locator('html').getAttribute('data-theme'),'dark');
  await assertThemeIcon('dark mode');
+ await controls.waitForTimeout(360);
+ const darkLogo=await controls.locator('.header .brand-logo-dark').evaluate(el=>Number(getComputedStyle(el).opacity));
+ assert.equal(darkLogo,1);
  await controls.locator('.theme-toggle-btn').click();
  await controls.waitForSelector('#eventsite-theme-menu.is-open');
  await controls.locator('#lang-btn-trigger').click();
@@ -102,6 +112,36 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  const controlsOverflow=await controls.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
  assert.equal(controlsOverflow,false,'mobile header overflow');
  await controls.close();
+ // Delayed API: exactly three shimmer cards must precede the first real response.
+ const shimmerPage=await browser.newPage({viewport:{width:390,height:850}});
+ let resolveFetchSeen,releaseEvents;
+ const fetchSeen=new Promise(resolve=>{resolveFetchSeen=resolve;});
+ await shimmerPage.route('**/*cloudfunctions.net/**',async route=>{
+   if(route.request().url().includes('/getPublishedEvents')){
+     resolveFetchSeen();
+     await new Promise(resolve=>{
+       releaseEvents=async()=>{
+         await route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{events}}});
+         resolve();
+       };
+     });
+     return;
+   }
+   await route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{valid:false}}});
+ });
+ await shimmerPage.goto(baseURL+'/tr/',{waitUntil:'domcontentloaded'});
+ await fetchSeen;
+ assert.equal(await shimmerPage.locator('.events-skeleton-card').count(),3);
+ assert.equal(await shimmerPage.locator('.event-card').count(),0);
+ assert.equal(await shimmerPage.locator('#events-grid').getAttribute('data-state'),'loading');
+ const shimmerAnimation=await shimmerPage.locator('.events-skeleton-media').first().evaluate(el=>getComputedStyle(el,'::after').animationName);
+ assert.ok(shimmerAnimation.includes('vertexEventShimmer'));
+ await releaseEvents();
+ await shimmerPage.waitForSelector('.event-card');
+ await shimmerPage.waitForFunction(()=>!document.querySelector('.events-loading-skeleton'));
+ assert.equal(await shimmerPage.locator('.events-skeleton-card').count(),0);
+ assert.equal(await shimmerPage.locator('.event-card').count(),5);
+ await shimmerPage.close();
  for(const lang of ['tr','en','de','fr','es','it','pt','nl','id','ru','ja','ko','zh','hi','ar','az']){
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{events}}}));await page.goto(`${baseURL}/${lang}/`,{waitUntil:'domcontentloaded'});await page.waitForSelector('.event-card');assert.equal(await page.locator('html').getAttribute('lang'),lang);await page.close();}
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{valid:false}}}));await page.goto(`${baseURL}/validate.html?id=FAKE`);await page.waitForFunction(()=>document.querySelector('#result-box').textContent.includes('DOĞRULANAMADI'));await page.close();

@@ -35,6 +35,30 @@
     if(cls)el.setAttribute('class',cls);
     el.innerHTML=iconPaths[kind];return el;
   }
+
+  // Two permanent layers share the exact same logo footprint. Fading opacity,
+  // not swapping an image src or changing filter mid-frame, avoids a flash.
+  function prepareBrandLogos() {
+    document.querySelectorAll('img.nav-logo-icon, img.ticket-logo-img').forEach(image => {
+      if(image.parentElement?.classList.contains('brand-logo-crossfade'))return;
+      const holder=document.createElement('span');
+      const ticket=image.classList.contains('ticket-logo-img');
+      holder.className='brand-logo-crossfade'+(ticket?' brand-logo-ticket':' brand-logo-nav');
+      holder.setAttribute('role','img');
+      holder.setAttribute('aria-label',image.alt || 'Vertex');
+      if(image.style.marginRight){
+        holder.style.marginRight=image.style.marginRight;
+        image.style.marginRight='';
+      }
+      const other=image.cloneNode(true);
+      image.alt='';other.alt='';
+      image.classList.add('brand-logo-dark');
+      other.classList.add('brand-logo-light');
+      image.replaceWith(holder);
+      holder.append(image,other);
+    });
+  }
+
   function init() {
     const lang=document.documentElement.lang.toLowerCase().split('-')[0]||'en';
     const tr=labels[lang]||labels.en;
@@ -63,8 +87,16 @@
     langMenu.setAttribute('role','menu');
     langMenu.setAttribute('aria-hidden','true');
     langMenu.inert=true;
+    // Render every available language in the currently selected site's language
+    // (e.g. Türkçe: İngilizce / Almanca; English: English / German).
+    let displayNames=null;
+    try { displayNames=new Intl.DisplayNames([lang],{type:'language'}); } catch {}
+    const localizedName=code=>{
+      try{return displayNames?.of(code)||names[code]||code;}catch{return names[code]||code;}
+    };
     const langLinks=[...langMenu.querySelectorAll('a.lang-item')];
     langLinks.forEach(link=>{
+      link.textContent=localizedName(link.dataset.lang);
       link.setAttribute('role','menuitem');
       link.classList.toggle('active',link.dataset.lang===lang);
       const check=document.createElement('span');
@@ -100,6 +132,27 @@
     });
     document.body.appendChild(menu);
     let themeOpen=false,themeTimer=0,animationFrame=0,leaving=false;
+    let symbolTimer=0,shownSymbol='system',symbolInitialized=false;
+    function changeThemeIcon(symbol) {
+      window.clearTimeout(symbolTimer);
+      if(!symbolInitialized || reduce.matches){
+        themeIcon.replaceChildren(...Array.from(icon(symbol).childNodes));
+        shownSymbol=symbol;symbolInitialized=true;
+        themeIcon.classList.remove('is-swapping');
+        return;
+      }
+      if(symbol===shownSymbol){
+        themeIcon.classList.remove('is-swapping');
+        return;
+      }
+      themeIcon.classList.add('is-swapping');
+      symbolTimer=window.setTimeout(()=>{
+        themeIcon.replaceChildren(...Array.from(icon(symbol).childNodes));
+        shownSymbol=symbol;
+        themeIcon.classList.remove('is-swapping');
+      },130);
+    }
+    prepareBrandLogos();
     const read=(key)=>{try{return localStorage.getItem(key);}catch{return null;}};
     const write=(key,value)=>{try{localStorage.setItem(key,value);}catch{}};
     const storedMode=()=>{
@@ -117,7 +170,7 @@
       // SVGElement.hidden is not a reliable way to hide SVGs across browsers.
       // Keep one SVG and update only its paths, matching vertexite's icons.
       const symbol=mode==='dark'?'light':mode==='light'?'dark':'system';
-      themeIcon.replaceChildren(...Array.from(icon(symbol).childNodes));
+      changeThemeIcon(symbol);
       themeBtn.setAttribute('aria-label',tr[0]+': '+tr[modes.indexOf(mode)+1]);
       options.forEach(option=>{
         const yes=option.dataset.mode===mode;

@@ -173,9 +173,43 @@
       <div class="container">
         <h2 class="section-title fade-up text-center mb-6" style="font-size: 36px;" data-i18n="events-title">이벤트 일정</h2>
         
-        <div class="grid-1" id="events-grid">
+        <div class="grid-1" id="events-grid" data-state="loading">
           <!-- Rendered dynamically by js/events.js -->
-          <div class="loading-placeholder" data-i18n="events-loading">이벤트 불러오는 중...</div>
+          <div class="events-loading-skeleton" role="status">
+            <span class="events-loading-label" data-i18n="events-loading">이벤트 불러오는 중...</span>
+            <div class="events-skeleton-list" aria-hidden="true">
+              <div class="events-skeleton-card">
+                <div class="events-skeleton-media"></div>
+                <div class="events-skeleton-body">
+                  <span class="events-skeleton-line events-skeleton-date"></span>
+                  <span class="events-skeleton-line events-skeleton-heading"></span>
+                  <span class="events-skeleton-line events-skeleton-copy"></span>
+                  <span class="events-skeleton-line events-skeleton-copy events-skeleton-copy-short"></span>
+                  <div class="events-skeleton-actions"><span class="events-skeleton-line"></span><span class="events-skeleton-line"></span></div>
+                </div>
+              </div>
+              <div class="events-skeleton-card">
+                <div class="events-skeleton-media"></div>
+                <div class="events-skeleton-body">
+                  <span class="events-skeleton-line events-skeleton-date"></span>
+                  <span class="events-skeleton-line events-skeleton-heading"></span>
+                  <span class="events-skeleton-line events-skeleton-copy"></span>
+                  <span class="events-skeleton-line events-skeleton-copy events-skeleton-copy-short"></span>
+                  <div class="events-skeleton-actions"><span class="events-skeleton-line"></span><span class="events-skeleton-line"></span></div>
+                </div>
+              </div>
+              <div class="events-skeleton-card">
+                <div class="events-skeleton-media"></div>
+                <div class="events-skeleton-body">
+                  <span class="events-skeleton-line events-skeleton-date"></span>
+                  <span class="events-skeleton-line events-skeleton-heading"></span>
+                  <span class="events-skeleton-line events-skeleton-copy"></span>
+                  <span class="events-skeleton-line events-skeleton-copy events-skeleton-copy-short"></span>
+                  <div class="events-skeleton-actions"><span class="events-skeleton-line"></span><span class="events-skeleton-line"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
