@@ -121,6 +121,15 @@ function copyGalleryPlugin() {
         fs.copyFileSync(faviconSrc, faviconDest)
         console.log('Copied assets/favicon.webp to dist/assets/favicon.webp')
       }
+      // SVG icons remain at stable URLs for 16 localized pages and validation.
+      for (const name of ['favicon-dark.svg', 'favicon-light.svg']) {
+        const from = path.resolve(__dirname, 'assets', name)
+        if (fs.existsSync(from)) {
+          const to = path.resolve(__dirname, 'dist/assets', name)
+          fs.mkdirSync(path.dirname(to), { recursive: true })
+          fs.copyFileSync(from, to)
+        }
+      }
     }
   }
 }
