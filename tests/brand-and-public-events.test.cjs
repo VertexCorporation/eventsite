@@ -21,3 +21,17 @@ test('published events are the sole live source and failures cannot fabricate ev
   assert.doesNotMatch(events,/import\s+.*legacy-events|require\(['"].*legacy-events/);
   assert.match(events,/api\('registerForEvent'/);
 });
+test('footer links use main-site muted/bright theme colors and preserve custom event brand',()=>{
+ const css=fs.readFileSync(path.join(__dirname,'../css/main.css'),'utf8');
+ assert.match(css,/--footer-link-muted:\s*#858585/);
+ assert.match(css,/--footer-link-bright:\s*#f5f5f5/i);
+ assert.match(css,/--footer-link-muted:\s*#707782/);
+ assert.match(css,/--footer-link-bright:\s*#17191d/i);
+ assert.match(css,/\.footer-expanded \.footer-col \.footer-links a:is\(:hover,:focus-visible\)/);
+ assert.match(css,/transition: color 240ms cubic-bezier\(\.2,\.8,\.2,1\) 45ms/);
+ for(const lang of ['tr','en','zh']){
+   const html=fs.readFileSync(path.join(__dirname,'..',lang,'index.html'),'utf8');
+   assert.match(html,/<span class="logo-events"/);
+   assert.match(html,/data-i18n="hero-desc"/);
+ }
+});
