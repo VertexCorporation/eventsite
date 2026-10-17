@@ -130,6 +130,12 @@ function copyGalleryPlugin() {
           fs.copyFileSync(from, to)
         }
       }
+      // Vite does not bundle classic (non-module) scripts from HTML. The
+      // favicon controller must be copied explicitly for production pages.
+      const controllerSrc = path.resolve(__dirname, 'js/favicon.js')
+      const controllerDest = path.resolve(__dirname, 'dist/js/favicon.js')
+      fs.mkdirSync(path.dirname(controllerDest), { recursive: true })
+      fs.copyFileSync(controllerSrc, controllerDest)
     }
   }
 }
