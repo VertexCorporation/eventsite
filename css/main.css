@@ -1505,26 +1505,6 @@ a {
   transition: var(--transition-smooth);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 1002;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-}
-
-/* Custom sleek scrollbar for lang-menu */
-.lang-menu::-webkit-scrollbar {
-  width: 4px;
-}
-
-.lang-menu::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.lang-menu::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-.lang-menu::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
 }
 
 .language-dropdown.active .lang-menu {
@@ -2329,4 +2309,28 @@ h2,h3,h4,h5,h6 {font-family:var(--font-sub);line-height:1.2;letter-spacing:-.02e
 @media(prefers-reduced-motion:reduce){
   .header .theme-toggle-btn>.theme-button-icon,
   .brand-logo-crossfade>img{transition:none!important}
+}
+
+
+/* === Vertexite animated thin scrollbars — page and both header panels ===
+   Ported from vertexite/css/site-design.css: same 5px width, transparent track,
+   theme-aware thumb and scroll-activity alpha (see js/header-panels.js).
+   Firefox consumes scrollbar-color, Chromium/WebKit use the pseudo-elements. */
+@property --scrollbar-alpha {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+:root { --scroll-rgb: 0 0 0; }
+html[data-theme="dark"] { --scroll-rgb: 255 255 255; }
+.header .lang-menu, .event-theme-menu { --scrollbar-alpha: 0; }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--scroll-rgb) / var(--scrollbar-alpha, 0)) transparent;
+}
+::-webkit-scrollbar { width: 5px; height: 4px; background: transparent; }
+::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--scroll-rgb) / var(--scrollbar-alpha, 0));
+  border-radius: 999px;
 }

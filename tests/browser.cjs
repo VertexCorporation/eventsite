@@ -80,6 +80,14 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  assert.equal(await controls.locator('footer .footer-col a[href*="/tr/#projects"]').count(),1);
  await controls.locator('#lang-btn-trigger').click();
  assert.equal(await controls.locator('#language-dropdown.active').count(),1);
+ // Same understated scrollbar as the main Vertex site: 5px transparent track,
+ // thumb appears on scroll and smoothly disappears after a short idle.
+ assert.equal(await controls.locator('.header .lang-menu').evaluate(el=>getComputedStyle(el).scrollbarWidth),'thin');
+ const scrollbarStyle=await controls.locator('.header .lang-menu').evaluate(el=>getComputedStyle(el,'::-webkit-scrollbar').width);
+ assert.equal(scrollbarStyle,'5px');
+ await controls.locator('.header .lang-menu').evaluate(el=>{el.scrollTop=el.scrollHeight-el.clientHeight;});
+ await controls.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.header .lang-menu')).getPropertyValue('--scrollbar-alpha'))>.85);
+ await controls.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.header .lang-menu')).getPropertyValue('--scrollbar-alpha'))<.08);
  await controls.locator('.theme-toggle-btn').click();
  await controls.waitForSelector('#eventsite-theme-menu.is-open');
  assert.equal(await controls.locator('#language-dropdown.active').count(),0);
@@ -111,6 +119,10 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  await assertThemeIcon('system mode');
  const controlsOverflow=await controls.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
  assert.equal(controlsOverflow,false,'mobile header overflow');
+ // Also test the outer document's scrollbar, not just the language panel.
+ await controls.evaluate(()=>window.scrollTo({top:600,behavior:'instant'}));
+ await controls.waitForFunction(()=>Number(getComputedStyle(document.documentElement).getPropertyValue('--scrollbar-alpha'))>.85);
+ await controls.waitForFunction(()=>Number(getComputedStyle(document.documentElement).getPropertyValue('--scrollbar-alpha'))<.08);
  await controls.close();
  // Delayed API: exactly three shimmer cards must precede the first real response.
  const shimmerPage=await browser.newPage({viewport:{width:390,height:850}});

@@ -296,3 +296,52 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
   else init();
 })();
+
+
+/* Vertexite scrollbar behavior: a thin, theme-aware thumb appears while
+   scrolling then fades away, independently for the page and each popover.
+   Kept separate from language/theme click handlers so panels remain exclusive. */
+(function () {
+  'use strict';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const scrollStates = new WeakMap();
+
+  function fadeScrollbar(el, target, duration) {
+    let state = scrollStates.get(el);
+    if (!state) {
+      state = {value: 0, frame: 0, idle: 0};
+      scrollStates.set(el, state);
+    }
+    if (state.frame) window.cancelAnimationFrame(state.frame);
+    state.frame = 0;
+    if (reduced.matches) {
+      state.value = target;
+      el.style.setProperty('--scrollbar-alpha', String(target));
+      return;
+    }
+    const start = performance.now(), from = state.value;
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      const smooth = t * t * (3 - 2 * t);
+      state.value = from + (target - from) * smooth;
+      el.style.setProperty('--scrollbar-alpha', state.value.toFixed(3));
+      state.frame = t < 1 ? window.requestAnimationFrame(frame) : 0;
+    }
+    state.frame = window.requestAnimationFrame(frame);
+  }
+
+  document.addEventListener('scroll', function (event) {
+    const el = event.target === document
+      ? (document.scrollingElement || document.documentElement)
+      : event.target;
+    if (!(el instanceof Element)) return;
+    let state = scrollStates.get(el);
+    if (!state) {
+      state = {value: 0, frame: 0, idle: 0};
+      scrollStates.set(el, state);
+    }
+    window.clearTimeout(state.idle);
+    fadeScrollbar(el, 1, 120);
+    state.idle = window.setTimeout(() => fadeScrollbar(el, 0, 320), 700);
+  }, {capture: true, passive: true});
+})();
