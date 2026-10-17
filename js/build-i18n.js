@@ -175,14 +175,7 @@ LANGUAGES.forEach(lang => {
   
   html = html.replace(/<div class="lang-menu">([\s\S]*?)<\/div>/, desktopMenu);
 
-  // Replace mobile language selector with absolute links
-  let mobileMenu = `<div class="mobile-lang-selector" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">\n`;
-  LANGUAGES.forEach(l => {
-    mobileMenu += `        <a href="../${l}/" class="mobile-lang-item${l === lang ? ' active' : ''}" style="font-size: 14px; text-transform: uppercase;">${l}</a>\n`;
-  });
-  mobileMenu += '      </div>';
-
-  html = html.replace(/<div class="mobile-lang-selector"([\s\S]*?)<\/div>/, mobileMenu);
+  // Mobile navigation contains section links only; languages stay in the header dropdown.
 
   // 4. Write compiled HTML to subfolder
   const outDir = path.join(__dirname, '..', lang);

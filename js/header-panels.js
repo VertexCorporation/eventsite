@@ -195,7 +195,11 @@
       langWrap.classList.add('active');langBtn.setAttribute('aria-expanded','true');
     }
     function closeMobile(){
-      if(mobileMenu)mobileMenu.classList.remove('active');
+      if(mobileMenu){
+        mobileMenu.classList.remove('active');
+        mobileMenu.setAttribute('aria-hidden','true');
+        mobileMenu.inert=true;
+      }
       if(mobileButton){mobileButton.textContent='☰';mobileButton.setAttribute('aria-expanded','false');}
     }
     function positionTheme(){

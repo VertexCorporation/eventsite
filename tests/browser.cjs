@@ -175,11 +175,23 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
    if(mobile){
      await responsive.locator('.mobile-menu-btn').click();
      assert.equal(await responsive.locator('.mobile-menu-btn').getAttribute('aria-expanded'),'true');
-     const drawer=await responsive.locator('.mobile-menu').evaluate(el=>({
-       top:el.getBoundingClientRect().top,
-       headerBottom:document.querySelector('.header').getBoundingClientRect().bottom
-     }));
+     const drawer=await responsive.locator('.mobile-menu').evaluate(el=>{
+       const box=el.getBoundingClientRect();
+       return {
+         top:box.top,left:box.left,width:box.width,
+         headerBottom:document.querySelector('.header').getBoundingClientRect().bottom,
+         surface:getComputedStyle(el).backgroundColor,
+         clip:getComputedStyle(el).clipPath
+       };
+     });
      assert.ok(Math.abs(drawer.top-drawer.headerBottom)<8,'drawer/header alignment at '+width);
+     assert.ok(Math.abs(drawer.left)<2 && Math.abs(drawer.width-width)<2,'full-width mobile menu at '+width);
+     assert.ok(drawer.clip.includes('0px'),'vertical reveal at '+width);
+     assert.equal(await responsive.locator('.mobile-lang-selector').count(),0,'languages outside the menu');
+     assert.equal(await responsive.locator('.header .logo-events').isVisible(),true,'script title at '+width);
+     if(width<=520)assert.equal(await responsive.locator('.header .logo-vertex-word').isVisible(),false,'icon-first title at '+width);
+     const alpha=drawer.surface.match(/,\s*(0(?:\.\d+)?|1)\)$/);
+     assert.ok(alpha && Number(alpha[1])<1,'translucent menu at '+width);
      await responsive.locator('.mobile-nav-links a[href="#about"]').click();
      assert.equal(await responsive.locator('.mobile-menu-btn').getAttribute('aria-expanded'),'false');
    }else await responsive.locator('.nav-links a[href="#about"]').click();

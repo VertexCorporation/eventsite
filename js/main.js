@@ -137,16 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Language selector click
-  document.querySelectorAll('.mobile-lang-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const selectedLang = item.dataset.lang;
-      if (selectedLang) {
-        localStorage.setItem('vtx_lang', selectedLang);
-      }
-    });
-  });
-
   // --- Viewport-aware anchors: align section headings below the compact header ---
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mainContent = document.querySelector('main');

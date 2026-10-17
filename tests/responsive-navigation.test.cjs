@@ -56,3 +56,22 @@ test('all 16 localized eventsite pages keep the same valid section anchors',()=>
   assert.match(html,/src="\.\.\/js\/main\.js"/,lang);
  }
 });
+
+test('mobile panel reveals downwards, preserves translucent hero and localized script titles',()=>{
+ const css=read('css/main.css'),template=read('index_template.html');
+ assert.match(css,/clip-path:inset\(0 0 100% 0\)/);
+ assert.match(css,/clip-path:inset\(0 0 0 0\)/);
+ assert.match(css,/background:rgba\(10,10,10,\.28\)/);
+ assert.match(css,/\.header\.scrolled \+ \.mobile-menu/);
+ assert.doesNotMatch(css,/translateX\(-103%\)/);
+ assert.match(css,/\.header \.logo-vertex-word\{display:none\}/);
+ assert.match(css,/\.header \.logo-events\{display:block!important/);
+ for(const lang of langs){
+  const html=read(lang+'/index.html');
+  assert.doesNotMatch(html,/mobile-lang-selector|mobile-lang-item/,lang);
+  assert.match(html,/<span class="logo-vertex-word">Vertex<\/span>/,lang);
+  assert.match(html,/class="logo-events" data-i18n="header-events-italic"/,lang);
+  assert.match(html,/id="language-dropdown"/,lang);
+ }
+ assert.doesNotMatch(template,/mobile-lang-selector|mobile-lang-item/);
+});
