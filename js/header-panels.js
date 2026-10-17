@@ -48,8 +48,8 @@
     const mobileMenu=document.querySelector('.mobile-menu');
     if(!themeBtn||!langBtn||!langWrap||!langMenu)return;
 
-    const legacyThemeIcon=themeBtn.querySelector('.theme-icon');
-    if(legacyThemeIcon)legacyThemeIcon.hidden=true;
+    // Replace the legacy CSS moon/sun and any old SVGs; a single SVG
+    // prevents multiple icons overflowing the compact theme control.
     const langLabel=langBtn.querySelector('.lang-text');
     if(langLabel){langLabel.textContent=names[lang]||names.en;langLabel.style.removeProperty('display');}
     const globe=langBtn.querySelector('.globe-icon');
@@ -76,10 +76,8 @@
     themeBtn.setAttribute('aria-haspopup','dialog');
     themeBtn.setAttribute('aria-expanded','false');
     themeBtn.setAttribute('aria-controls','eventsite-theme-menu');
-    const sun=icon('light','theme-button-sun',17);
-    const moon=icon('dark','theme-button-moon',17);
-    const system=icon('system','theme-button-system',17);
-    themeBtn.append(sun,moon,system);
+    const themeIcon=icon('system','theme-button-icon',17);
+    themeBtn.replaceChildren(themeIcon);
 
     const menu=document.createElement('div');
     menu.className='event-theme-menu';
@@ -116,7 +114,10 @@
       write('vertex-theme-mode',mode);write('theme',theme);
       const meta=document.querySelector('meta[name="theme-color"]');
       if(meta)meta.content=theme==='dark'?'#0E1013':'#FAFAF9';
-      sun.hidden=mode!=='dark';moon.hidden=mode!=='light';system.hidden=mode!=='system';
+      // SVGElement.hidden is not a reliable way to hide SVGs across browsers.
+      // Keep one SVG and update only its paths, matching vertexite's icons.
+      const symbol=mode==='dark'?'light':mode==='light'?'dark':'system';
+      themeIcon.replaceChildren(...Array.from(icon(symbol).childNodes));
       themeBtn.setAttribute('aria-label',tr[0]+': '+tr[modes.indexOf(mode)+1]);
       options.forEach(option=>{
         const yes=option.dataset.mode===mode;

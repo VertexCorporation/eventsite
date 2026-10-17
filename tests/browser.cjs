@@ -46,6 +46,31 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  await controls.waitForSelector('.event-card');
  const controlShape=await controls.locator('#lang-btn-trigger').evaluate(el=>getComputedStyle(el).borderRadius);
  assert.notEqual(controlShape,'50%');
+ // Regression: only one centered SVG may live inside the theme button.
+ async function assertThemeIcon(expected) {
+   const shape=await controls.locator('.theme-toggle-btn').evaluate(button=>{
+     const icon=button.querySelector(':scope > svg');
+     const rect=button.getBoundingClientRect();
+     const svgRect=icon?.getBoundingClientRect();
+     return {
+       count:button.querySelectorAll('svg').length,
+       children:button.children.length,
+       width:Math.round(rect.width),height:Math.round(rect.height),
+       iconWidth:svgRect&&Math.round(svgRect.width),
+       centered:!!svgRect&&Math.abs((svgRect.left+svgRect.right)/2-(rect.left+rect.right)/2)<1
+         && Math.abs((svgRect.top+svgRect.bottom)/2-(rect.top+rect.bottom)/2)<1,
+       iconClass:icon?.getAttribute('class'),
+       pathCount:icon?.querySelectorAll('path,rect,circle,line').length
+     };
+   });
+   assert.equal(shape.count,1,expected+' should show exactly one SVG');
+   assert.equal(shape.children,1,expected+' has extra controls/legacy icons');
+   assert.equal(shape.width,36);assert.equal(shape.height,36);
+   assert.equal(shape.iconWidth,17);assert.equal(shape.centered,true);
+   assert.equal(shape.iconClass,'theme-button-icon');
+   assert.ok(shape.pathCount>=1);
+ }
+ await assertThemeIcon('initial mode');
  assert.equal(await controls.locator('footer .footer-brand .logo-events').count(),1);
  assert.equal(await controls.locator('footer .footer-col a[href*="x.com/VertexCorpLTD"]').count(),1);
  assert.equal(await controls.locator('footer .footer-col a[href*="/tr/#projects"]').count(),1);
@@ -56,10 +81,12 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  assert.equal(await controls.locator('#language-dropdown.active').count(),0);
  await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="light"]').click();
  assert.equal(await controls.locator('html').getAttribute('data-theme'),'light');
+ await assertThemeIcon('light mode');
  await controls.locator('.theme-toggle-btn').click();
  await controls.waitForSelector('#eventsite-theme-menu.is-open');
  await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="dark"]').click();
  assert.equal(await controls.locator('html').getAttribute('data-theme'),'dark');
+ await assertThemeIcon('dark mode');
  await controls.locator('.theme-toggle-btn').click();
  await controls.waitForSelector('#eventsite-theme-menu.is-open');
  await controls.locator('#lang-btn-trigger').click();
@@ -71,6 +98,7 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  await controls.waitForSelector('#eventsite-theme-menu.is-open');
  await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="system"]').click();
  assert.equal(await controls.locator('html').getAttribute('data-theme-mode'),'system');
+ await assertThemeIcon('system mode');
  const controlsOverflow=await controls.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
  assert.equal(controlsOverflow,false,'mobile header overflow');
  await controls.close();

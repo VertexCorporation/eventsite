@@ -2055,8 +2055,14 @@ h2,h3,h4,h5,h6 {font-family:var(--font-sub);line-height:1.2;letter-spacing:-.02e
 .header .theme-toggle-btn:hover,.header .theme-toggle-btn[aria-expanded="true"] {
   background:var(--glass-bg)!important;border-color:var(--text-muted)!important;
 }
-.header .theme-toggle-btn svg {display:block;flex:none}
-.header .theme-toggle-btn svg[hidden] {display:none!important}
+.header .theme-toggle-btn {
+  min-width:36px!important;max-width:36px!important;
+  gap:0!important;overflow:hidden;
+}
+.header .theme-toggle-btn > svg.theme-button-icon {
+  display:block;width:17px!important;height:17px!important;
+  flex:0 0 17px;overflow:visible;
+}
 .header .theme-icon[hidden] {display:none!important}
 .header .lang-menu {
   top:calc(100% + 10px);right:0;left:auto;
