@@ -2,13 +2,16 @@
    VERTEX EVENTS - MAIN DESIGN SYSTEM
    ========================================= */
 
+/* Match the typography used by the primary Vertex website. */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;600;700&display=swap');
+
 /* --- Design Tokens --- */
 :root {
   --bg-color: #050505;
   --bg-secondary: #0a0a0a;
   --bg-card: #121212;
-  --text-main: #ffffff;
-  --text-muted: #a1a1aa;
+  --text-main: #e1dede;
+  --text-muted: #bebec4;
   
   /* Monochrome Primary */
   --primary: #ffffff;
@@ -25,7 +28,7 @@
   /* UI Elements */
   --border-color: #27272a;
   --glass-bg: rgba(10, 10, 10, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
   --header-bg-scrolled: rgba(10, 10, 10, 0.6);
   --header-border-scrolled: rgba(255, 255, 255, 0.08);
   
@@ -36,7 +39,9 @@
   --container-width: 1200px;
   
   /* Typography */
-  --font-main: 'Inter', sans-serif;
+  --font-main: 'Ubuntu', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Anton', 'Arial Narrow', sans-serif;
+  --font-sub: 'Poppins', system-ui, -apple-system, sans-serif;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -46,12 +51,12 @@
   --bg-secondary: #f4f4f5;
   --bg-card: #ffffff;
   --text-main: #18181b;
-  --text-muted: #52525b;
+  --text-muted: #3f3f46;
   --border-color: #e4e4e7;
   
   --primary: #000000;
   --primary-rgb: 0, 0, 0;
-  --primary-hover: #1f1f23;
+  --primary-hover: #333333;
   --accent: #27272a;
   --btn-text-color: #ffffff;
   
@@ -1900,9 +1905,7 @@ input:checked + .slider:before {
   font-style: normal;
 }
 
-/* Vertex Console palette; hero navigation and video transitions retain their own rules. */
-:root {--bg-color:#0f0f10;--bg-secondary:#171717;--bg-card:#171717;--text-main:#f5f5f5;--text-muted:#acacac;--border-color:#292929;--primary:#f5f5f5;--btn-text-color:#171717;--radius-lg:12px;--gradient-accent:linear-gradient(#f5f5f5,#f5f5f5)}
-[data-theme="light"] {--bg-color:#f8f9fa;--bg-secondary:#f3f4f6;--bg-card:#fff;--text-main:#17191d;--text-muted:#59616c;--border-color:#e3e5e8;--primary:#191b1f;--btn-text-color:#fff;--gradient-accent:linear-gradient(#191b1f,#191b1f)}
+/* Theme tokens above now follow vertexite; no competing palette overrides. */
 .event-card,.modal-content,.form-group input,.form-group textarea {border:1px solid var(--border-color);border-radius:12px;background:var(--bg-card);backdrop-filter:none}
 .event-card {overflow:hidden;box-shadow:none;transition:transform 170ms ease,border-color 170ms ease}
 .event-card:hover {transform:translateY(-3px);border-color:var(--text-muted);box-shadow:none}
@@ -1967,7 +1970,7 @@ body {overflow-x:clip}
 /* Wordmark: Vertex in Inter, Etkinlikleri in the Eventsite script. */
 .logo {font-weight:700;letter-spacing:-.02em}
 .header .logo,.footer-brand .logo {gap:8px!important}
-.logo-events {font-family:'BeauRivage','Inter',cursive,sans-serif!important;font-weight:400!important;letter-spacing:.01em!important;line-height:1;color:var(--text-muted)!important;transform:translateY(3px)!important;font-size:30px!important;white-space:nowrap}
+.logo-events {font-family:'BeauRivage',var(--font-main),cursive,sans-serif!important;font-weight:400!important;letter-spacing:.01em!important;line-height:1;color:var(--text-muted)!important;transform:translateY(3px)!important;font-size:30px!important;white-space:nowrap}
 .header.scrolled .logo-events {font-size:26px!important}
 @media(max-width:768px){.header .logo-events{font-size:26px!important}.header.scrolled .logo-events{font-size:23px!important}.header .logo{font-size:18px}}
 
@@ -1984,7 +1987,7 @@ body {overflow-x:clip}
 .btn {transition:background-color var(--ix-time) var(--ix-ease) var(--ix-delay),color var(--ix-time) var(--ix-ease) var(--ix-delay),border-color var(--ix-time) var(--ix-ease) var(--ix-delay)}
 .btn-primary {border:1px solid var(--primary)}
 @media(hover:hover){
-  .btn-primary:hover:not(:disabled){background:transparent;color:var(--text-main);border-color:var(--text-main)}
+  .btn-primary:hover:not(:disabled){background:var(--primary-hover);color:var(--btn-text-color);border-color:var(--primary-hover);filter:none}
   .btn-outline:hover:not(:disabled),.btn-ghost:hover:not(:disabled){background:var(--hover);border-color:var(--text-main);color:var(--text-main)}
   .theme-toggle-btn:hover,.lang-btn-trigger:hover{background:var(--hover)}
 }
@@ -1992,3 +1995,23 @@ body {overflow-x:clip}
 @media(prefers-reduced-motion:reduce){.header,.header .nav-container,.header .logo,.header .nav-logo-icon,.header .logo-events,.event-card .event-body{transition:none!important}}
 
 .footer-brand>div:first-child{display:flex;align-items:center;gap:8px;margin-bottom:12px}.footer-brand .logo-events{transform:translateY(4px)!important;font-size:32px!important}
+
+/* === Shared Vertex brand language (vertexite reference, October 2026) === */
+html, body {font-family:var(--font-main)}
+h1 {font-family:var(--font-heading);font-weight:400;line-height:1.1;letter-spacing:.07em;text-transform:uppercase}
+h2,h3,h4,h5,h6 {font-family:var(--font-sub);line-height:1.2;letter-spacing:-.02em}
+.hero h1 {font-family:var(--font-heading);font-weight:400;font-size:clamp(3rem,7vw,5.25rem);letter-spacing:.055em;line-height:1.1;text-wrap:balance}
+.header .logo {font-family:var(--font-heading);font-size:clamp(22px,2.4vw,30px);font-weight:400;letter-spacing:.06em;text-transform:uppercase}
+.header .logo-events {text-transform:none}
+.header.scrolled {background:rgba(10,10,10,.4);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.05);box-shadow:0 4px 30px rgba(0,0,0,.25)}
+[data-theme="light"] .header.scrolled {background:rgba(250,250,250,.5);border-bottom-color:rgba(0,0,0,.05);box-shadow:0 4px 30px rgba(0,0,0,.05)}
+@media(min-width:1024px){
+  .header .nav-links {gap:20px;padding:10px 24px;background:rgba(25,25,25,.4);border:1px solid rgba(255,255,255,.05);border-radius:100px;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 4px 12px rgba(0,0,0,.2)}
+  [data-theme="light"] .header .nav-links {background:rgba(255,255,255,.5);border-color:rgba(0,0,0,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.05)}
+}
+@media(min-width:769px) and (max-width:1023px){.header .logo{font-size:23px}.header .logo-events{font-size:24px!important}.header .nav-links{gap:14px}}
+@media(max-width:768px){.hero h1{font-size:clamp(2.3rem,9vw,3.25rem)}.header .logo{font-size:21px}}
+/* Filled CTAs stay filled on hover; only their surface darkens. */
+.btn-primary:hover:not(:disabled){background:var(--primary-hover);border-color:var(--primary-hover);color:var(--btn-text-color);transform:none;box-shadow:none}
+.events-empty {width:100%;margin:0;padding:36px 24px;text-align:center;line-height:1.65;font:500 14px/1.65 var(--font-main);color:var(--text-muted);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md)}
+.events-error {border-style:dashed}

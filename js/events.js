@@ -49,12 +49,39 @@ const ticketQrCode = document.getElementById('ticket-qr-code');
 // Check if a date string is in the past
 const escapeText = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 const displayText = value => { const decoder=document.createElement('textarea'); decoder.innerHTML=value; return decoder.value; };
+const safePublicUrl = value => {
+  if (typeof value !== 'string' || !value.trim()) return '';
+  try {
+    const url = new URL(value, document.baseURI);
+    if (!['https:', 'http:'].includes(url.protocol)) return '';
+    return url.href.replace(/['"()\\<>]/g, char => encodeURIComponent(char));
+  } catch { return ''; }
+};
+const safeRichText = value => escapeText(value)
+  .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+  .replace(/&lt;b&gt;/gi, '<b>')
+  .replace(/&lt;\/b&gt;/gi, '</b>');
+const safeEventBanner = value => {
+  if (typeof value !== 'string') return '';
+  if (/^#[a-f0-9]{3,8}$/i.test(value)) return value;
+  const image = /^url\(['"]?([^'"]+)['"]?\)\s+center\/cover$/i.exec(value);
+  return image && safePublicUrl(image[1]) ? `url("${safePublicUrl(image[1])}") center/cover` : '';
+};
 const preparePublicEvent = event => {
   const copy = {...event};
   for (const key of ['title','title_en','desc','desc_en','location','location_en','type','type_en','price_en']) if(copy[key]) copy[key] = escapeText(copy[key]);
-  copy.speakers = (copy.speakers || []).map(s=>({...s,name:escapeText(s.name),role:escapeText(s.role),role_en:escapeText(s.role_en)}));
-  copy.agenda = (copy.agenda || []).map(a=>Object.fromEntries(Object.entries(a).map(([k,v])=>[k,escapeText(v)])));
-  copy.translations = Object.fromEntries(Object.entries(copy.translations || {}).map(([lang,t])=>[lang,Object.fromEntries(Object.entries(t).map(([k,v])=>[k,k==='detailDesc'?v:escapeText(v)]))]));
+  if (typeof copy.price === 'string') copy.price = escapeText(copy.price);
+  copy.detailDesc = safeRichText(copy.detailDesc || '');
+  copy.detailDesc_en = safeRichText(copy.detailDesc_en || '');
+  copy.cover = safePublicUrl(copy.cover);
+  copy.images = (Array.isArray(copy.images) ? copy.images : []).map(safePublicUrl).filter(Boolean);
+  copy.mapUrl = safePublicUrl(copy.mapUrl);
+  for (const key of ['stripeLink','stripeLinkStandart','stripeLinkSpesiyal']) copy[key] = safePublicUrl(copy[key]);
+  copy.banner = safeEventBanner(copy.banner) || 'var(--bg-secondary)';
+  copy.ticketCategories = (Array.isArray(copy.ticketCategories) ? copy.ticketCategories : []).map(t=>({...t,stripeLink:safePublicUrl(t.stripeLink)}));
+  copy.speakers = (Array.isArray(copy.speakers) ? copy.speakers : []).map(s=>({...s,img:safePublicUrl(s.img),name:escapeText(s.name),role:escapeText(s.role),role_en:escapeText(s.role_en)}));
+  copy.agenda = (Array.isArray(copy.agenda) ? copy.agenda : []).map(a=>Object.fromEntries(Object.entries(a).map(([k,v])=>[k,escapeText(v)])));
+  copy.translations = Object.fromEntries(Object.entries(copy.translations || {}).map(([lang,t])=>[lang,Object.fromEntries(Object.entries(t).map(([k,v])=>[k,k==='detailDesc'?safeRichText(v):escapeText(v)]))]));
   return copy;
 };
 const api = async (name, data = {}) => {
@@ -104,7 +131,11 @@ const renderEvents = () => {
   const trans = window.TRANSLATIONS[lang] || window.TRANSLATIONS.en;
 
   if (filtered.length === 0) {
-    eventsGrid.innerHTML = '';
+    const notice = document.createElement('p');
+    notice.className = 'events-empty';
+    notice.setAttribute('role', 'status');
+    notice.textContent = lang === 'tr' ? 'Henüz yayımlanmış etkinlik bulunmuyor.' : 'No events have been published yet.';
+    eventsGrid.replaceChildren(notice);
     return;
   }
 
@@ -423,9 +454,33 @@ window.addEventListener('click', (e) => {
 });
 
 document.getElementById('download-ticket-btn').addEventListener('click', () => window.print());
+let loadingEvents = false;
+eventsGrid.setAttribute('aria-live', 'polite');
 const loadEvents = async () => {
-  try { events = (await api('getPublishedEvents')).events.map(preparePublicEvent); renderEvents(); }
-  catch(error) { if (!events.length) eventsGrid.textContent = window.TRANSLATIONS[document.documentElement.lang || 'tr']['event-service-unavailable']; }
+  if (loadingEvents) return;
+  loadingEvents = true;
+  try {
+    const result = await api('getPublishedEvents');
+    if (!Array.isArray(result?.events)) throw new Error('getPublishedEvents returned an invalid payload');
+    events = result.events
+      .filter(event => event && typeof event === 'object' && /^[A-Za-z0-9_-]{1,100}$/.test(event.id) && /^\d{4}-\d{2}-\d{2}$/.test(event.date))
+      .map(preparePublicEvent);
+    eventsGrid.dataset.state = 'ready';
+    renderEvents();
+  } catch (error) {
+    console.error('[VERTEX EVENTS] Public events could not be loaded:', error);
+    if (!events.length) {
+      const notice = document.createElement('p');
+      notice.className = 'events-empty events-error';
+      notice.setAttribute('role', 'alert');
+      const lang = document.documentElement.lang || 'tr';
+      notice.textContent = (window.TRANSLATIONS[lang] || window.TRANSLATIONS.en)['event-service-unavailable'];
+      eventsGrid.replaceChildren(notice);
+      eventsGrid.dataset.state = 'error';
+    }
+  } finally {
+    loadingEvents = false;
+  }
 };
 window.addEventListener('focus', loadEvents);
 setInterval(loadEvents, 60000);
