@@ -54,7 +54,7 @@
           <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 6px;">
           Vertex
         </div>
-        <span style="font-size: 26px; font-family: 'BeauRivage', cursive; font-size: 24px !important; color: var(--text-muted); transform: translateY(2px);" data-i18n="header-events-italic">События</span>
+        <span style="font-size: 26px; font-family: var(--font-main); font-size: 24px !important; color: var(--text-muted); transform: translateY(2px);" data-i18n="header-events-italic">События</span>
       </a>
 
       <nav class="nav-links">
@@ -180,7 +180,7 @@
   </main>
 
   <!-- Event Details Modal -->
-  <div class="modal" id="event-detail-modal">
+  <div class="modal" id="event-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-detail-heading" aria-hidden="true">
     <div class="modal-content glass">
       
       <div id="modal-detail-body">
@@ -190,7 +190,7 @@
   </div>
 
   <!-- Ticket Registration Modal -->
-  <div class="modal" id="register-modal">
+  <div class="modal" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-event-title" aria-hidden="true">
     <div class="modal-content glass ticket-modal-width">
       <button class="modal-close" id="modal-close-register">×</button>
       
@@ -210,33 +210,8 @@
             <input type="email" id="reg-email" required placeholder="name@domain.com">
           </div>
 
-          <!-- Checkout Details (Stripe Simulation) -->
-          <div id="stripe-checkout-section" class="stripe-checkout-container" style="display: none;">
-            <div class="checkout-divider"></div>
-            <h4 class="mb-4" data-i18n="form-stripe-header">Оплата через Stripe</rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> Stripe Ödeme Girişi</h4>
-            <div class="form-group">
-              <label for="card-number" data-i18n="form-lbl-card">Номер карты</label>
-              <div class="stripe-input-wrapper">
-                <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19">
-                <span class="card-brand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; transform: translateY(3px);"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="card-expiry" data-i18n="form-lbl-expiry">Срок действия (ММ/ГГ)</label>
-                <input type="text" id="card-expiry" placeholder="12/28" maxlength="5">
-              </div>
-              <div class="form-group">
-                <label for="card-cvc" data-i18n="form-lbl-cvc">CVC</label>
-                <input type="text" id="card-cvc" placeholder="123" maxlength="3">
-              </div>
-            </div>
-            <div class="checkout-summary mb-4">
-              <span data-i18n="form-total-summary">Итоговая сумма:</span>
-              <span id="stripe-checkout-price" class="gradient-text font-bold">120 TL</span>
-            </div>
-          </div>
-
+          <!-- Registration is completed by Fulcrum; payments use Stripe Payment Links. -->
+          <div id="stripe-checkout-section" hidden><span id="stripe-checkout-price"></span></div>
           <button type="submit" class="btn btn-primary w-full" style="margin-top: 15px;" id="submit-reg-btn" data-i18n="form-btn-submit-free">Создать билет</button>
         </form>
       </div>
@@ -309,7 +284,7 @@
             <a href="https://www.vertexishere.com/" target="_blank" class="logo" style="font-size: 24px; display: inline-flex; align-items: center; line-height: 1;">
               <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
             </a>
-            <span style="font-size: 32px !important; font-family: 'BeauRivage', cursive; color: var(--text-main); transform: translateY(4px);" data-i18n="header-events-italic">События</span>
+            <span style="font-size: 32px !important; font-family: var(--font-main); color: var(--text-main); transform: translateY(4px);" data-i18n="header-events-italic">События</span>
           </div>
           <p style="color: var(--text-muted); line-height: 1.6; max-width: 400px;" data-i18n="hero-desc">Vertex означает в математике крайнюю точку пересечения двух линий; на наших мероприятиях мы пересекаем все линии в крайних точках.</p>
         </div>

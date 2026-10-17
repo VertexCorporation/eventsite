@@ -1,0 +1,421 @@
+{
+  "languages": {
+    "tr": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "gizlilik-politikasi.html",
+        "footer-link-terms-url",
+        "hizmet-sartlari.html"
+      ],
+      "legalHashes": {
+        "tr/gizlilik-politikasi.html": "17351bfc79b863b1133cbf5ed99c3062aeb34a2afe467717781b5510f0a16a37",
+        "tr/hizmet-sartlari.html": "abf8f5c91e06adafcf4c72ea763997cfeac3a61ce48bc49f420df67ff0bd1f32"
+      }
+    },
+    "en": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "yinsi-zhengce.html",
+        "footer-link-terms-url",
+        "fuwu-tiaokuan.html"
+      ],
+      "legalHashes": {
+        "en/privacy-policy.html": "d1d55d9065f7379017f88389b8545f08d5f8ace43c6a319586cb9034f9070148",
+        "en/terms-of-service.html": "ed83c513a185f98c4d8970a1d3ace3bfc5021f90741ef7060e45b61db50b60c0"
+      }
+    },
+    "de": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "datenschutzrichtlinie.html",
+        "footer-link-terms-url",
+        "nutzungsbedingungen.html"
+      ],
+      "legalHashes": {
+        "de/datenschutzrichtlinie.html": "5fe304969c607eaf061f21acbc15c8dbfb60637f9284d21a29e7d617f993bdcf",
+        "de/nutzungsbedingungen.html": "f1d7ea0eae0197b7a788cd63849c5c74211eb4ec8781e2ef79d9f1e2096ef60e"
+      }
+    },
+    "fr": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "politique-de-confidentialite.html",
+        "footer-link-terms-url",
+        "conditions-d-utilisation.html"
+      ],
+      "legalHashes": {
+        "fr/politique-de-confidentialite.html": "abaa89135554b7596c060c91344e48af9b53e8b1935585e0cca10bc053be8ee9",
+        "fr/conditions-d-utilisation.html": "d00bba2fe7910e99079834927d9612250140606a6c54ee8603779f50454354b6"
+      }
+    },
+    "es": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "politica-de-privacidad.html",
+        "footer-link-terms-url",
+        "terminos-de-servicio.html"
+      ],
+      "legalHashes": {
+        "es/politica-de-privacidad.html": "628131b1f8fd1caa742981a3fcfc896ce9839fabc8af3b2d6c102986a7689607",
+        "es/terminos-de-servicio.html": "4b2665c15b19618d9d2d1ad54bd4e6addfa75a60a324679e7dd2dfd5ccf8ceb3"
+      }
+    },
+    "it": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "informativa-sulla-privacy.html",
+        "footer-link-terms-url",
+        "termini-di-servizio.html"
+      ],
+      "legalHashes": {
+        "it/informativa-sulla-privacy.html": "af7cb466ca742c85f5f03540fccad3941f4082999b3a82e1f67da8fe5224161b",
+        "it/termini-di-servizio.html": "aea8a7702e5642477935b16ff94b731cc2af4480699269cbb474cacb978f8a90"
+      }
+    },
+    "pt": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "politica-de-privacidade.html",
+        "footer-link-terms-url",
+        "termos-de-servico.html"
+      ],
+      "legalHashes": {
+        "pt/termos-de-servico.html": "a971550918114f0ebd20d5ab6d792ad1f1f12b3ce332bc0e4b2024fbef3a78e3",
+        "pt/politica-de-privacidade.html": "a47d34054715e5b60335deb9edb3c638d79b0c83a96c725c90f67e8c7624224b"
+      }
+    },
+    "nl": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "privacybeleid.html",
+        "footer-link-terms-url",
+        "servicevoorwaarden.html"
+      ],
+      "legalHashes": {
+        "nl/servicevoorwaarden.html": "f9aa351347a783193a985e0bbd99ac879b00f62be2399d6d454be0471943a530",
+        "nl/privacybeleid.html": "a9adbf0b6e231fdeed5c7f381498f3d82faa2ea2d43f559c1af76e9dc6925988"
+      }
+    },
+    "id": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "kebijakan-privasi.html",
+        "footer-link-terms-url",
+        "syarat-layanan.html"
+      ],
+      "legalHashes": {
+        "id/kebijakan-privasi.html": "30d04e32d11c1593b88d9d1a0faba386d73b8c71b59f77a09ef06f0b96007b0d",
+        "id/syarat-layanan.html": "b4cbaf3ba875537da4cc100302311f986c8eb6708448b3f1961fc80ff79ba3ff"
+      }
+    },
+    "ru": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "politika-konfidencialnosti.html",
+        "footer-link-terms-url",
+        "usloviya-obsluzhivaniya.html"
+      ],
+      "legalHashes": {
+        "ru/politika-konfidencialnosti.html": "88d2334e2a4e7f238d41c22cd9c004eae373a616f5402251a143729ff5fdafc2",
+        "ru/usloviya-obsluzhivaniya.html": "4bf8ce1b28d9a4bc3d384e64b6d6338f35f0161e7962f6e3763bfb2b6405663f"
+      }
+    },
+    "ja": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "puraibashi-porishi.html",
+        "footer-link-terms-url",
+        "riyou-kiyaku.html"
+      ],
+      "legalHashes": {
+        "ja/puraibashi-porishi.html": "d2ac4d339fc50409fd8e164f9648532553463a109849b9c35148ab303b743624",
+        "ja/riyou-kiyaku.html": "ae47e6311d8382cfddddf76f293783c0d9e8b5136f2ebab3aeec3125096da03b"
+      }
+    },
+    "ko": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "gaein-jeongbo-cheori-bangchim.html",
+        "footer-link-terms-url",
+        "iyong-yakgwan.html"
+      ],
+      "legalHashes": {
+        "ko/gaein-jeongbo-cheori-bangchim.html": "8b7811b6bbb2a899e0451b5035dcea87393f16038b8755e7f77ed19c81ab51a3",
+        "ko/iyong-yakgwan.html": "bfa90175860b0f72975ac924a8e75177080a236de1920f2cbc3d18a44c9e9c98"
+      }
+    },
+    "zh": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "yinsi-zhengce.html",
+        "footer-link-terms-url",
+        "fuwu-tiaokuan.html"
+      ],
+      "legalHashes": {
+        "zh/fuwu-tiaokuan.html": "1bfd2b8d4b76d8e84c4b6d544123eab0100e02ee9ce9512fecd3ece6df23f17f",
+        "zh/yinsi-zhengce.html": "777785da347441ec1a3a4c11d980eb03f0521fb1482b6fa40a594c8bbe30136e"
+      }
+    },
+    "hi": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "gopaniyata-niti.html",
+        "footer-link-terms-url",
+        "seva-ki-shartein.html"
+      ],
+      "legalHashes": {
+        "hi/seva-ki-shartein.html": "384b32ccd30480097832bc60c1b7408a4c4c4d1e9dc39d768257c4ebd083fa69",
+        "hi/gopaniyata-niti.html": "56e603fec68dd56c96a7ac476ddae37b1510bec3488d558b3a7a8498e048149a"
+      }
+    },
+    "ar": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "siyasat-al-khususiyya.html",
+        "footer-link-terms-url",
+        "shurut-al-khidma.html"
+      ],
+      "legalHashes": {
+        "ar/shurut-al-khidma.html": "4b056eb16579593e2d7dc4a50e1d022be3a8df404fbb5a90e1a7a667000716f3",
+        "ar/siyasat-al-khususiyya.html": "56e967e0b6602254d4f23ec74a413b1f54c30696272688bfa6ea2185382a8000"
+      }
+    },
+    "az": {
+      "footerLinks": [
+        "https://www.vertexishere.com/",
+        "#",
+        "href-cortex",
+        "https://play.google.com/store/apps/details?id=com.VertexGames.AllStar",
+        "https://github.com/VertexCorporation/Mergen",
+        "#",
+        "href-about",
+        "#",
+        "href-team",
+        "#",
+        "href-vision",
+        "mailto:contact@vertexishere.com",
+        "https://www.linkedin.com/company/106897671/",
+        "https://www.instagram.com/vertexcorpltd/",
+        "footer-link-privacy-url",
+        "mexfilik-siyaseti.html",
+        "footer-link-terms-url",
+        "xidmet-sertleri.html"
+      ],
+      "legalHashes": {
+        "az/mexfilik-siyaseti.html": "421e79886ad8e88c5a8017759ef6a548ecde4923a90e0d0d17d8a2eeeabec4ab",
+        "az/xidmet-sertleri.html": "e0d0460cce113c1bfa01b8b6f0a6b3d6be14138cafb8c117e2502b2375b23a4a"
+      }
+    }
+  },
+  "videoControllerHash": "77a5d03f384a497a7087db25a274194a3e55ce8830683f6ed813f8869d846a11"
+}

@@ -1463,3 +1463,120 @@ window.TRANSLATIONS.az['footer-link-terms-url'] = 'xidmet-sertleri.html';
 
 window.TRANSLATIONS.zh['footer-link-privacy-url'] = 'yinsi-zhengce.html';
 window.TRANSLATIONS.zh['footer-link-terms-url'] = 'fuwu-tiaokuan.html';
+
+// Dynamic event lifecycle messages in all supported locales.
+const EVENT_MESSAGES = {
+  "tr": {
+    "event-status-cancelled": "İptal edildi",
+    "event-status-sold-out": "Kontenjan doldu",
+    "event-service-unavailable": "Etkinlikler yüklenemedi. Lütfen tekrar deneyin.",
+    "event-payment-unavailable": "Satış bağlantısı henüz hazır değil.",
+    "event-registration-error": "Kayıt tamamlanamadı. Lütfen tekrar deneyin."
+  },
+  "en": {
+    "event-status-cancelled": "Cancelled",
+    "event-status-sold-out": "Sold out",
+    "event-service-unavailable": "Unable to load events. Please try again.",
+    "event-payment-unavailable": "Payment link is not available yet.",
+    "event-registration-error": "Registration failed. Please try again."
+  },
+  "de": {
+    "event-status-cancelled": "Abgesagt",
+    "event-status-sold-out": "Ausgebucht",
+    "event-service-unavailable": "Veranstaltungen konnten nicht geladen werden. Bitte erneut versuchen.",
+    "event-payment-unavailable": "Der Zahlungslink ist noch nicht verfügbar.",
+    "event-registration-error": "Anmeldung fehlgeschlagen. Bitte erneut versuchen."
+  },
+  "fr": {
+    "event-status-cancelled": "Annulé",
+    "event-status-sold-out": "Complet",
+    "event-service-unavailable": "Impossible de charger les événements. Veuillez réessayer.",
+    "event-payment-unavailable": "Le lien de paiement n’est pas encore disponible.",
+    "event-registration-error": "Échec de l’inscription. Veuillez réessayer."
+  },
+  "es": {
+    "event-status-cancelled": "Cancelado",
+    "event-status-sold-out": "Agotado",
+    "event-service-unavailable": "No se pudieron cargar los eventos. Inténtalo de nuevo.",
+    "event-payment-unavailable": "El enlace de pago aún no está disponible.",
+    "event-registration-error": "No se pudo completar el registro. Inténtalo de nuevo."
+  },
+  "it": {
+    "event-status-cancelled": "Annullato",
+    "event-status-sold-out": "Esaurito",
+    "event-service-unavailable": "Impossibile caricare gli eventi. Riprova.",
+    "event-payment-unavailable": "Il link di pagamento non è ancora disponibile.",
+    "event-registration-error": "Registrazione non riuscita. Riprova."
+  },
+  "pt": {
+    "event-status-cancelled": "Cancelado",
+    "event-status-sold-out": "Esgotado",
+    "event-service-unavailable": "Não foi possível carregar os eventos. Tente novamente.",
+    "event-payment-unavailable": "O link de pagamento ainda não está disponível.",
+    "event-registration-error": "Não foi possível concluir a inscrição. Tente novamente."
+  },
+  "nl": {
+    "event-status-cancelled": "Geannuleerd",
+    "event-status-sold-out": "Uitverkocht",
+    "event-service-unavailable": "Evenementen konden niet worden geladen. Probeer het opnieuw.",
+    "event-payment-unavailable": "De betaallink is nog niet beschikbaar.",
+    "event-registration-error": "Registratie mislukt. Probeer het opnieuw."
+  },
+  "id": {
+    "event-status-cancelled": "Dibatalkan",
+    "event-status-sold-out": "Kuota penuh",
+    "event-service-unavailable": "Acara tidak dapat dimuat. Silakan coba lagi.",
+    "event-payment-unavailable": "Tautan pembayaran belum tersedia.",
+    "event-registration-error": "Pendaftaran gagal. Silakan coba lagi."
+  },
+  "ru": {
+    "event-status-cancelled": "Отменено",
+    "event-status-sold-out": "Мест нет",
+    "event-service-unavailable": "Не удалось загрузить мероприятия. Повторите попытку.",
+    "event-payment-unavailable": "Ссылка для оплаты пока недоступна.",
+    "event-registration-error": "Не удалось завершить регистрацию. Повторите попытку."
+  },
+  "ja": {
+    "event-status-cancelled": "中止",
+    "event-status-sold-out": "満席",
+    "event-service-unavailable": "イベントを読み込めませんでした。もう一度お試しください。",
+    "event-payment-unavailable": "決済リンクはまだ利用できません。",
+    "event-registration-error": "登録できませんでした。もう一度お試しください。"
+  },
+  "ko": {
+    "event-status-cancelled": "취소됨",
+    "event-status-sold-out": "매진",
+    "event-service-unavailable": "이벤트를 불러올 수 없습니다. 다시 시도해 주세요.",
+    "event-payment-unavailable": "결제 링크가 아직 준비되지 않았습니다.",
+    "event-registration-error": "등록을 완료하지 못했습니다. 다시 시도해 주세요."
+  },
+  "zh": {
+    "event-status-cancelled": "已取消",
+    "event-status-sold-out": "名额已满",
+    "event-service-unavailable": "无法加载活动，请重试。",
+    "event-payment-unavailable": "付款链接尚未开放。",
+    "event-registration-error": "报名失败，请重试。"
+  },
+  "hi": {
+    "event-status-cancelled": "रद्द",
+    "event-status-sold-out": "स्थान भर गए",
+    "event-service-unavailable": "कार्यक्रम लोड नहीं हुए। फिर से प्रयास करें।",
+    "event-payment-unavailable": "भुगतान लिंक अभी उपलब्ध नहीं है।",
+    "event-registration-error": "पंजीकरण पूरा नहीं हुआ। फिर से प्रयास करें।"
+  },
+  "ar": {
+    "event-status-cancelled": "ملغى",
+    "event-status-sold-out": "اكتمل العدد",
+    "event-service-unavailable": "تعذر تحميل الفعاليات. يرجى المحاولة مجددًا.",
+    "event-payment-unavailable": "رابط الدفع غير متاح بعد.",
+    "event-registration-error": "تعذر إكمال التسجيل. يرجى المحاولة مجددًا."
+  },
+  "az": {
+    "event-status-cancelled": "Ləğv edilib",
+    "event-status-sold-out": "Yerlər dolub",
+    "event-service-unavailable": "Tədbirlər yüklənmədi. Yenidən cəhd edin.",
+    "event-payment-unavailable": "Ödəniş bağlantısı hələ hazır deyil.",
+    "event-registration-error": "Qeydiyyat tamamlanmadı. Yenidən cəhd edin."
+  }
+};
+for (const [lang, messages] of Object.entries(EVENT_MESSAGES)) Object.assign(window.TRANSLATIONS[lang], messages);

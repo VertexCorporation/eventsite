@@ -1,101 +1,13 @@
+import QRCode from 'qrcode';
 /* =========================================
    VERTEX EVENTS - DATA & INTERACTIVE LOGIC
    ========================================= */
 
 // --- Default Event Data ---
-const DEFAULT_EVENTS = [
-  {
-    id: "evt_yat_kutlamasi",
-    title: "Vertex Yat Kutlaması",
-    title_en: "Vertex Yacht Celebration",
-    desc: "Vertex'in ilk resmi kutlaması, 3 yıllık yoğun çalışmaların sonucunda; Cortex'in 100000 indirme barajını geçmesini, Vertex'in Teknopark İstanbul'a kabul almasını, fal.ai gibi büyük şirketlerle yaptığı ortaklıkları ve daha nice başarıyı toplamak için yapılmıştır.",
-    desc_en: "Vertex's first official celebration, following 3 years of intense work; gathered to celebrate Cortex surpassing 100,000 downloads, Vertex's acceptance into Teknopark Istanbul, partnerships with major companies like fal.ai, and many more successes.",
-    date: "2026-06-19",
-    dateText: "19 Haziran 2026",
-    dateText_en: "June 19, 2026",
-    location: "Türkiye, İstanbul, Beylerbeyi, Beylerbeyi Parkı 34676",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Beylerbeyi+Parkı,+İstanbul,+Türkiye",
-    location_en: "Beylerbeyi Park, Istanbul, Turkey 34676",
-    price: 0,
-    images: [
-      "../assets/gallery/yacht-1.webp",
-      "../assets/gallery/yacht-2.webp",
-      "../assets/gallery/yacht-3.webp",
-      "../assets/gallery/yacht-4.webp",
-      "../assets/gallery/yacht-5.webp",
-      "../assets/gallery/yacht-6.webp",
-      "../assets/gallery/yacht-7.webp"
-    ]
-  },
-  {
-    id: "evt_tech_summit",
-    title: "Vertex Teknoloji Zirvesi '26",
-    title_en: "Vertex Tech Summit '26",
-    desc: "Teknolojinin sınırlarının aşılacağı bu zirvede, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve benzersiz etkinliklerle katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz; sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.",
-    desc_en: "At this summit where the boundaries of technology will be pushed, we aim to open new windows for our participants with inspiring presentations by visionary speakers and unique events; every success and experience story from industry pioneers will become a powerful source of motivation for each participant striving to reach their own summit.",
-    date: "2026-09-19",
-    dateText: "19 Eylül 2026",
-    dateText_en: "September 19, 2026",
-    location: "Türkiye, İstanbul, Pendik, Teknopark İstanbul 34912",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Teknopark+İstanbul,+Pendik,+Türkiye",
-    location_en: "Teknopark Istanbul, Pendik, Turkey 34912",
-    price: "multiple",
-    stripeLinkStandart: "https://buy.stripe.com/7sYaEY3Dw9Zz5V98hleIw00",
-    stripeLinkSpesiyal: "https://buy.stripe.com/5kQcN65LE9Zz5V9cxBeIw01",
-    banner: "url('../assets/gallery/teknopark.webp') center/cover",
-    detailDesc: "Geleceğin liderlerini ve teknoloji meraklılarını bir araya getireceğimiz bu heyecan dolu buluşma, 27 Eylül 2026 tarihinde kapılarını açmaya hazırlıyor. Teknolojinin kalbinin atacağı zirvemizde, vizyoner konuşmacılarımızın yapacağı ilham verici sunumlar ve ufuk açıcı konuşmalarla katılımcılarımıza yepyeni pencereler aralamayı hedefliyoruz. Sektörün öncülerinden dinlenecek her bir başarı ve deneyim hikayesi, kendi zirvesine ulaşmak isteyen her bir katılımcı için güçlü birer motivasyon kaynağı haline gelecek.<br><br>Bu benzersiz deneyimi tam anlamıyla yaşayabilmek ve üretkenliği en üst seviyede tutabilmek adına, güne dinamik bir başlangıç sunan sabah kahvaltısı ikramımızla başlayacağız. Yoğun ve ilham dolu oturumların arasında enerjimizi tazelemek, fikir alışverişlerine keyifli bir mola vermek için ise öğle yemeği ikramımızla katılımcılarımızı ağırlayacağız. Sabah tam 09.00’da başlayacak olan kesintisiz teknoloji yolculuğumuz, gün boyu sürecek network fırsatları ve öğretici panellerin ardından saat 19.00’da görkemli bir kapanışla sona erecek.<br><br>Sektörün geleceğine yön verecek olan bu ilk zirvemizde, seçkin ve odaklanmış bir topluluk oluşturmak adına 200 katılımcıya ev sahipliği yapmayı planlıyoruz. Dinamik, meraklı ve üretmeye aç genç nesilleri bir araya getirmeyi amaçladığımız etkinliğimizde ana hedef kitlemiz liseli dostlarımız olsa da, kapılarımız en az lise öğrencisi olmak şartıyla vizyonumuza ortak olmak isteyen tüm üniversite öğrencilerine de sonuna kadar açık. Vertex’in birleştirici gücüyle, teknolojinin mutlak odağında buluşmak ve hep birlikte zirveye yürümek için gün sayıyoruz.<br><br>Bu vizyoner yolculukta yalnız olmadığımızı bilmek ve teknoloji dünyasının devleriyle omuz omuza yürümek, en büyük motivasyon kaynaklarımızdan birini oluşturuyor. Henüz ilk yıllarımızda olmamıza rağmen, yapay zekanın küresel aktörlerinden olan milyar dolarlık dev fal.ai başta olmak üzere, sektörün yönünü tayin eden onlarca vizyoner kuruluş bu büyük buluşmaya destek sağlıyor. Katılımcılarımızın yanı sıra, arka planda bu kusursuz deneyimi inşa etmek için gece gündüz çalışan yaklaşık 50 kişilik tam yetkili organizasyon ekibimizle birlikte, zirve günü alanda toplamda 250 kişilik dev bir teknoloji topluluğu olarak tek yürek olacağız.",
-    type: "BİLETLİ ETKİNLİK",
-    type_en: "TICKETED EVENT",
-    detailDesc_en: "This exciting gathering, bringing together future leaders and technology enthusiasts, is preparing to open its doors on September 27, 2026. At our summit where the heart of technology beats, we aim to open new horizons for our participants through inspiring presentations and eye-opening talks by visionary speakers. Every success and experience story shared by industry pioneers will serve as powerful motivation for every attendee seeking to reach their own peak.<br><br>To fully embrace this unique experience and keep productivity at the highest level, we will start the day with a dynamic morning breakfast. Between intense and inspiring sessions, we will refresh our energy with our lunch service. Our uninterrupted technology journey starting at exactly 9:00 AM will conclude with a grand closing at 7:00 PM, following all-day networking opportunities and educational panels.<br><br>At this inaugural summit that will shape the future of the industry, we plan to host 200 attendees to create an exclusive and focused community. While our main target audience is high school students, our doors are also wide open to all university students who wish to join our vision. With the unifying power of Vertex, we are counting the days to meet at the absolute focus of technology and march to the summit together.<br><br>Despite being in our early years, dozens of visionary organizations including the billion-dollar AI giant fal.ai are supporting this grand gathering. Together with our approximately 50-person organization team, we will be united as a massive 250-person technology community on summit day.",
-    disableRegister: false
-  },
-  {
-    id: "evt_anitkabir",
-    title: "Vertex Anıtkabir Ziyareti",
-    title_en: "Vertex Anıtkabir Visit",
-    desc: "Ulu önderimiz Atatürk'ün huzurunda, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Tarihi atmosferi hep birlikte soluyacağız.",
-    desc_en: "In the presence of our great leader Atatürk, we will closely witness how Vertex was born. We will breathe in this historical atmosphere together.",
-    date: "2026-11-08",
-    dateText: "8 Kasım 2026, 07.00 - 21.00",
-    dateText_en: "November 8, 2026, 07:00 AM - 09:00 PM",
-    location: "Türkiye, Ankara, Anıtkabir",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Anıtkabir,+Ankara,+Türkiye",
-    location_en: "Anıtkabir, Ankara, Turkey",
-    price: "YHT BİLETLİ",
-    price_en: "YHT TICKET",
-    stripeLink: "https://buy.stripe.com/00w8wQ6PI8VvfvJcxBeIw02",
-    banner: "url('../assets/gallery/anıtkabir.webp') center/cover",
-    detailDesc: "Ulu önderimiz Mustafa Kemal Atatürk'ün ebedi istirahatgahı olan Anıtkabir'i ziyaret ederek, Vertex'in nasıl doğduğuna en yakın şekilde tanıklık edeceğiz. Cumhuriyetimizin temel değerlerini ve ilerleme vizyonunu kendi vizyonumuzla harmanlayarak geleceğe daha emin adımlarla yürüyoruz.<br><br><b>Program Detayları:</b> Saat 07.00 ile 21.00 arasında gerçekleşecek bu özel ziyaretimizde YHT (Yüksek Hızlı Tren) kullanacağız. Maksimum kontenjanımız <b>20 kişi</b> ile sınırlıdır. Gün içinde Anıtkabir'in yanı sıra Vertex'in doğduğu toprakların başkentini de çok farklı perspektiflerden, dolu dolu tanıyacağız.",
-    type: "BİLETLİ ETKİNLİK",
-    type_en: "TICKETED EVENT",
-    detailDesc_en: "By visiting Anıtkabir, the eternal resting place of our great leader Mustafa Kemal Atatürk, we will closely witness how Vertex was born. We are walking towards the future with more confident steps by blending the fundamental values of our Republic and its vision of progress with our own vision.<br><br><b>Program Details:</b> In this special visit taking place between 07:00 AM and 09:00 PM, we will use the High-Speed Train (YHT). Our maximum capacity is limited to <b>20 people</b>. During the day, in addition to Anıtkabir, we will explore the capital where Vertex was born from very different perspectives.",
-    disableRegister: false
-  },
-  {
-    id: "evt_coffee_day",
-    title: "Vertex Coffee Day",
-    title_en: "Vertex Coffee Day",
-    desc: "Dünya Kahve Günü'ne özel, 20 kişilik butik bir networking ve teknoloji sohbeti buluşması.",
-    desc_en: "A boutique networking and tech chat meetup for 20 people, special for World Coffee Day.",
-    date: "2026-10-01",
-    dateText: "1 Ekim 2026",
-    dateText_en: "October 1, 2026",
-    location: "Türkiye, İstanbul, Mr. Chocolate Lab",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Mr.+Chocolate+Lab,+İstanbul,+Türkiye",
-    location_en: "Mr. Chocolate Lab, Istanbul, Turkey",
-    price: "ÇOK YAKINDA",
-    price_en: "COMING SOON",
-    banner: "url('../assets/gallery/coffee.webp') center/cover",
-    detailDesc: "1 Ekim Dünya Kahve Günü'nü, kahve kokuları eşliğinde teknoloji ve girişimcilik konuşarak kutluyoruz! Destekçimiz olan \"Mr. Chocolate Lab\" ev sahipliğinde gerçekleşecek bu butik buluşma, maksimum <b>20 kişilik</b> özel bir kontenjanla sınırlı olacak.<br><br>Sektördeki yenilikleri değerlendirmek, fikir çarpıştırmak ve Vertex ekibiyle doğrudan tanışmak için benzersiz bir fırsat. Katılım ücretine kahve ikramı dahildir. Biletler sınırlı sayıda olacağı için detayları ve satış tarihini yakında duyuracağız, takipte kalın!",
-    type: "BİLETLİ ETKİNLİK",
-    type_en: "TICKETED EVENT",
-    detailDesc_en: "We are celebrating October 1st, World Coffee Day, by talking about technology and entrepreneurship accompanied by the scent of coffee! Hosted by our supporter \"Mr. Chocolate Lab\", this boutique meetup will be limited to a special quota of maximum <b>20 people</b>.<br><br>A unique opportunity to evaluate innovations in the industry, brainstorm, and meet the Vertex team directly. Coffee service is included in the participation fee. Since tickets will be limited, we will announce the details and sale date soon, stay tuned!",
-    disableRegister: true
-  }
-];
+
 
 // --- Application State ---
-let events = [...DEFAULT_EVENTS];
+let events = [];
 let showPastEvents = true;
 let isStripeMode = false;
 let selectedEvent = null;
@@ -122,9 +34,6 @@ const registerFlowSuccess = document.getElementById('register-flow-success');
 // Stripe Simulation Elements
 const stripeCheckoutSection = document.getElementById('stripe-checkout-section');
 const stripeCheckoutPrice = document.getElementById('stripe-checkout-price');
-const cardNumberInput = document.getElementById('card-number');
-const cardExpiryInput = document.getElementById('card-expiry');
-const cardCvcInput = document.getElementById('card-cvc');
 
 // Ticket Showcase Elements
 const ticketEventName = document.getElementById('ticket-event-name');
@@ -138,96 +47,33 @@ const ticketQrCode = document.getElementById('ticket-qr-code');
 // --- Helper Functions ---
 
 // Check if a date string is in the past
-const isPastDate = (dateStr) => {
-  const eventDate = new Date(dateStr);
-  const today = new Date("2026-06-23"); // Setting reference time to match system metadata (June 2026)
-  return eventDate < today;
+const escapeText = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+const displayText = value => { const decoder=document.createElement('textarea'); decoder.innerHTML=value; return decoder.value; };
+const preparePublicEvent = event => {
+  const copy = {...event};
+  for (const key of ['title','title_en','desc','desc_en','location','location_en','type','type_en','price_en']) if(copy[key]) copy[key] = escapeText(copy[key]);
+  copy.speakers = (copy.speakers || []).map(s=>({...s,name:escapeText(s.name),role:escapeText(s.role),role_en:escapeText(s.role_en)}));
+  copy.agenda = (copy.agenda || []).map(a=>Object.fromEntries(Object.entries(a).map(([k,v])=>[k,escapeText(v)])));
+  copy.translations = Object.fromEntries(Object.entries(copy.translations || {}).map(([lang,t])=>[lang,Object.fromEntries(Object.entries(t).map(([k,v])=>[k,k==='detailDesc'?v:escapeText(v)]))]));
+  return copy;
 };
-
-// Generate stylized custom SVG QR code matrix (simulated)
-const generateDynamicQRCode = (data) => {
-  let dots = "";
-  const size = 80;
-  const resolution = 12;
-  const cellSize = size / resolution;
-  
-  let seed = 0;
-  for (let i = 0; i < data.length; i++) {
-    seed += data.charCodeAt(i);
-  }
-  
-  const randomBit = (x, y) => {
-    if (
-      (x < 3 && y < 3) || 
-      (x >= resolution - 3 && y < 3) || 
-      (x < 3 && y >= resolution - 3) 
-    ) {
-      if ((x === 0 || x === 2 || y === 0 || y === 2) && x < 3 && y < 3) return true;
-      if ((x === resolution - 1 || x === resolution - 3 || y === 0 || y === 2) && x >= resolution - 3 && y < 3) return true;
-      if ((x === 0 || x === 2 || y === resolution - 1 || y === resolution - 3) && x < 3 && y >= resolution - 3) return true;
-      
-      if (x === 1 && y === 1) return true;
-      if (x === resolution - 2 && y === 1) return true;
-      if (x === 1 && y === resolution - 2) return true;
-      
-      return false;
-    }
-    
-    const val = Math.sin(seed + x * 12.9898 + y * 78.233) * 43758.5453;
-    return (val - Math.floor(val)) > 0.48;
-  };
-
-  for (let y = 0; y < resolution; y++) {
-    for (let x = 0; x < resolution; x++) {
-      if (randomBit(x, y)) {
-        const cx = x * cellSize + cellSize / 2;
-        const cy = y * cellSize + cellSize / 2;
-        const r = cellSize / 2.5; 
-        dots += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#000000" />`;
-      }
-    }
-  }
-
-  return `
-    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100%" height="100%" fill="#ffffff"/>
-      ${dots}
-    </svg>
-  `;
+const api = async (name, data = {}) => {
+  const response = await fetch(`https://europe-west1-vertex-ai-1618.cloudfunctions.net/${name}`, {
+    method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({data})
+  });
+  const body = await response.json();
+  if (!response.ok || body.error) throw new Error(body.error?.message || 'Service unavailable');
+  return body.result;
 };
-
-// Calculate Stripe simulated price based on event
-const updateCheckoutPrice = () => {
-  if (!selectedEvent) return;
-  stripeCheckoutPrice.textContent = `${selectedEvent.price} TL`;
+const formatEventDate = (event, lang) => event.startsAt
+  ? new Intl.DateTimeFormat(lang,{dateStyle:'long',timeStyle:'short',timeZone:event.timeZone}).format(new Date(event.startsAt)) + ` (${event.timeZone})`
+  : new Intl.DateTimeFormat(lang,{dateStyle:'long',timeZone:'UTC'}).format(new Date(event.date+'T00:00:00Z'));
+const isPastDate = (dateStr, event = {}) => {
+  if (event.endsAt) return Date.parse(event.endsAt) < Date.now();
+  const today = new Intl.DateTimeFormat('en-CA', {timeZone:event.timeZone || 'Europe/Istanbul', year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  return dateStr < today;
 };
-
-// Auto formatting card inputs
-if (cardNumberInput) {
-  cardNumberInput.addEventListener('input', (e) => {
-    let val = e.target.value.replace(/\D/g, '');
-    let formatted = val.match(/.{1,4}/g)?.join(' ') || '';
-    e.target.value = formatted.substring(0, 19); 
-  });
-}
-
-if (cardExpiryInput) {
-  cardExpiryInput.addEventListener('input', (e) => {
-    let val = e.target.value.replace(/\D/g, '');
-    if (val.length >= 2) {
-      e.target.value = val.substring(0, 2) + '/' + val.substring(2, 4);
-    } else {
-      e.target.value = val;
-    }
-  });
-}
-
-if (cardCvcInput) {
-  cardCvcInput.addEventListener('input', (e) => {
-    e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
-  });
-}
-
+const unavailable = event => event.status === 'cancelled' || event.salesStatus !== 'open' || event.disableRegister || (event.capacity !== null && event.capacity !== undefined && event.registeredCount >= event.capacity);
 // --- Render Functions ---
 
 
@@ -249,13 +95,13 @@ const renderEvents = () => {
   const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const filtered = sortedEvents.filter(event => {
-    const past = isPastDate(event.date);
+    const past = isPastDate(event.date, event);
     // If showPastEvents is true, we display all events. Otherwise, show only upcoming events.
     return showPastEvents ? true : !past;
   });
 
   const lang = document.documentElement.lang || 'tr';
-  const trans = window.TRANSLATIONS[lang];
+  const trans = window.TRANSLATIONS[lang] || window.TRANSLATIONS.en;
 
   if (filtered.length === 0) {
     eventsGrid.innerHTML = '';
@@ -263,16 +109,16 @@ const renderEvents = () => {
   }
 
   filtered.forEach(event => {
-    const isPast = isPastDate(event.date);
+    const isPast = isPastDate(event.date, event);
     const card = document.createElement('div');
-    card.className = 'card event-card horizontal-card animated-border';
+    card.className = 'card event-card';
 
-    const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
-    const desc = lang !== 'tr' ? (event.desc_en || event.desc) : event.desc;
-    const location = lang !== 'tr' ? (event.location_en || event.location) : event.location;
-    const dateText = lang !== 'tr' ? (event.dateText_en || event.dateText) : event.dateText;
+    const title = event.translations?.[lang]?.title || (lang !== 'tr' ? (event.title_en || event.title) : event.title);
+    const desc = event.translations?.[lang]?.desc || (lang !== 'tr' ? (event.desc_en || event.desc) : event.desc);
+    const location = event.translations?.[lang]?.location || (lang !== 'tr' ? (event.location_en || event.location) : event.location);
+    const dateText = formatEventDate(event,lang);
     
-    const statusText = isPast ? trans["event-status-past"] : trans["event-status-upcoming"];
+    const statusText = event.status === 'cancelled' ? trans['event-status-cancelled'] : event.salesStatus === 'sold_out' || event.capacity != null && event.registeredCount >= event.capacity ? trans['event-status-sold-out'] : isPast ? trans["event-status-past"] : trans["event-status-upcoming"];
     let priceText = "";
     if (event.price === "multiple") {
       priceText = lang !== 'tr' ? 'Ticket Options' : 'Bilet Seçenekleri';
@@ -286,9 +132,9 @@ const renderEvents = () => {
     
     card.innerHTML = `
       <div class="event-img-container">
-        ${event.images && event.images.length > 0 ? `
+        ${(event.cover || event.images?.length) ? `
           <div class="event-carousel" id="carousel-${event.id}" data-current="0">
-            ${event.images.map((img, i) => `<div class="carousel-slide ${i === 0 ? 'active' : ''}" style="background-image: url('${img}')"></div>`).join('')}
+            ${(event.cover ? [event.cover, ...(event.images || [])] : event.images).map((img, i) => `<div class="carousel-slide ${i === 0 ? 'active' : ''}" style="background-image: url('${img}')"></div>`).join('')}
             <button class="carousel-btn prev-btn" onclick="moveCarousel('${event.id}', -1)">❮</button>
             <button class="carousel-btn next-btn" onclick="moveCarousel('${event.id}', 1)">❯</button>
           </div>
@@ -311,7 +157,7 @@ const renderEvents = () => {
         </div>
         <div class="event-card-actions">
           <button class="btn btn-outline btn-sm view-details-btn" data-id="${event.id}">${trans["event-btn-details"]}</button>
-          ${!isPast ? `<button class="btn btn-primary btn-sm register-btn" data-id="${event.id}" ${event.disableRegister ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>${trans["event-btn-register"]}</button>` : ''}
+          ${!isPast && !unavailable(event) ? `<button class="btn btn-primary btn-sm register-btn" data-id="${event.id}" ${unavailable(event) ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>${trans["event-btn-register"]}</button>` : ''}
         </div>
       </div>
     `;
@@ -333,14 +179,14 @@ const openDetailModal = (eventId) => {
   const event = events.find(e => e.id === eventId);
   if (!event) return;
 
-  const isPast = isPastDate(event.date);
+  const isPast = isPastDate(event.date, event);
   const lang = document.documentElement.lang || 'tr';
-  const trans = window.TRANSLATIONS[lang];
+  const trans = window.TRANSLATIONS[lang] || window.TRANSLATIONS.en;
   
-  const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
-  const desc = lang !== 'tr' ? (event.desc_en || event.desc) : event.desc;
-  const location = lang !== 'tr' ? (event.location_en || event.location) : event.location;
-  const dateText = lang !== 'tr' ? (event.dateText_en || event.dateText) : event.dateText;
+  const title = event.translations?.[lang]?.title || (lang !== 'tr' ? (event.title_en || event.title) : event.title);
+  const desc = event.translations?.[lang]?.desc || (lang !== 'tr' ? (event.desc_en || event.desc) : event.desc);
+  const location = event.translations?.[lang]?.location || (lang !== 'tr' ? (event.location_en || event.location) : event.location);
+  const dateText = formatEventDate(event,lang);
   const priceText = event.price === 0 ? trans["event-price-free-detail"] : `${event.price} TL`;
 
   let speakersHTML = "";
@@ -384,10 +230,10 @@ const openDetailModal = (eventId) => {
   }
 
   modalDetailBody.innerHTML = `
-    ${event.images && event.images.length > 0 ? `
+    ${(event.cover || event.images?.length) ? `
       <div style="position: relative; height: 180px; margin-bottom: 24px; border-radius: 12px; overflow: hidden; width: 100%;">
         <div class="event-carousel" id="carousel-modal-${event.id}" data-current="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-          ${event.images.map((img, i) => `<div class="carousel-slide ${i === 0 ? 'active' : ''}" style="background-image: url('${img}')"></div>`).join('')}
+          ${(event.cover ? [event.cover, ...(event.images || [])] : event.images).map((img, i) => `<div class="carousel-slide ${i === 0 ? 'active' : ''}" style="background-image: url('${img}')"></div>`).join('')}
           <button class="carousel-btn prev-btn" onclick="moveCarousel('modal-${event.id}', -1)">❮</button>
           <button class="carousel-btn next-btn" onclick="moveCarousel('modal-${event.id}', 1)">❯</button>
         </div>
@@ -397,39 +243,58 @@ const openDetailModal = (eventId) => {
         <span class="event-banner-logo" style="font-size: 32px; color: rgba(255,255,255,0.3);">${lang !== 'tr' ? (event.type_en || event.type || '') : (event.type || '')}</span>
       </div>
     `}
-    <h3 class="modal-detail-title gradient-text">${title}</h3>
+    <h3 id="modal-detail-heading" class="modal-detail-title">${title}</h3>
     <div class="modal-detail-meta-row">
       <div class="modal-detail-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px; transform: translateY(2px);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>${dateText}</div>
       <div class="modal-detail-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px; transform: translateY(2px);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>${event.mapUrl ? `<a href="${event.mapUrl}" target="_blank" style="color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 4px; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">${location}</a>` : location}</div>
       
     </div>
     <div class="modal-detail-content">
-      <p>${event.detailDesc ? (lang !== 'tr' ? (event.detailDesc_en || event.detailDesc) : event.detailDesc) : desc}</p>
+      <p>${event.detailDesc ? (event.translations?.[lang]?.detailDesc || (lang !== 'tr' ? (event.detailDesc_en || event.detailDesc) : event.detailDesc)) : desc}</p>
     </div>
     
     ${agendaHTML}
     ${speakersHTML}
 
     <div style="margin-top: 32px; display: flex; gap: 12px;">
-      ${!isPast ? `<button class="btn btn-primary" style="flex: 1;" onclick="document.getElementById('event-detail-modal').classList.remove('active'); document.querySelector('.register-btn[data-id=\\'${event.id}\\']').click();">${trans["modal-detail-btn-register"]}</button>` : ''}
+      ${!isPast && !unavailable(event) ? `<button class="btn btn-primary" style="flex: 1;" id="modal-register-btn">${trans["modal-detail-btn-register"]}</button>` : ''}
       <button class="btn btn-outline" style="flex: 1;" onclick="document.getElementById('event-detail-modal').classList.remove('active');">${trans["modal-detail-btn-back"]}</button>
     </div>
   `;
 
+  document.getElementById('modal-register-btn')?.addEventListener('click',()=>{detailModal.classList.remove('active');openRegisterModal(event.id);});
   detailModal.classList.add('active');
 };
 
 const openRegisterModal = (eventId) => {
   const event = events.find(e => e.id === eventId);
-  if (!event) return;
+  if (!event || isPastDate(event.date, event) || unavailable(event)) return;
 
   const lang = document.documentElement.lang || 'tr';
-  const trans = window.TRANSLATIONS[lang];
-  const title = lang !== 'tr' ? (event.title_en || event.title) : event.title;
+  const trans = window.TRANSLATIONS[lang] || window.TRANSLATIONS.en;
+  const title = event.translations?.[lang]?.title || (lang !== 'tr' ? (event.title_en || event.title) : event.title);
 
+  if (event.ticketCategories?.length) {
+    registerEventTitle.textContent = displayText(title);
+    registrationForm.style.display = 'none';
+    registerFlowForm.style.display = 'block';
+    registerFlowSuccess.style.display = 'none';
+    let tiers = document.getElementById('ticket-selection-div');
+    if (!tiers) { tiers = document.createElement('div'); tiers.id = 'ticket-selection-div'; registerFlowForm.append(tiers); }
+    tiers.replaceChildren(); tiers.style.display = 'grid'; tiers.style.gap = '12px';
+    for (const tier of event.ticketCategories) {
+      const link = document.createElement('a'); link.className = 'btn btn-primary';
+      link.textContent = `${tier.name} · ${tier.price} ${tier.currency || 'TRY'}`;
+      if (tier.stripeLink && tier.salesStatus !== 'closed' && tier.salesStatus !== 'sold_out') { link.href = tier.stripeLink; link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+      else { link.setAttribute('aria-disabled','true'); }
+      tiers.append(link);
+      if(tier.description){const description=document.createElement('p');description.textContent=tier.description;tiers.append(description);}
+    }
+    registerModal.classList.add('active'); return;
+  }
   // Özel bilet seçim paneli: Vertex Teknoloji Zirvesi '26 için
   if (event.id === "evt_tech_summit") {
-    registerEventTitle.textContent = lang !== 'tr' ? `${title} - Ticket Selection` : `${title} - Bilet Seçimi`;
+    registerEventTitle.textContent = lang !== 'tr' ? `${displayText(title)} - Ticket Selection` : `${displayText(title)} - Bilet Seçimi`;
     registerEventTitle.style.textAlign = 'center';
     const subTitle = document.querySelector('#register-flow-form p');
     if (subTitle) subTitle.style.textAlign = 'center';
@@ -470,12 +335,12 @@ const openRegisterModal = (eventId) => {
     ticketSelectionDiv.innerHTML = `
       <p style="color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 10px;">${ticketSelectText}</p>
       
-      <div style="background: rgba(203, 108, 230, 0.1); border: 1px solid var(--primary); border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: left; font-size: 13px; line-height: 1.5; color: var(--text);">
+      <div style="background: var(--bg-secondary); border: 1px solid var(--primary); border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: left; font-size: 13px; line-height: 1.5; color: var(--text);">
         ${lang !== 'tr' ? benefitsEn : benefitsTr}
       </div>
 
-      <button class="btn btn-outline" ${spesiyalDisabled ? '' : `onclick="window.open('${event.stripeLinkSpesiyal}', '_blank')"`} ${spesiyalDisabled} style="padding: 15px; font-size: 16px; border-color: var(--primary); color: var(--text);">${spesiyalText}</button>
-      <button class="btn btn-primary" ${standartDisabled ? '' : `onclick="window.open('${event.stripeLinkStandart}', '_blank')"`} ${standartDisabled} style="padding: 15px; font-size: 16px;">${standartText}</button>
+      <button class="btn btn-outline" ${spesiyalDisabled ? '' : `onclick="window.open('${event.stripeLinkSpesiyal}', '_blank', 'noopener,noreferrer')"`} ${spesiyalDisabled} style="padding: 15px; font-size: 16px; border-color: var(--primary); color: var(--text);">${spesiyalText}</button>
+      <button class="btn btn-primary" ${standartDisabled ? '' : `onclick="window.open('${event.stripeLinkStandart}', '_blank', 'noopener,noreferrer')"`} ${standartDisabled} style="padding: 15px; font-size: 16px;">${standartText}</button>
     `;
     ticketSelectionDiv.style.display = 'flex';
     
@@ -490,6 +355,8 @@ const openRegisterModal = (eventId) => {
     return;
   }
 
+  if (event.price !== 0) { alert(trans['event-payment-unavailable']); return; }
+
   // Default flow for free events
   const ticketSelectionDivLocal = document.getElementById('ticket-selection-div');
   if (ticketSelectionDivLocal) ticketSelectionDivLocal.style.display = 'none';
@@ -497,7 +364,7 @@ const openRegisterModal = (eventId) => {
 
   selectedEvent = event;
 
-  registerEventTitle.textContent = `${title} - ${trans["register-flow-title"]}`;
+  registerEventTitle.textContent = `${displayText(title)} - ${trans["register-flow-title"]}`;
   registerEventTitle.style.textAlign = 'left';
   const subTitleLocal = document.querySelector('#register-flow-form p');
   if (subTitleLocal) subTitleLocal.style.textAlign = 'left';
@@ -513,81 +380,36 @@ const openRegisterModal = (eventId) => {
 };
 
 const updateStripeVisibility = () => {
-  isStripeMode = selectedEvent && selectedEvent.price > 0;
-  const submitBtn = document.getElementById('submit-reg-btn');
+  stripeCheckoutSection.hidden = true;
   const lang = document.documentElement.lang || 'tr';
-  const trans = window.TRANSLATIONS[lang];
-
-  if (isStripeMode) {
-    stripeCheckoutSection.style.display = 'block';
-    
-    cardNumberInput.setAttribute('required', 'true');
-    cardExpiryInput.setAttribute('required', 'true');
-    cardCvcInput.setAttribute('required', 'true');
-    
-    if (submitBtn) submitBtn.textContent = trans["form-btn-submit-paid"];
-    updateCheckoutPrice();
-  } else {
-    stripeCheckoutSection.style.display = 'none';
-    
-    cardNumberInput.removeAttribute('required');
-    cardExpiryInput.removeAttribute('required');
-    cardCvcInput.removeAttribute('required');
-    
-    if (submitBtn) submitBtn.textContent = trans["form-btn-submit-free"];
-  }
+  document.getElementById('submit-reg-btn').textContent = window.TRANSLATIONS[lang]['form-btn-submit-free'];
 };
 
 // Form Submit Handler (Ticket Registration)
-registrationForm.addEventListener('submit', (e) => {
+registrationForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
-  const submitBtn = document.getElementById('submit-reg-btn');
-  const originalText = submitBtn.textContent;
-  const lang = document.documentElement.lang || 'tr';
-  const trans = window.TRANSLATIONS[lang];
-  
-  submitBtn.disabled = true;
-  if (isStripeMode) {
-    submitBtn.innerHTML = `<span style="display:inline-block; animation: rotate-art 1s linear infinite; margin-right: 8px;">⏳</span> ${trans["form-submitting-paid"]}`;
-  } else {
-    submitBtn.innerHTML = trans["form-submitting-free"];
-  }
-
-  setTimeout(() => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
-    
-    const name = document.getElementById('reg-name').value;
-
-    const title = lang !== 'tr' ? (selectedEvent.title_en || selectedEvent.title) : selectedEvent.title;
-    const dateText = lang !== 'tr' ? (selectedEvent.dateText_en || selectedEvent.dateText) : selectedEvent.dateText;
-    const location = lang !== 'tr' ? (selectedEvent.location_en || selectedEvent.location) : selectedEvent.location;
-    
-    ticketEventName.textContent = title.toUpperCase();
-    ticketUserName.textContent = name;
-    ticketEventDate.textContent = dateText;
-    ticketEventLoc.textContent = location;
-    
-    if (selectedEvent.price > 0) {
-      ticketTierBadge.textContent = trans["ticket-pass-paid"];
-      ticketTierBadge.style.background = 'var(--gradient-accent)';
-      ticketTierBadge.style.color = '#ffffff';
-    } else {
-      ticketTierBadge.textContent = trans["ticket-pass-free"];
-      ticketTierBadge.style.background = 'var(--primary)';
-      ticketTierBadge.style.color = 'var(--btn-text-color)';
-    }
-    
-    const serial = `VTX-${Math.floor(1000 + Math.random() * 9000)}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-    ticketSerialId.textContent = serial;
-    
-    const qrData = `https://events.vertexishere.com/validate?id=${serial}&name=${encodeURIComponent(name)}&event=${encodeURIComponent(selectedEvent.title)}`;
-    ticketQrCode.innerHTML = generateDynamicQRCode(qrData);
-
+  const button = document.getElementById('submit-reg-btn');
+  if (button.disabled) return;
+  button.disabled = true;
+  try {
+    if (selectedEvent.price !== 0) throw new Error('Please use the Stripe payment link.');
+    const result = await api('registerForEvent', {eventId:selectedEvent.id, name:document.getElementById('reg-name').value, email:document.getElementById('reg-email').value});
+    ticketEventName.textContent = displayText(selectedEvent.title);
+    ticketUserName.textContent = document.getElementById('reg-name').value;
+    ticketEventDate.textContent = selectedEvent.dateText;
+    ticketEventLoc.textContent = displayText(selectedEvent.location);
+    ticketSerialId.textContent = result.registrationId;
+    ticketQrCode.replaceChildren();
+    const link = document.createElement('a');
+    link.href = `/validate.html?id=${encodeURIComponent(result.registrationId)}`;
+    link.textContent = result.registrationId;
+    const canvas = document.createElement('canvas');
+    await QRCode.toCanvas(canvas, link.href, {width:160,margin:2});
+    ticketQrCode.append(canvas, link);
     registerFlowForm.style.display = 'none';
     registerFlowSuccess.style.display = 'block';
-  }, 1500);
+  } catch(error) { alert(window.TRANSLATIONS[document.documentElement.lang || 'tr']['event-registration-error']); }
+  finally { button.disabled = false; }
 });
 
 // Close Modals
@@ -600,31 +422,13 @@ window.addEventListener('click', (e) => {
   if (e.target === registerModal) registerModal.classList.remove('active');
 });
 
-// Download ticket simulation
-document.getElementById('download-ticket-btn').addEventListener('click', () => {
-  const btn = document.getElementById('download-ticket-btn');
-  const lang = document.documentElement.lang || 'tr';
-  const trans = window.TRANSLATIONS[lang];
-
-  btn.textContent = trans["ticket-action-download-success"];
-  btn.style.background = "#00c864";
-  btn.style.borderColor = "#00c864";
-  
-  setTimeout(() => {
-    alert(trans["ticket-download-alert"] + ticketSerialId.textContent);
-    btn.textContent = trans["ticket-action-download"];
-    btn.style.background = "";
-    btn.style.borderColor = "";
-  }, 500);
-});
-
-// Load Custom Events from LocalStorage
-const loadEvents = () => {
-  // Clear any existing custom events from localStorage to keep the agenda completely empty
-  localStorage.removeItem('vtx_custom_events');
-  events = [...DEFAULT_EVENTS];
+document.getElementById('download-ticket-btn').addEventListener('click', () => window.print());
+const loadEvents = async () => {
+  try { events = (await api('getPublishedEvents')).events.map(preparePublicEvent); renderEvents(); }
+  catch(error) { if (!events.length) eventsGrid.textContent = window.TRANSLATIONS[document.documentElement.lang || 'tr']['event-service-unavailable']; }
 };
-
+window.addEventListener('focus', loadEvents);
+setInterval(loadEvents, 60000);
 // --- Filter Interactions ---
 
 if (showPastEventsCheckbox) {
@@ -649,3 +453,29 @@ const init = () => {
 };
 
 init();
+
+// Accessible modal focus, Escape dismissal and focus restoration.
+let activeEventModal = null;
+let eventModalTrigger = null;
+const syncEventModals = () => {
+  const next = [detailModal, registerModal].find(modal=>modal.classList.contains('active')) || null;
+  for(const modal of [detailModal,registerModal])modal.setAttribute('aria-hidden',String(modal!==next));
+  if(next===activeEventModal)return;
+  if(next){
+    if(!activeEventModal)eventModalTrigger=document.activeElement;
+    next.querySelector('button,a[href],input:not([type="hidden"]),select,textarea')?.focus();
+  } else eventModalTrigger?.focus();
+  activeEventModal=next;
+  document.documentElement.classList.toggle('event-modal-open',!!next);
+};
+const eventModalObserver = new MutationObserver(syncEventModals);
+for(const modal of [detailModal,registerModal])eventModalObserver.observe(modal,{attributes:true,attributeFilter:['class']});
+document.addEventListener('keydown',e=>{
+  if(!activeEventModal)return;
+  if(e.key==='Escape'){activeEventModal.classList.remove('active');return;}
+  if(e.key!=='Tab')return;
+  const controls=[...activeEventModal.querySelectorAll('button:not(:disabled),a[href],input:not([type="hidden"]):not(:disabled),select:not(:disabled),textarea:not(:disabled)')].filter(el=>el.getClientRects().length);
+  const first=controls[0],last=controls.at(-1);
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}
+});
