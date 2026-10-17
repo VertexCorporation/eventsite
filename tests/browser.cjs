@@ -39,6 +39,41 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  assert.deepEqual(errors,[]);
  report.push({width,theme,cards:5,overflow,qr:true,errors});await page.close();
  }
+ // Header parity: square controls, only one open panel, light/dark/system options.
+ const controls=await browser.newPage({viewport:{width:390,height:850}});
+ await controls.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{events}}}));
+ await controls.goto(baseURL+'/tr/',{waitUntil:'domcontentloaded'});
+ await controls.waitForSelector('.event-card');
+ const controlShape=await controls.locator('#lang-btn-trigger').evaluate(el=>getComputedStyle(el).borderRadius);
+ assert.notEqual(controlShape,'50%');
+ assert.equal(await controls.locator('footer .footer-brand .logo-events').count(),1);
+ assert.equal(await controls.locator('footer .footer-col a[href*="x.com/VertexCorpLTD"]').count(),1);
+ assert.equal(await controls.locator('footer .footer-col a[href*="/tr/#projects"]').count(),1);
+ await controls.locator('#lang-btn-trigger').click();
+ assert.equal(await controls.locator('#language-dropdown.active').count(),1);
+ await controls.locator('.theme-toggle-btn').click();
+ await controls.waitForSelector('#eventsite-theme-menu.is-open');
+ assert.equal(await controls.locator('#language-dropdown.active').count(),0);
+ await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="light"]').click();
+ assert.equal(await controls.locator('html').getAttribute('data-theme'),'light');
+ await controls.locator('.theme-toggle-btn').click();
+ await controls.waitForSelector('#eventsite-theme-menu.is-open');
+ await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="dark"]').click();
+ assert.equal(await controls.locator('html').getAttribute('data-theme'),'dark');
+ await controls.locator('.theme-toggle-btn').click();
+ await controls.waitForSelector('#eventsite-theme-menu.is-open');
+ await controls.locator('#lang-btn-trigger').click();
+ assert.equal(await controls.locator('#eventsite-theme-menu.is-open').count(),0);
+ assert.equal(await controls.locator('#language-dropdown.active').count(),1);
+ await controls.keyboard.press('Escape');
+ assert.equal(await controls.locator('#language-dropdown.active').count(),0);
+ await controls.locator('.theme-toggle-btn').click();
+ await controls.waitForSelector('#eventsite-theme-menu.is-open');
+ await controls.locator('#eventsite-theme-menu .event-theme-option[data-mode="system"]').click();
+ assert.equal(await controls.locator('html').getAttribute('data-theme-mode'),'system');
+ const controlsOverflow=await controls.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+ assert.equal(controlsOverflow,false,'mobile header overflow');
+ await controls.close();
  for(const lang of ['tr','en','de','fr','es','it','pt','nl','id','ru','ja','ko','zh','hi','ar','az']){
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{events}}}));await page.goto(`${baseURL}/${lang}/`,{waitUntil:'domcontentloaded'});await page.waitForSelector('.event-card');assert.equal(await page.locator('html').getAttribute('lang'),lang);await page.close();}
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{valid:false}}}));await page.goto(`${baseURL}/validate.html?id=FAKE`);await page.waitForFunction(()=>document.querySelector('#result-box').textContent.includes('DOĞRULANAMADI'));await page.close();

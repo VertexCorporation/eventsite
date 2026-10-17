@@ -12,7 +12,7 @@ window.TRANSLATIONS = {
     "purpose-vision-p3": "İşte biz de ismimizi tüm bu anlamların ve fazlasının oluşturduğu kolektif mânâdan aldık; insanlar olarak potansiyelimizin ve sınırlarımızın en üst seviyesini gösterip hep birlikte zirveye ulaşacağız!",
     "purpose-vision-p4": "Bu vizyon doğrultusunda, Vertex Etkinlikleri'ni başlatmaktan mutluluk duyuyoruz; misyonumuz, bu vizyon doğrultusunda insanları birleştirerek hep beraber teknoloji sektöründe gelişmek ve sektörü geliştirmektir.",
     "footer-brand-desc": "Teknolojinin Zirvesi",
-    "footer-copyright": "© 2026 Vertex Corporation, tüm hakları saklıdır.",
+    "footer-copyright": "© 2026 Vertex Corporation Ltd. Tüm hakları saklıdır.",
 
     // Navigation
     "nav-home": "Ana Sayfa",
@@ -115,7 +115,7 @@ window.TRANSLATIONS = {
 
     // Localized Hrefs
     "href-cortex": "https://www.vertexishere.com/tr/indir.html",
-    "href-about": "https://www.vertexishere.com/tr/#about",
+    "href-about": "https://www.vertexishere.com/tr/#home",
     "href-team": "https://www.vertexishere.com/tr/#team",
     "href-vision": "https://www.vertexishere.com/tr/#vision",
     "footer-link-privacy-url": "gizlilik-politikasi.html",
@@ -233,7 +233,7 @@ window.TRANSLATIONS = {
 
     // Localized Hrefs
     "href-cortex": "https://www.vertexishere.com/en/download.html",
-    "href-about": "https://www.vertexishere.com/en/#about",
+    "href-about": "https://www.vertexishere.com/en/#home",
     "href-team": "https://www.vertexishere.com/en/#team",
     "href-vision": "https://www.vertexishere.com/en/#vision",
     "footer-link-privacy-url": "privacy-policy.html",
@@ -326,7 +326,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookie-Richtlinie",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/de/download.html",
-    "href-about": "https://www.vertexishere.com/de/#about",
+    "href-about": "https://www.vertexishere.com/de/#home",
     "href-team": "https://www.vertexishere.com/de/#team",
     "href-vision": "https://www.vertexishere.com/de/#vision",
     "footer-link-privacy-url": "datenschutzrichtlinie.html",
@@ -419,7 +419,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookies",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/fr/download.html",
-    "href-about": "https://www.vertexishere.com/fr/#about",
+    "href-about": "https://www.vertexishere.com/fr/#home",
     "href-team": "https://www.vertexishere.com/fr/#team",
     "href-vision": "https://www.vertexishere.com/fr/#vision",
     "footer-link-privacy-url": "politique-de-confidentialite.html",
@@ -512,7 +512,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookies",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/es/download.html",
-    "href-about": "https://www.vertexishere.com/es/#about",
+    "href-about": "https://www.vertexishere.com/es/#home",
     "href-team": "https://www.vertexishere.com/es/#team",
     "href-vision": "https://www.vertexishere.com/es/#vision",
     "footer-link-privacy-url": "politica-de-privacidad.html",
@@ -605,7 +605,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookie Policy",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/it/download.html",
-    "href-about": "https://www.vertexishere.com/it/#about",
+    "href-about": "https://www.vertexishere.com/it/#home",
     "href-team": "https://www.vertexishere.com/it/#team",
     "href-vision": "https://www.vertexishere.com/it/#vision",
     "footer-link-privacy-url": "informativa-sulla-privacy.html",
@@ -698,7 +698,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookies",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/pt/download.html",
-    "href-about": "https://www.vertexishere.com/pt/#about",
+    "href-about": "https://www.vertexishere.com/pt/#home",
     "href-team": "https://www.vertexishere.com/pt/#team",
     "href-vision": "https://www.vertexishere.com/pt/#vision",
     "footer-link-privacy-url": "politica-de-privacidade.html",
@@ -791,7 +791,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookiebeleid",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/nl/download.html",
-    "href-about": "https://www.vertexishere.com/nl/#about",
+    "href-about": "https://www.vertexishere.com/nl/#home",
     "href-team": "https://www.vertexishere.com/nl/#team",
     "href-vision": "https://www.vertexishere.com/nl/#vision",
     "footer-link-privacy-url": "privacybeleid.html",
@@ -884,7 +884,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Kebijakan Cookie",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/id/download.html",
-    "href-about": "https://www.vertexishere.com/id/#about",
+    "href-about": "https://www.vertexishere.com/id/#home",
     "href-team": "https://www.vertexishere.com/id/#team",
     "href-vision": "https://www.vertexishere.com/id/#vision",
     "footer-link-privacy-url": "kebijakan-privasi.html",
@@ -977,7 +977,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Файлы cookie",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/ru/download.html",
-    "href-about": "https://www.vertexishere.com/ru/#about",
+    "href-about": "https://www.vertexishere.com/ru/#home",
     "href-team": "https://www.vertexishere.com/ru/#team",
     "href-vision": "https://www.vertexishere.com/ru/#vision",
     "footer-link-privacy-url": "politika-konfidencialnosti.html",
@@ -1070,7 +1070,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Cookieポリシー",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/ja/download.html",
-    "href-about": "https://www.vertexishere.com/ja/#about",
+    "href-about": "https://www.vertexishere.com/ja/#home",
     "href-team": "https://www.vertexishere.com/ja/#team",
     "href-vision": "https://www.vertexishere.com/ja/#vision",
     "footer-link-privacy-url": "puraibashi-porishi.html",
@@ -1163,7 +1163,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "쿠키 방침",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/ko/download.html",
-    "href-about": "https://www.vertexishere.com/ko/#about",
+    "href-about": "https://www.vertexishere.com/ko/#home",
     "href-team": "https://www.vertexishere.com/ko/#team",
     "href-vision": "https://www.vertexishere.com/ko/#vision",
     "footer-link-privacy-url": "gaein-jeongbo-cheori-bangchim.html",
@@ -1256,7 +1256,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "कुकी नीति",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/hi/download.html",
-    "href-about": "https://www.vertexishere.com/hi/#about",
+    "href-about": "https://www.vertexishere.com/hi/#home",
     "href-team": "https://www.vertexishere.com/hi/#team",
     "href-vision": "https://www.vertexishere.com/hi/#vision",
     "footer-link-privacy-url": "gopaniyata-niti.html",
@@ -1349,7 +1349,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "سياسة الكوكيز",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/ar/download.html",
-    "href-about": "https://www.vertexishere.com/ar/#about",
+    "href-about": "https://www.vertexishere.com/ar/#home",
     "href-team": "https://www.vertexishere.com/ar/#team",
     "href-vision": "https://www.vertexishere.com/ar/#vision",
     "footer-link-privacy-url": "siyasat-al-khususiyya.html",
@@ -1442,7 +1442,7 @@ window.TRANSLATIONS = {
     "footer-link-cookies": "Kuki Siyasəti",
     "footer-address": "20 Wenlock Road, London, N1 7GU, United Kingdom",
     "href-cortex": "https://www.vertexishere.com/az/download.html",
-    "href-about": "https://www.vertexishere.com/az/#about",
+    "href-about": "https://www.vertexishere.com/az/#home",
     "href-team": "https://www.vertexishere.com/az/#team",
     "href-vision": "https://www.vertexishere.com/az/#vision"
   }
@@ -1580,3 +1580,10 @@ const EVENT_MESSAGES = {
   }
 };
 for (const [lang, messages] of Object.entries(EVENT_MESSAGES)) Object.assign(window.TRANSLATIONS[lang], messages);
+/* The Chinese locale has real matching Vertex pages, not the English fallback. */
+Object.assign(window.TRANSLATIONS.zh, {
+  "href-cortex": "https://www.vertexishere.com/zh/download.html",
+  "href-about": "https://www.vertexishere.com/zh/#home",
+  "href-team": "https://www.vertexishere.com/zh/#team",
+  "href-vision": "https://www.vertexishere.com/zh/#vision"
+});

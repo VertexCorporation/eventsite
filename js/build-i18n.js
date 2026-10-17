@@ -146,6 +146,16 @@ LANGUAGES.forEach(lang => {
   html = html.replace(/src="assets\//g, 'src="../assets/');
   html = html.replace(/href="assets\//g, 'href="../assets/');
 
+  // Resolve external main-site footer links independently of HTML attribute order.
+  // Previous generators left these anchors at "#" because href came before data-i18n-href.
+  html = html.replace(/<a href="#" data-i18n-href="(href-cortex|href-about|href-team|href-vision)"/g, (tag, key) => {
+    const target = trans[key] || TRANSLATIONS.en[key];
+    return target ? tag.replace('href="#"', `href="${target}"`) : tag;
+  });
+
+  // Keep the footer's Ally link in the same locale as the active page.
+  html = html.replace('https://www.vertexishere.com/tr/#projects', `https://www.vertexishere.com/${lang}/#projects`);
+
   // Update input placeholders
   const namePlh = lang === 'tr' ? 'Ad Soyad' : (lang === 'de' ? 'Vorname & Nachname' : 'Name & Surname');
   const emailPlh = lang === 'tr' ? 'isim@domain.com' : 'name@domain.com';

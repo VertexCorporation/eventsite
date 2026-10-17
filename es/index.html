@@ -75,7 +75,7 @@
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <span class="lang-text" id="active-lang-text" style="display: none;">Türkçe</span>
+            <span class="lang-text" id="active-lang-text">Español</span>
           </button>
           <div class="lang-menu">
             <a href="../tr/" class="lang-item" data-lang="tr">Türkçe</a>
@@ -97,8 +97,7 @@
           </div>
         </div>
 
-        <button class="theme-toggle-btn btn-outline" aria-label="Temayı Değiştir"
-          style="padding: 8px; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+        <button type="button" class="theme-toggle-btn" aria-label="Temayı Değiştir" aria-expanded="false">
           <div class="theme-icon"></div>
         </button>
         <button class="mobile-menu-btn" aria-label="Menüyü Aç">☰</button>
@@ -295,18 +294,19 @@
         <div class="footer-col">
           <h3 data-i18n="footer-col-projects">Proyectos</h3>
           <ul class="footer-links">
-            <li><a href="#" data-i18n-href="href-cortex" data-i18n="footer-link-cortex" target="_blank">Cortex</a></li>
+            <li><a href="https://www.vertexishere.com/es/download.html" data-i18n-href="href-cortex" data-i18n="footer-link-cortex" target="_blank">Cortex</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.VertexGames.AllStar" data-i18n="footer-link-allstar" target="_blank">All Star</a></li>
             <li><a href="https://github.com/VertexCorporation/Mergen" data-i18n="footer-link-mergen" target="_blank">Mergen</a></li>
+            <li><a href="https://www.vertexishere.com/es/#projects" target="_blank" rel="noopener noreferrer">Ally</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h3 data-i18n="footer-col-company">Compañía</h3>
           <ul class="footer-links">
-            <li><a href="#" data-i18n-href="href-about" data-i18n="footer-link-about" target="_blank">Sobre nosotros</a></li>
-            <li><a href="#" data-i18n-href="href-team" data-i18n="footer-link-team" target="_blank">Equipo</a></li>
-            <li><a href="#" data-i18n-href="href-vision" data-i18n="footer-link-vision" target="_blank">Visión</a></li>
+            <li><a href="https://www.vertexishere.com/es/#home" data-i18n-href="href-about" data-i18n="footer-link-about" target="_blank">Sobre nosotros</a></li>
+            <li><a href="https://www.vertexishere.com/es/#team" data-i18n-href="href-team" data-i18n="footer-link-team" target="_blank">Equipo</a></li>
+            <li><a href="https://www.vertexishere.com/es/#vision" data-i18n-href="href-vision" data-i18n="footer-link-vision" target="_blank">Visión</a></li>
           </ul>
         </div>
 
@@ -314,8 +314,9 @@
           <h3 data-i18n="footer-col-contact">Contacto</h3>
           <ul class="footer-links">
             <li><a href="mailto:contact@vertexishere.com" data-i18n="footer-link-email">Enviar correo</a></li>
-            <li><a href="https://www.linkedin.com/company/106897671/" data-i18n="footer-link-linkedin" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/company/vertexcorporation" data-i18n="footer-link-linkedin" target="_blank">LinkedIn</a></li>
             <li><a href="https://www.instagram.com/vertexcorpltd/" data-i18n="footer-link-instagram" target="_blank">Instagram</a></li>
+            <li><a href="https://x.com/VertexCorpLTD" target="_blank" rel="noopener noreferrer">X</a></li>
           </ul>
         </div>
       </div>
@@ -323,8 +324,8 @@
       <div class="footer-bottom-row">
         <div class="copyright">
           <span data-i18n="footer-copyright">© 2026 Vertex Corporation LTD, todos los derechos reservados.</span>
-          <span data-i18n="footer-address" style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 8px;">20 Wenlock Road, London, N1 7GU, United Kingdom</span>
         </div>
+        <div class="footer-address">20 Wenlock Road, London, N1 7GU, United Kingdom · +44 7400 412824</div>
         <div class="footer-legal-links">
           <a data-i18n-href="footer-link-privacy-url" href="politica-de-privacidad.html" data-i18n="footer-link-privacy">Privacidad</a>
           <a data-i18n-href="footer-link-terms-url" href="terminos-de-servicio.html" data-i18n="footer-link-terms">Términos y Condiciones</a>
@@ -336,6 +337,7 @@
   <!-- Scripts -->
   <script type="module" src="../js/translations.js"></script>
   <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/header-panels.js"></script>
   <script type="module" src="../js/events.js"></script>
 </body>
 
