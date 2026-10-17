@@ -60,27 +60,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.querySelector('.mobile-menu');
   
   if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      mobileMenu.classList.toggle('active');
-      mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+    mobileMenu.id = 'eventsite-mobile-menu';
+    mobileMenuBtn.type = 'button';
+    mobileMenuBtn.setAttribute('aria-controls', mobileMenu.id);
+    const setMenuOpen = open => {
+      mobileMenu.classList.toggle('active', open);
+      mobileMenuBtn.textContent = open ? '✕' : '☰';
+      mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      mobileMenu.inert = !open;
+    };
+    setMenuOpen(false);
+    mobileMenuBtn.addEventListener('click', event => {
+      event.stopPropagation();
+      setMenuOpen(!mobileMenu.classList.contains('active'));
     });
-
-    // Close mobile menu when clicking outside or on a link
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.remove('active');
-        mobileMenuBtn.textContent = '☰';
+    document.addEventListener('click', event => {
+      if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        setMenuOpen(false);
       }
     });
-
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        mobileMenuBtn.textContent = '☰';
-      });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenuOpen(false));
     });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        setMenuOpen(false);
+        mobileMenuBtn.focus({preventScroll:true});
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1100) setMenuOpen(false);
+    }, {passive:true});
   }
 
   // --- Light / Dark Theme Toggle ---
@@ -136,20 +147,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Smooth Scroll For Anchor Links ---
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#' || href === '') return;
-      
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+  // --- Viewport-aware anchors: align section headings below the compact header ---
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mainContent = document.querySelector('main');
+  let navigationId = 0, correctionTimer = 0, scrollEndHandler = null;
+  function getAnchorTarget(hash) {
+    if (!hash || !hash.startsWith('#') || hash.length < 2) return null;
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return null; }
+    const node = document.getElementById(id);
+    return node && mainContent?.contains(node) ? node : null;
+  }
+  function targetScrollTop(target) {
+    if (target.id === 'home') return 0;
+    const heading = target.querySelector('.purpose-section-header h2, .section-title, h2');
+    const box = (heading || target).getBoundingClientRect();
+    const root = getComputedStyle(document.documentElement);
+    const shrunk = parseFloat(root.getPropertyValue('--nav-h-shrunk')) || 56;
+    const padding = heading ? 0 : (parseFloat(getComputedStyle(target).paddingTop) || 0);
+    return Math.max(0, Math.round(window.scrollY + box.top + padding - shrunk - 20));
+  }
+  function stopCorrection() {
+    window.clearTimeout(correctionTimer);
+    if (scrollEndHandler) window.removeEventListener('scrollend', scrollEndHandler);
+    scrollEndHandler = null;
+    navigationId++;
+  }
+  function navigateTo(hash, smooth = true) {
+    const target = getAnchorTarget(hash);
+    if (!target) return false;
+    stopCorrection();
+    const id = navigationId;
+    const run = () => {
+      if (id !== navigationId) return;
+      window.scrollTo({
+        top: targetScrollTop(target),
+        behavior: smooth && !reducedMotion.matches ? 'smooth' : 'instant'
+      });
+      if (target.id === 'home') return;
+      const correct = () => {
+        if (id !== navigationId) return;
+        const intended = targetScrollTop(target);
+        if (Math.abs(window.scrollY - intended) > 5)
+          window.scrollTo({top:intended,behavior:'instant'});
+        stopCorrection();
+      };
+      if (smooth && !reducedMotion.matches && 'onscrollend' in window) {
+        scrollEndHandler = correct;
+        window.addEventListener('scrollend', scrollEndHandler, {once:true});
       }
-    });
+      correctionTimer = window.setTimeout(correct, smooth && !reducedMotion.matches ? 1200 : 160);
+    };
+    window.requestAnimationFrame(() => window.requestAnimationFrame(run));
+    return true;
+  }
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const hash = link.hash;
+    if (!getAnchorTarget(hash)) return;
+    event.preventDefault();
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenu.classList.remove('active');
+      mobileMenuBtn.textContent = '☰';
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      mobileMenu.inert = true;
+    }
+    if (window.location.hash !== hash) history.pushState(null, '', hash);
+    navigateTo(hash, true);
   });
+  window.addEventListener('popstate', () => {
+    if (location.hash) navigateTo(location.hash, false);
+  });
+  window.addEventListener('hashchange', () => {
+    if (location.hash) navigateTo(location.hash, false);
+  });
+  window.addEventListener('load', () => {
+    if (location.hash) navigateTo(location.hash, false);
+  }, {once:true});
+  window.addEventListener('pageshow', event => {
+    if (event.persisted && location.hash) navigateTo(location.hash, false);
+  });
+  window.addEventListener('wheel', stopCorrection, {passive:true});
+  window.addEventListener('touchstart', stopCorrection, {passive:true});
 });

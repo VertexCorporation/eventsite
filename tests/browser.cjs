@@ -156,6 +156,51 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  await shimmerPage.close();
  for(const lang of ['tr','en','de','fr','es','it','pt','nl','id','ru','ja','ko','zh','hi','ar','az']){
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{events}}}));await page.goto(`${baseURL}/${lang}/`,{waitUntil:'domcontentloaded'});await page.waitForSelector('.event-card');assert.equal(await page.locator('html').getAttribute('lang'),lang);await page.close();}
+ // Eventsite-only navigation and tap tests across mobile, tablet, desktop, TV widths.
+ const deviceMatrix=[320,375,390,768,1024,1280,1920,2560,3840];
+ for(const width of deviceMatrix){
+   const responsive=await browser.newPage({viewport:{width,height:900}});
+   await responsive.emulateMedia({reducedMotion:'reduce'});
+   await responsive.route('**/*cloudfunctions.net/**',route=>route.fulfill({
+     headers:{'access-control-allow-origin':'*'},json:{result:{events}}
+   }));
+   await responsive.goto(baseURL+'/tr/',{waitUntil:'domcontentloaded'});
+   await responsive.waitForSelector('.event-card');
+   const overflow=await responsive.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1);
+   assert.equal(overflow,false,'horizontal overflow at '+width+'px');
+   const mobile=width<=1100;
+   assert.equal(await responsive.locator('.mobile-menu-btn').isVisible(),mobile,'menu breakpoint '+width);
+   const tapColor=await responsive.locator('.mobile-menu-btn').evaluate(el=>getComputedStyle(el).webkitTapHighlightColor);
+   assert.match(tapColor,/(transparent|,\s*0\))$/,'native tap flash at '+width);
+   if(mobile){
+     await responsive.locator('.mobile-menu-btn').click();
+     assert.equal(await responsive.locator('.mobile-menu-btn').getAttribute('aria-expanded'),'true');
+     const drawer=await responsive.locator('.mobile-menu').evaluate(el=>({
+       top:el.getBoundingClientRect().top,
+       headerBottom:document.querySelector('.header').getBoundingClientRect().bottom
+     }));
+     assert.ok(Math.abs(drawer.top-drawer.headerBottom)<8,'drawer/header alignment at '+width);
+     await responsive.locator('.mobile-nav-links a[href="#about"]').click();
+     assert.equal(await responsive.locator('.mobile-menu-btn').getAttribute('aria-expanded'),'false');
+   }else await responsive.locator('.nav-links a[href="#about"]').click();
+   await responsive.waitForFunction(()=>{
+     const title=document.querySelector('#about .section-title');
+     const header=document.querySelector('.header');
+     return Math.abs(title.getBoundingClientRect().top-header.getBoundingClientRect().bottom-20)<17;
+   },null,{timeout:4500});
+   if(mobile){
+     await responsive.locator('.mobile-menu-btn').click();
+     await responsive.locator('.mobile-nav-links a[href="#events-section"]').click();
+   }else await responsive.locator('.nav-links a[href="#events-section"]').click();
+   await responsive.waitForFunction(()=>{
+     const title=document.querySelector('#events-section .section-title');
+     const header=document.querySelector('.header');
+     return Math.abs(title.getBoundingClientRect().top-header.getBoundingClientRect().bottom-20)<17;
+   },null,{timeout:4500});
+   const after=await responsive.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1);
+   assert.equal(after,false,'overflow after navigation at '+width);
+   await responsive.close();
+ }
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{valid:false}}}));await page.goto(`${baseURL}/validate.html?id=FAKE`);await page.waitForFunction(()=>document.querySelector('#result-box').textContent.includes('DOĞRULANAMADI'));await page.close();
- fs.writeFileSync('/tmp/vertex-events-browser-report.json',JSON.stringify({matrix:report,languages:16,invalidTicketRejected:true},null,2));console.log('PASS: 6 responsive/theme cases; 16 languages; real QR; invalid ticket rejected');await browser.close();
+ fs.writeFileSync('/tmp/vertex-events-browser-report.json',JSON.stringify({matrix:report,languages:16,invalidTicketRejected:true},null,2));console.log('PASS: responsive/theme cases; 9 viewport navigation checks; 16 languages; QR and ticket tests');await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
