@@ -1,0 +1,32 @@
+name: eventsite draft preview
+on:
+  push:
+    branches: ['fix/secure-event-preview-*']
+  pull_request:
+    paths:
+      - 'js/**'
+      - 'css/**'
+      - 'tests/**'
+      - '.github/workflows/preview-ci.yml'
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Real-renderer preview regression
+        run: |
+          npm run dev -- --host 127.0.0.1 --port 3000 > /tmp/eventsite-preview.log 2>&1 &
+          for i in $(seq 1 35); do
+            if curl -fsS http://127.0.0.1:3000/tr/ > /dev/null; then break; fi
+            sleep 1
+          done
+          node tests/preview.cjs
