@@ -42,5 +42,5 @@ test('production Vite bundle retains the static favicon URLs',()=>{
   assert.match(config,/favicon-light\.svg/);
   assert.match(config,/dist\/assets/);
   assert.ok(config.includes('dist/js/favicon.js'));
-  assert.match(config,/fs\\.copyFileSync\\(controllerSrc, controllerDest\\)/);
+  assert.ok(config.includes('fs.copyFileSync(controllerSrc, controllerDest)'));
 });
