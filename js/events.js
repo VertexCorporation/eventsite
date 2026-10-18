@@ -325,7 +325,7 @@ const openDetailModal = (eventId) => {
 
 const openRegisterModal = (eventId) => {
   const event = events.find(e => e.id === eventId);
-  if (!event || isPastDate(event.date, event) || unavailable(event)) return;
+  if (!event || draftPreview || isPastDate(event.date, event) || unavailable(event)) return;
 
   const lang = document.documentElement.lang || 'tr';
   const trans = window.TRANSLATIONS[lang] || window.TRANSLATIONS.en;
@@ -481,6 +481,52 @@ window.addEventListener('click', (e) => {
 });
 
 document.getElementById('download-ticket-btn').addEventListener('click', () => window.print());
+// A draft preview runs this SAME public renderer in a sandboxed Eventsite iframe.
+// It never fetches, publishes or submits a registration.
+const draftPreview = new URLSearchParams(location.search).get('vertexPreview') === '1'
+  && window.parent !== window;
+const previewReferrer = (() => {
+  try { return new URL(document.referrer).origin; } catch { return ''; }
+})();
+const previewParentAllowed = /^https:\/\/admin\.vertexishere\.com$/.test(previewReferrer)
+  || /^http:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?$/.test(previewReferrer);
+if (draftPreview) {
+  document.documentElement.classList.add('event-draft-preview');
+  const indicator = document.createElement('div');
+  indicator.className = 'event-preview-watermark';
+  indicator.setAttribute('role','status');
+  indicator.textContent = (document.documentElement.lang === 'tr' ? 'TASLAK ÖNİZLEME · KAYIT KAPALI' : 'DRAFT PREVIEW · REGISTRATION DISABLED');
+  document.body.append(indicator);
+  document.addEventListener('click', event => {
+    if(event.target.closest('.register-btn,#modal-register-btn,#register-modal,.btn[href*="stripe.com"]')){
+      event.preventDefault();event.stopImmediatePropagation();
+    }
+  }, true);
+  if (previewParentAllowed) {
+    window.addEventListener('message', message => {
+      if(message.source !== window.parent || message.origin !== previewReferrer)return;
+      if(message.data?.type !== 'vertex:event-preview:render' || message.data.version !== 1)return;
+      const draft=message.data.event;
+      if(!draft || typeof draft !== 'object' || Array.isArray(draft) ||
+        typeof draft.id !== 'string' || !/^[A-Za-z0-9_-]{1,100}$/.test(draft.id) ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(draft.date) ||
+        JSON.stringify(draft).length > 64000)return;
+      try {
+        const safe=preparePublicEvent({...draft,status:'published',salesStatus:'closed',disableRegister:true});
+        events=[safe];
+        showPastEvents=true;
+        if(showPastEventsCheckbox)showPastEventsCheckbox.checked=true;
+        eventsGrid.dataset.state='ready';
+        renderEvents(false);
+        if(detailModal)openDetailModal(safe.id);
+        window.parent.postMessage({type:'vertex:event-preview:rendered',version:1,id:safe.id},previewReferrer);
+      } catch (error) {
+        console.error('[EVENT PREVIEW] Failed to render draft',error.message);
+      }
+    });
+    window.parent.postMessage({type:'vertex:event-preview:ready',version:1},previewReferrer);
+  }
+}
 let loadingEvents = false;
 eventsGrid.setAttribute('aria-live', 'polite');
 const loadEvents = async () => {
@@ -516,8 +562,8 @@ const loadEvents = async () => {
     loadingEvents = false;
   }
 };
-window.addEventListener('focus', loadEvents);
-setInterval(loadEvents, 60000);
+window.addEventListener('focus',()=>{if(!draftPreview)loadEvents();});
+setInterval(()=>{if(!draftPreview)loadEvents();},60000);
 // --- Filter Interactions ---
 
 if (showPastEventsCheckbox) {
@@ -537,7 +583,7 @@ if (showPastLabel && showPastEventsCheckbox) {
 
 // --- Initialize ---
 const init = () => {
-  // Keep three genuine loading skeletons until the first API response.
+  if(draftPreview)return; // No public API request from an unpublished preview.
   loadEvents();
 };
 
