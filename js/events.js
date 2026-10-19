@@ -1,4 +1,4 @@
-import QRCode from 'qrcode';
+import QRCode from './vendor/qrcode.js';
 /* =========================================
    VERTEX EVENTS - DATA & INTERACTIVE LOGIC
    ========================================= */

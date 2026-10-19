@@ -1,12 +1,14 @@
 name: eventsite draft preview
 on:
   push:
-    branches: ['fix/secure-event-preview-*']
+    branches: ['main', 'fix/secure-event-preview-*', 'fix/event-list-static-module-20261020']
   pull_request:
     paths:
       - 'js/**'
       - 'css/**'
       - 'tests/**'
+      - 'scripts/**'
+      - 'package*.json'
       - '.github/workflows/preview-ci.yml'
 jobs:
   preview:
@@ -19,6 +21,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: npm run build:qr
+      - run: git diff --exit-code -- js/vendor
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
@@ -30,3 +34,5 @@ jobs:
             sleep 1
           done
           node tests/preview.cjs
+      - name: Verify static hosting without a bundler
+        run: npm run test:static
