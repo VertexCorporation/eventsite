@@ -28,13 +28,30 @@ test('all landing pages, validation, and root use local color-scheme SVG favicon
     assert.doesNotMatch(html,/<link[^>]+rel="icon"[^>]+favicon\.webp/);
   }
 });
-test('favicon controller observes selected theme and browser theme changes',()=>{
+test('favicon controller follows browser changes independently of the selected page theme',()=>{
+  const vm=require('node:vm');
   const script=read('js/favicon.js');
-  assert.doesNotThrow(()=>new Function(script));
-  assert.match(script,/MutationObserver/);
-  assert.match(script,/attributeFilter: \['data-theme'\]/);
-  assert.match(script,/browserTheme\.addEventListener\('change'/);
-  assert.match(script,/localStorage\.getItem\('theme'\)/);
+  for(const legacy of [false,true]) for(const selected of ['light','dark','system']){
+    const icons={'vertex-favicon-dark':{},'vertex-favicon-light':{}};
+    const listeners=[];
+    let pageTheme=selected;
+    const browserTheme={matches:false};
+    browserTheme[legacy?'addListener':'addEventListener']=(...args)=>listeners.push(args.at(-1));
+    vm.runInNewContext(script,{
+      window:{matchMedia:()=>browserTheme},
+      document:{getElementById:id=>icons[id],documentElement:{
+        getAttribute:()=>pageTheme,setAttribute:(_,value)=>{pageTheme=value;}
+      }},
+      localStorage:{getItem:()=>selected}
+    });
+    const check=dark=>{
+      assert.equal(icons['vertex-favicon-dark'].media,dark?'all':'not all');
+      assert.equal(icons['vertex-favicon-light'].media,dark?'not all':'all');
+    };
+    check(false);
+    browserTheme.matches=true;listeners.forEach(fn=>fn());check(true);
+    browserTheme.matches=false;listeners.forEach(fn=>fn());check(false);
+  }
 });
 test('production Vite bundle retains the static favicon URLs',()=>{
   const config=read('vite.config.js');
