@@ -1,0 +1,27 @@
+name: Events all-pages Lighthouse audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['scripts/audit-pages.cjs', '.github/workflows/lighthouse-pages.yml']
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        locale: [tr, en, de, fr, es, it, pt, nl, id, ru, ja, ko, zh, hi, ar, az, root]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm install --no-save lighthouse
+      - run: node scripts/audit-pages.cjs ${{ matrix.locale }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-${{ matrix.locale }}
+          path: audit-results
