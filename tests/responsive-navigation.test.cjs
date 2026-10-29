@@ -53,7 +53,7 @@ test('all 16 localized eventsite pages keep the same valid section anchors',()=>
    assert.match(html,new RegExp('id="'+id+'"'),lang+' '+id);
    assert.match(html,new RegExp('href="#'+id+'"'),lang+' '+id);
   }
-  assert.match(html,/src="\.\.\/js\/main\.js"/,lang);
+  assert.match(html,/src="\.\.\/js\/main\.js(?:\?v=[^"]+)?"/,lang);
  }
 });
 
