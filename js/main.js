@@ -12,8 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let activePlayer = 1;
     const prefix = document.documentElement.lang ? '../' : '';
 
-    video1.src = `${prefix}assets/gallery/${currentVideo}`;
-    video1.load();
+    // Let text and brand fonts win the initial bandwidth race.
+    video1.preload = video2.preload = 'none';
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+      video1.src = `${prefix}assets/gallery/${currentVideo}`;
+      video1.load();
+      syncVideo();
+    });
 
     let heroVisible = true;
     const reducedVideo = window.matchMedia('(prefers-reduced-motion: reduce)');
