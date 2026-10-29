@@ -112,6 +112,7 @@ function copyGalleryPlugin() {
         console.log('Copied assets/gallery to dist/assets/gallery')
       }
       
+      for (const name of ['robots.txt','sitemap.xml','_headers']) fs.copyFileSync(path.resolve(__dirname,name),path.resolve(__dirname,'dist',name));
       const faviconSrc = path.resolve(__dirname, 'assets/favicon.webp')
       const faviconDest = path.resolve(__dirname, 'dist/assets/favicon.webp')
       if (fs.existsSync(faviconSrc)) {

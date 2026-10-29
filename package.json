@@ -10,7 +10,8 @@
     "test": "node --test tests/*.test.cjs",
     "test:browser": "node tests/browser.cjs",
     "build:qr": "node scripts/build-qr.cjs",
-    "test:static": "node tests/static-browser.cjs"
+    "test:static": "node tests/static-browser.cjs",
+    "prebuild": "node scripts/sync-page-styles.cjs"
   },
   "keywords": [
     "vertex",

@@ -1885,6 +1885,7 @@ input:checked + .slider:before {
 
 @font-face {
   font-family: 'BeauRivage';
+  font-display: swap;
   src: url('../assets/fonts/BeauRivage-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
@@ -2594,3 +2595,8 @@ html[data-theme="dark"]{--border-strong:#353535;--glass-bg:#171717;--primary-hov
 [data-theme="light"] .header{background:rgba(248,249,250,.64)}
 @media(max-width:480px){.header .header-actions{gap:5px}.header .lang-btn-trigger,.header .theme-toggle-btn{width:44px!important;min-width:44px!important;max-width:44px!important;height:44px!important;padding:0}.header .lang-btn-trigger .lang-text,.header .lang-chevron{display:none!important}}
 @media(prefers-reduced-motion:reduce){.btn,.header .lang-btn-trigger,.header .theme-toggle-btn,.event-theme-menu{transition:none!important}}
+
+html{background:var(--bg-color)}
+[data-theme="light"]{--text-muted:#656D78}
+html[data-theme="dark"]{--text-muted:#969696}
+.hero>.container{opacity:1!important;transform:none!important}
