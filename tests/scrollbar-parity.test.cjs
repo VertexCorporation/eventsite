@@ -12,7 +12,7 @@ test('page and panel scrollbar styling matches vertexite thin theme-aware patter
   assert.match(css,/\.header \.lang-menu, \.event-theme-menu\s*\{\s*--scrollbar-alpha:\s*0;/);
   assert.match(css,/scrollbar-width:\s*thin;/);
   assert.match(css,/scrollbar-color:\s*rgb\(var\(--scroll-rgb\) \/ var\(--scrollbar-alpha, 0\)\) transparent;/);
-  assert.match(css,/::-webkit-scrollbar\s*\{\s*width:\s*5px;\s*height:\s*4px;/);
+  assert.match(css,/::-webkit-scrollbar\s*\{\s*width:\s*4px;\s*height:\s*3px;/);
   assert.match(css,/::-webkit-scrollbar-thumb\s*\{\s*background:\s*rgb\(var\(--scroll-rgb\) \/ var\(--scrollbar-alpha, 0\)\);/);
   assert.doesNotMatch(css,/\.lang-menu::-webkit-scrollbar-thumb:hover/);
   assert.doesNotMatch(css,/scrollbar-color:\s*rgba\(255,\s*255,\s*255,\s*0\.2\)/);
@@ -38,3 +38,4 @@ test('scrollbar controller is included by all 16 localized pages',()=>{
     assert.match(read(locale+'/index.html'),/type="module" src="\.\.\/js\/header-panels\.js"/,locale);
   }
 });
+

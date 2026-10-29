@@ -74,17 +74,17 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  assert.equal(await controls.locator('#language-dropdown a.lang-item[data-lang="en"]').evaluate(el=>el.firstChild.textContent.trim()),'İngilizce');
  assert.equal(await controls.locator('#language-dropdown a.lang-item[data-lang="de"]').evaluate(el=>el.firstChild.textContent.trim()),'Almanca');
  assert.equal(await controls.locator('.header .brand-logo-crossfade').count(),1);
- assert.equal(await controls.locator('footer .brand-logo-crossfade').count(),1);
- assert.equal(await controls.locator('footer .footer-brand .logo-events').count(),1);
- assert.equal(await controls.locator('footer .footer-col a[href*="x.com/VertexCorpLTD"]').count(),1);
- assert.equal(await controls.locator('footer .footer-col a[href*="/tr/#projects"]').count(),1);
+ assert.equal(await controls.locator('footer .logo-chip img').count(),1);
+ assert.equal(await controls.locator('footer .foot-brand .logo-events').count(),1);
+ assert.equal(await controls.locator('footer .foot-col a[href*="x.com/VertexCorpLTD"]').count(),1);
+ assert.equal(await controls.locator('footer .foot-col a[href*="allyishere.com"]').count(),1);
  await controls.locator('#lang-btn-trigger').click();
  assert.equal(await controls.locator('#language-dropdown.active').count(),1);
  // Same understated scrollbar as the main Vertex site: 5px transparent track,
  // thumb appears on scroll and smoothly disappears after a short idle.
  assert.equal(await controls.locator('.header .lang-menu').evaluate(el=>getComputedStyle(el).scrollbarWidth),'thin');
  const scrollbarStyle=await controls.locator('.header .lang-menu').evaluate(el=>getComputedStyle(el,'::-webkit-scrollbar').width);
- assert.equal(scrollbarStyle,'5px');
+ assert.equal(scrollbarStyle,'4px');
  await controls.locator('.header .lang-menu').evaluate(el=>{el.scrollTop=el.scrollHeight-el.clientHeight;});
  await controls.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.header .lang-menu')).getPropertyValue('--scrollbar-alpha'))>.85);
  await controls.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.header .lang-menu')).getPropertyValue('--scrollbar-alpha'))<.08);
@@ -193,11 +193,11 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
      if(width<=520)assert.equal(await responsive.locator('.header .logo-vertex-word').isVisible(),false,'icon-first title at '+width);
      const alpha=drawer.surface.match(/,\s*(0(?:\.\d+)?|1)\)$/);
      assert.ok(alpha && Number(alpha[1])<1,'translucent menu at '+width);
-     const footerLogo=await responsive.locator('.footer-brand>div:first-child').evaluate(el=>({
+     const footerLogo=await responsive.locator('.foot-brand>.logo-chip').evaluate(el=>({
        center:(el.getBoundingClientRect().left+el.getBoundingClientRect().right)/2,
        parent:(el.parentElement.getBoundingClientRect().left+el.parentElement.getBoundingClientRect().right)/2
      }));
-     if(width<=768)assert.ok(Math.abs(footerLogo.center-footerLogo.parent)<2,'centered footer logo at '+width);
+     if(width<=640)assert.ok(Math.abs(footerLogo.center-footerLogo.parent)<2,'centered footer logo at '+width);
      await responsive.locator('.mobile-nav-links a[href="#about"]').click();
      assert.equal(await responsive.locator('.mobile-menu-btn').getAttribute('aria-expanded'),'false');
    }else await responsive.locator('.nav-links a[href="#about"]').click();
@@ -222,3 +222,4 @@ const baseURL=process.env.EVENTSITE_TEST_URL||'http://127.0.0.1:3000';
  const page=await browser.newPage();await page.route('**/*cloudfunctions.net/**',route=>route.fulfill({headers:{'access-control-allow-origin':'*'},json:{result:{valid:false}}}));await page.goto(`${baseURL}/validate.html?id=FAKE`);await page.waitForFunction(()=>document.querySelector('#result-box').textContent.includes('DOĞRULANAMADI'));await page.close();
  fs.writeFileSync('/tmp/vertex-events-browser-report.json',JSON.stringify({matrix:report,languages:16,invalidTicketRejected:true},null,2));console.log('PASS: responsive/theme cases; 9 viewport navigation checks; 16 languages; QR and ticket tests');await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
+

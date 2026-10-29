@@ -1,3 +1,4 @@
+import {cachedCatalog, dailyCatalog} from './event-cache.js';
 import QRCode from './vendor/qrcode.js';
 /* =========================================
    VERTEX EVENTS - DATA & INTERACTIVE LOGIC
@@ -142,7 +143,7 @@ const renderEvents = (reveal = false) => {
   }
   
   // Sort events chronologically by date
-  const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+  const sortedEvents = [...events].sort((a,b) => Number(isPastDate(a.date,a))-Number(isPastDate(b.date,b)) || (isPastDate(a.date,a) ? Date.parse(b.startsAt || b.date)-Date.parse(a.startsAt || a.date) : Date.parse(a.startsAt || a.date)-Date.parse(b.startsAt || b.date)));
 
   const filtered = sortedEvents.filter(event => {
     const past = isPastDate(event.date, event);
@@ -323,7 +324,20 @@ const openDetailModal = (eventId) => {
   detailModal.classList.add('active');
 };
 
-const openRegisterModal = (eventId) => {
+let checkingRegistration = false;
+const openRegisterModal = async (eventId) => {
+  if (checkingRegistration || draftPreview) return;
+  checkingRegistration = true;
+  try {
+    // Catalog cache is deliberately bypassed at the transaction boundary.
+    const result = await api('getPublishedEvents');
+    if (!Array.isArray(result?.events)) throw new Error('Invalid catalog');
+    events = result.events.filter(e => e && /^[A-Za-z0-9_-]{1,100}$/.test(e.id) && /^\d{4}-\d{2}-\d{2}$/.test(e.date)).map(preparePublicEvent);
+    renderEvents();
+  } catch {
+    alert((window.TRANSLATIONS[document.documentElement.lang] || window.TRANSLATIONS.en)['event-service-unavailable']);
+    return;
+  } finally { checkingRegistration = false; }
   const event = events.find(e => e.id === eventId);
   if (!event || draftPreview || isPastDate(event.date, event) || unavailable(event)) return;
 
@@ -408,7 +422,7 @@ const openRegisterModal = (eventId) => {
   // Stripe Payment Links Integration for normal paid events
   if (event.stripeLink && event.price !== "multiple") {
     const link = event.stripeLink;
-    window.open(link, '_blank');
+    window.location.assign(link);
     return;
   }
 
@@ -528,16 +542,19 @@ if (draftPreview) {
   }
 }
 let loadingEvents = false;
+let lastCatalogRender = '';
 eventsGrid.setAttribute('aria-live', 'polite');
 const loadEvents = async () => {
   if (loadingEvents) return;
   loadingEvents = true;
   try {
-    const result = await api('getPublishedEvents');
-    if (!Array.isArray(result?.events)) throw new Error('getPublishedEvents returned an invalid payload');
+    const result = {events: await dailyCatalog(() => api('getPublishedEvents'))};
     events = result.events
       .filter(event => event && typeof event === 'object' && /^[A-Za-z0-9_-]{1,100}$/.test(event.id) && /^\d{4}-\d{2}-\d{2}$/.test(event.date))
       .map(preparePublicEvent);
+    const fingerprint = JSON.stringify(events) + new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Istanbul'});
+    if (eventsGrid.dataset.state === 'ready' && fingerprint === lastCatalogRender) return;
+    lastCatalogRender = fingerprint;
     const firstReveal = eventsGrid.dataset.state !== 'ready';
     eventsGrid.dataset.state = 'ready';
     renderEvents(firstReveal);
@@ -563,6 +580,7 @@ const loadEvents = async () => {
   }
 };
 window.addEventListener('focus',()=>{if(!draftPreview)loadEvents();});
+// Recompute date-dependent badges locally; dailyCatalog suppresses repeat requests.
 setInterval(()=>{if(!draftPreview)loadEvents();},60000);
 // --- Filter Interactions ---
 
@@ -584,6 +602,12 @@ if (showPastLabel && showPastEventsCheckbox) {
 // --- Initialize ---
 const init = () => {
   if(draftPreview)return; // No public API request from an unpublished preview.
+  const saved = cachedCatalog();
+  if (saved) {
+    events = saved.filter(e => e && /^[A-Za-z0-9_-]{1,100}$/.test(e.id) && /^\d{4}-\d{2}-\d{2}$/.test(e.date)).map(preparePublicEvent);
+    eventsGrid.dataset.state = 'ready';
+    renderEvents();
+  }
   loadEvents();
 };
 
@@ -614,3 +638,4 @@ document.addEventListener('keydown',e=>{
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}
 });
+

@@ -3,7 +3,6 @@
    ========================================= */
 
 /* Match the typography used by the primary Vertex website. */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;600;700&display=swap');
 
 /* --- Design Tokens --- */
 :root {
@@ -2334,7 +2333,7 @@ html[data-theme="dark"] { --scroll-rgb: 255 255 255; }
   scrollbar-width: thin;
   scrollbar-color: rgb(var(--scroll-rgb) / var(--scrollbar-alpha, 0)) transparent;
 }
-::-webkit-scrollbar { width: 5px; height: 4px; background: transparent; }
+::-webkit-scrollbar { width: 4px; height: 3px; background: transparent; }
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: rgb(var(--scroll-rgb) / var(--scrollbar-alpha, 0));
@@ -2534,3 +2533,38 @@ html{scroll-behavior:auto}
   border: 1px solid rgba(255,255,255,.25);
   pointer-events: none;
 }
+
+
+/* Current Vertex brand shell. Horizontal geometry remains fixed while shrinking. */
+:root,[data-theme="light"]{--bg-color:#F8F9FA;--bg-secondary:#EFF1F3;--bg-card:#FFFFFF;--text-main:#17191D;--text-muted:#707782;--border-color:#E3E5E8;--primary:#191B1F;--btn-text-color:#FFF;--hover:#EFF1F3;--brand-maxw:clamp(1120px,70vw,1760px)}
+html[data-theme="dark"]{--bg-color:#0F0F10;--bg-secondary:#212121;--bg-card:#171717;--text-main:#F5F5F5;--text-muted:#858585;--border-color:#292929;--primary:#F5F5F5;--btn-text-color:#171717;--hover:#242424}
+.container{max-width:var(--brand-maxw);padding-inline:28px}
+.header .nav-container{display:grid;grid-template-columns:1fr auto 1fr;gap:24px}
+.header .header-actions{justify-self:end}
+.header .logo,.header.scrolled .logo{font-family:var(--font-main);font-size:20px;font-weight:800;letter-spacing:-.02em;text-transform:none;justify-self:start}
+.header .brand-logo-crossfade,.header.scrolled .brand-logo-crossfade,.header .nav-logo-icon,.header.scrolled .nav-logo-icon{width:28px;height:28px}
+.header .logo-events,.header.scrolled .logo-events{font-size:30px!important}
+.header.scrolled{box-shadow:none;background:rgba(15,15,16,.74)}
+[data-theme="light"] .header.scrolled{background:rgba(248,249,250,.74);box-shadow:none}
+.header .globe-icon{width:15px;height:15px;display:block}
+.event-banner-art{background:var(--bg-secondary)!important;color:var(--text-main)}
+.event-banner-logo{color:var(--text-main)!important;text-shadow:none!important}
+@supports selector(::-webkit-scrollbar){*{scrollbar-width:auto;scrollbar-color:auto}}
+::-webkit-scrollbar-thumb{border:.5px solid transparent;background-clip:padding-box}
+footer{border-top:1px solid var(--border-color);padding:72px 0 36px;background:var(--bg-color)}
+footer .wrap{max-width:var(--brand-maxw);margin:0 auto;padding-inline:28px}
+footer .logo-chip{display:flex;align-items:center;gap:10px;padding:0;border:0;background:none}
+footer .logo-chip img{width:28px;height:28px;filter:brightness(0)}
+html[data-theme="dark"] footer .logo-chip img{filter:brightness(0) invert(1)}
+footer .logo-chip>span:not(.logo-events){font-family:var(--font-main);font-size:20px;font-weight:800;letter-spacing:-.02em}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;text-align:left;align-items:start;margin-bottom:56px!important}
+.foot-brand{display:flex;flex-direction:column;align-items:flex-start}
+.foot-brand p{color:var(--text-muted);font-size:13.5px;max-width:300px;line-height:1.6;margin:12px 0 0}
+.foot-links{display:contents}
+.foot-col h2{font-size:12.5px;color:var(--text-muted);margin:0 0 12px;font-weight:600}
+.foot-col a{display:block;font-size:13.5px;color:var(--text-muted);margin-bottom:9px}
+.foot-bottom{padding-top:24px!important;border-top:1px solid var(--border-color);font-size:12.5px;color:var(--text-muted);line-height:1.7;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-legal{display:flex;gap:20px}.foot-legal a{color:var(--text-muted)}
+footer a:hover,footer a:focus-visible{color:var(--text-main)}
+@media(max-width:1100px){.header .nav-container{display:flex;justify-content:space-between;gap:8px}}
+@media(max-width:640px){.container,footer .wrap{padding-inline:16px}.foot-grid{grid-template-columns:1fr;gap:36px;text-align:center;margin-bottom:40px!important}.foot-links{display:flex;flex-direction:column;gap:28px}.foot-brand{align-items:center}.foot-bottom{flex-direction:column;text-align:center;padding-top:30px!important}.foot-legal{justify-content:center}.header .logo-events,.header.scrolled .logo-events{font-size:23px!important}}

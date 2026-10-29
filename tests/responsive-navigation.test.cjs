@@ -83,5 +83,6 @@ test('footer brand is actually centered on small screens, independently from oth
  assert.match(css,/justify-content:center/);
  assert.match(css,/\.footer-expanded \.footer-brand p\{/);
  assert.match(css,/text-align:center/);
- for(const lang of langs)assert.match(read(lang+'/index.html'),/class="footer-brand"/,lang);
+ for(const lang of langs)assert.match(read(lang+'/index.html'),/class="foot-brand"/,lang);
 });
+

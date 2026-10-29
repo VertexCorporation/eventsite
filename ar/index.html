@@ -28,13 +28,8 @@
   <meta property="og:image" content="https://events.vertexishere.com/assets/favicon.webp">
 
   <!-- Fonts & Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts/brand.css">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
   <!-- Vertex brand favicon: transparent SVGs, matching vertexite -->
   <link id="vertex-favicon-dark" rel="icon" type="image/svg+xml" href="../assets/favicon-dark.svg?v=20261017-vertex" media="(prefers-color-scheme: dark)">
   <link id="vertex-favicon-light" rel="icon" type="image/svg+xml" href="../assets/favicon-light.svg?v=20261017-vertex" media="(prefers-color-scheme: light)">
@@ -294,61 +289,40 @@
   </div>
 
   <!-- Footer -->
-  <footer class="footer-expanded">
-    <div class="container">
-      <div class="footer-main-grid">
-        <div class="footer-brand">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-            <a href="https://www.vertexishere.com/" target="_blank" class="logo" style="font-size: 24px; display: inline-flex; align-items: center; line-height: 1;">
-              <img src="https://www.vertexishere.com/assets/logo.svg" alt="Vertex Logo" class="nav-logo-icon" style="margin-right: 8px;">Vertex
-            </a>
-            <span class="logo-events" data-i18n="header-events-italic">الفعاليات</span>
-          </div>
-          <p style="color: var(--text-muted); line-height: 1.6; max-width: 400px;" data-i18n="hero-desc">فيرتكس تعني النقطة القصوى التي يتقاطع عندها خطان.</p>
-        </div>
-
-        <div class="footer-col">
-          <h3 data-i18n="footer-col-projects">المشاريع</h3>
-          <ul class="footer-links">
-            <li><a href="https://www.vertexishere.com/ar/download.html" data-i18n-href="href-cortex" data-i18n="footer-link-cortex" target="_blank">Cortex</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=com.VertexGames.AllStar" data-i18n="footer-link-allstar" target="_blank">All Star</a></li>
-            <li><a href="https://github.com/VertexCorporation/Mergen" data-i18n="footer-link-mergen" target="_blank">Mergen</a></li>
-            <li><a href="https://www.vertexishere.com/ar/#projects" target="_blank" rel="noopener noreferrer">Ally</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3 data-i18n="footer-col-company">الشركة</h3>
-          <ul class="footer-links">
-            <li><a href="https://www.vertexishere.com/ar/#home" data-i18n-href="href-about" data-i18n="footer-link-about" target="_blank">من نحن</a></li>
-            <li><a href="https://www.vertexishere.com/ar/#team" data-i18n-href="href-team" data-i18n="footer-link-team" target="_blank">فريق العمل</a></li>
-            <li><a href="https://www.vertexishere.com/ar/#vision" data-i18n-href="href-vision" data-i18n="footer-link-vision" target="_blank">الرؤية</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3 data-i18n="footer-col-contact">اتصل بنا</h3>
-          <ul class="footer-links">
-            <li><a href="mailto:contact@vertexishere.com" data-i18n="footer-link-email">إرسال بريد</a></li>
-            <li><a href="https://www.linkedin.com/company/vertexcorporation" data-i18n="footer-link-linkedin" target="_blank">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com/vertexcorpltd/" data-i18n="footer-link-instagram" target="_blank">Instagram</a></li>
-            <li><a href="https://x.com/VertexCorpLTD" target="_blank" rel="noopener noreferrer">X</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom-row">
-        <div class="copyright">
-          <span data-i18n="footer-copyright">© 2026 Vertex Corporation LTD، جميع الحقوق محفوظة.</span>
-        </div>
-        <div class="footer-address">20 Wenlock Road, London, N1 7GU, United Kingdom · +44 7400 412824</div>
-        <div class="footer-legal-links">
-          <a data-i18n-href="footer-link-privacy-url" href="siyasat-al-khususiyya.html" data-i18n="footer-link-privacy">سياسة الخصوصية</a>
-          <a data-i18n-href="footer-link-terms-url" href="shurut-al-khidma.html" data-i18n="footer-link-terms">الشروط والأحكام</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer>
+<div class="wrap foot-grid">
+<div class="foot-brand">
+<span class="logo-chip"><img alt="Vertex logo" decoding="async" loading="lazy" src="https://vertexishere.com/assets/logo.svg" width="225" height="225"><span>Vertex</span><span class="logo-events">الفعاليات</span></span>
+<p>لهذا اخترنا اسم Vertex الذي يجمع هذه المعاني كلها وأكثر. تأسسنا في إسطنبول عام 2023 وبدأنا العمل في أكثر من 190 دولة. وانطلاقًا من معنى اسم Vertex، سنطلق كامل إمكاناتنا ونصل معًا إلى القمة، وسنسهم في ازدهار البشرية ونشكّل تقنيات الغد.</p>
+</div>
+<div class="foot-links">
+<div class="foot-col">
+<h2>المشاريع</h2>
+<a href="https://cortexishere.com" rel="noopener" target="_blank">Cortex</a>
+<a href="https://mergenishere.com" rel="noopener" target="_blank">Mergen</a><a href="https://allyishere.com" rel="noopener" target="_blank">Ally</a>
+</div>
+<div class="foot-col">
+<h2>الشركة</h2>
+<a href="https://vertexishere.com/ar/#home">معلومات عنا</a>
+<a href="https://vertexishere.com/ar/#team">الفريق</a>
+<a href="https://vertexishere.com/ar/#vision">Vision</a>
+</div>
+<div class="foot-col">
+<h2>اتصل</h2>
+<a href="mailto:contact@vertexishere.com">إرسال بريد إلكتروني</a><a href="https://www.linkedin.com/company/vertexcorporation" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://www.instagram.com/vertexcorpltd" rel="noopener" target="_blank">Instagram</a><a href="https://x.com/VertexCorpLTD" rel="noopener" target="_blank">X</a>
+</div>
+</div>
+</div>
+<div class="wrap foot-bottom">
+<div>© 2026 Vertex Corporation Ltd. All rights reserved.</div>
+<div>20 Wenlock Road, London, N1 7GU, United Kingdom · +44 7400 412824</div>
+<div class="foot-legal">
+<a href="siyasat-al-khususiyya.html" rel="noopener" target="_blank">سياسة الخصوصية</a>
+<a href="shurut-al-khidma.html" rel="noopener" target="_blank">شروط الاستخدام</a>
+</div>
+</div>
+</footer>
 
   <!-- Scripts -->
   <script type="module" src="../js/translations.js"></script>

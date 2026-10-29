@@ -15,7 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     video1.src = `${prefix}assets/gallery/${currentVideo}`;
     video1.load();
 
+    let heroVisible = true;
+    const reducedVideo = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncVideo = () => {
+      const active = activePlayer === 1 ? video1 : video2;
+      [video1,video2].forEach(player => {
+        if (player === active && heroVisible && !document.hidden && !reducedVideo.matches) player.play().catch(()=>{});
+        else player.pause();
+      });
+    };
+    new IntersectionObserver(entries => {heroVisible = entries[0].isIntersecting;syncVideo();}).observe(document.getElementById('home'));
+    document.addEventListener('visibilitychange',syncVideo);
+    reducedVideo.addEventListener('change',syncVideo);
     const playNext = () => {
+      if (!heroVisible || document.hidden || reducedVideo.matches) return;
       let nextVideo;
       do {
         nextVideo = videos[Math.floor(Math.random() * videos.length)];
@@ -25,14 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activePlayer === 1) {
         video2.src = `${prefix}assets/gallery/${currentVideo}`;
         video2.load();
-        video2.play();
+        video1.pause();
+        video2.play().catch(()=>{});
         video2.classList.add('active');
         video1.classList.remove('active');
         activePlayer = 2;
       } else {
         video1.src = `${prefix}assets/gallery/${currentVideo}`;
         video1.load();
-        video1.play();
+        video2.pause();
+        video1.play().catch(()=>{});
         video1.classList.add('active');
         video2.classList.remove('active');
         activePlayer = 1;
@@ -223,3 +238,4 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('wheel', stopCorrection, {passive:true});
   window.addEventListener('touchstart', stopCorrection, {passive:true});
 });
+
