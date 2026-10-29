@@ -2568,3 +2568,7 @@ footer .logo-chip>span:not(.logo-events){font-family:var(--font-main);font-size:
 footer a:hover,footer a:focus-visible{color:var(--text-main)}
 @media(max-width:1100px){.header .nav-container{display:flex;justify-content:space-between;gap:8px}}
 @media(max-width:640px){.container,footer .wrap{padding-inline:16px}.foot-grid{grid-template-columns:1fr;gap:36px;text-align:center;margin-bottom:40px!important}.foot-links{display:flex;flex-direction:column;gap:28px}.foot-brand{align-items:center}.foot-bottom{flex-direction:column;text-align:center;padding-top:30px!important}.foot-legal{justify-content:center}.header .logo-events,.header.scrolled .logo-events{font-size:23px!important}}
+
+/* Closed dialogs must not accept input while fresh registration data loads. */
+.modal:not(.active){visibility:hidden;pointer-events:none}
+.modal.active{visibility:visible}
