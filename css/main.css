@@ -2600,3 +2600,6 @@ html{background:var(--bg-color)}
 [data-theme="light"]{--text-muted:#656D78}
 html[data-theme="dark"]{--text-muted:#969696}
 .hero>.container{opacity:1!important;transform:none!important}
+/* Decorative paint is isolated from document layout and font swaps. */
+.geo-bg{contain:strict}
+.geo-blob{transition:opacity 240ms ease,background-color 240ms ease;will-change:opacity}
