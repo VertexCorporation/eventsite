@@ -1,0 +1,162 @@
+[
+  {
+    "path": "tr/gizlilik-politikasi.html",
+    "id": "events-privacy--tr",
+    "hash": "627e8374f2b0fd93d2715218d51bbb5e337c0b99ceba4240a526e829a27a22c8"
+  },
+  {
+    "path": "ar/siyasat-al-khususiyya.html",
+    "id": "events-privacy--ar",
+    "hash": "bbaf7943ca7cca9a273bc670a37250f1e8059b5677d5d991bc21174e3dda540b"
+  },
+  {
+    "path": "az/mexfilik-siyaseti.html",
+    "id": "events-privacy--az",
+    "hash": "421c52dd0c58c3db8f4511ce431c3f5d26be576216bb1741f2f8fd34dbb93624"
+  },
+  {
+    "path": "de/datenschutzrichtlinie.html",
+    "id": "events-privacy--de",
+    "hash": "fedc23779fa2b906eb68ce52c79bb3ae60c90fa40c1448978c5f386c5b49335e"
+  },
+  {
+    "path": "es/politica-de-privacidad.html",
+    "id": "events-privacy--es",
+    "hash": "b1265b9d5392ad6959af4a09fbc899184cf5fd5116d411d816bee2cdc697fba5"
+  },
+  {
+    "path": "fr/politique-de-confidentialite.html",
+    "id": "events-privacy--fr",
+    "hash": "a7c430843f38cd98d2dd6db5894bcff84a6f6951a854140ea57e54e70d0f7da1"
+  },
+  {
+    "path": "hi/gopaniyata-niti.html",
+    "id": "events-privacy--hi",
+    "hash": "010ab3be6a2212a88f4b030674d93a7dad0b9ca8401da1bec9c88ba967371d9a"
+  },
+  {
+    "path": "id/kebijakan-privasi.html",
+    "id": "events-privacy--id",
+    "hash": "5424fdd4262f833d015e246d940276dc529a687ac355b68704abfebaa6b9d702"
+  },
+  {
+    "path": "it/informativa-sulla-privacy.html",
+    "id": "events-privacy--it",
+    "hash": "e2bbe552c4f6957ac05fcd99bd389d960629b4717c0707c58477a3be4d8b7428"
+  },
+  {
+    "path": "ja/puraibashi-porishi.html",
+    "id": "events-privacy--ja",
+    "hash": "b3df3bdc8113a72e8774778d1de6611ac9c1cbdb9f07c8a4dc6e6637cfc8ba0a"
+  },
+  {
+    "path": "ko/gaein-jeongbo-cheori-bangchim.html",
+    "id": "events-privacy--ko",
+    "hash": "e0c74cef357b80cef18b9c3eee1bd3f40e652d4762b1802039c52835d171be03"
+  },
+  {
+    "path": "nl/privacybeleid.html",
+    "id": "events-privacy--nl",
+    "hash": "74d237dcda24636d4f78d11aa11c4e64548dd086cf092a83b1cd94df36963eb1"
+  },
+  {
+    "path": "pt/politica-de-privacidade.html",
+    "id": "events-privacy--pt",
+    "hash": "749cfc121c112031106071e00c1a462a2f73967115c9b2eb420d7319506eb0b8"
+  },
+  {
+    "path": "ru/politika-konfidencialnosti.html",
+    "id": "events-privacy--ru",
+    "hash": "cafbdd373b5f036600fce27c3561ea83b9f59149f7c0d91ac5d4e951805ddf72"
+  },
+  {
+    "path": "zh/yinsi-zhengce.html",
+    "id": "events-privacy--zh",
+    "hash": "a523039db1e8af5552c84b11ef28a5bac35cec76a13980e2b8061d810d6034f0"
+  },
+  {
+    "path": "en/privacy-policy.html",
+    "id": "events-privacy--en",
+    "hash": "d1b53cb0d42f11b1998301cbe9d8434f6089710bf5bc3f74a8f5b1c12578d752"
+  },
+  {
+    "path": "tr/hizmet-sartlari.html",
+    "id": "events-terms--tr",
+    "hash": "6a5e3180c3fc1c3793fce48133d9000c77acfcf0f8afe512d0a7520b36397c88"
+  },
+  {
+    "path": "ar/shurut-al-khidma.html",
+    "id": "events-terms--ar",
+    "hash": "4f7e311999189f3198f8763af3e11d1de309ee1c80e8e9a1367b5a20cf851510"
+  },
+  {
+    "path": "az/xidmet-sertleri.html",
+    "id": "events-terms--az",
+    "hash": "83741c4d916ba1fda60545dab80d18f78561d0f917239254443a08b4ab3e1b59"
+  },
+  {
+    "path": "de/nutzungsbedingungen.html",
+    "id": "events-terms--de",
+    "hash": "3d81ebc7e983cb7c0756d579983d799648e2b0fd11e804d5ad8b31e1431a21d6"
+  },
+  {
+    "path": "es/terminos-de-servicio.html",
+    "id": "events-terms--es",
+    "hash": "1463c59aacbe2a12d6abfb2d05e3e72e121af4df53fcd6aaf43705aaa1fdad88"
+  },
+  {
+    "path": "fr/conditions-d-utilisation.html",
+    "id": "events-terms--fr",
+    "hash": "3b4f240e4956a694818cee6145e294864871780acc08a044a2132be3812e1beb"
+  },
+  {
+    "path": "hi/seva-ki-shartein.html",
+    "id": "events-terms--hi",
+    "hash": "8886c8f4d4da3fbfb3353a1f40df5ad4ec98608cbc08b41e9b1e45dc73fcfee3"
+  },
+  {
+    "path": "id/syarat-layanan.html",
+    "id": "events-terms--id",
+    "hash": "14b34de6b60fda91fdc85c5c84a64ad3b7d194f9e2a695c6015122d484fafe0f"
+  },
+  {
+    "path": "it/termini-di-servizio.html",
+    "id": "events-terms--it",
+    "hash": "a7ca16a0bb3c49cd4418896323049394ba9508832868639adab7b9395f6abef7"
+  },
+  {
+    "path": "ja/riyou-kiyaku.html",
+    "id": "events-terms--ja",
+    "hash": "2bb3220456be3477bc2cb099cf8e8963f661f81fe8bf85120d9dab3cbc9d3fc2"
+  },
+  {
+    "path": "ko/iyong-yakgwan.html",
+    "id": "events-terms--ko",
+    "hash": "3662a059fb25cc57fa6b4f1d45bdfcb8f1ece6bf33462fbfc571cdabbb29d49d"
+  },
+  {
+    "path": "nl/servicevoorwaarden.html",
+    "id": "events-terms--nl",
+    "hash": "3bac632120f96f8260d0a70911908a4da04c19a5f5a133232ca08eb0efb3c263"
+  },
+  {
+    "path": "pt/termos-de-servico.html",
+    "id": "events-terms--pt",
+    "hash": "584488e113fb000fb35fd58f81be51a0ebd9817ac51c67a866cc05280244cc9e"
+  },
+  {
+    "path": "ru/usloviya-obsluzhivaniya.html",
+    "id": "events-terms--ru",
+    "hash": "3e4cefb8bfa978c9d661962e0db0a8c6d2dcf04dfd76ce3540cdad727311f5f6"
+  },
+  {
+    "path": "zh/fuwu-tiaokuan.html",
+    "id": "events-terms--zh",
+    "hash": "3928c6af401e7f3fdd1a9b002cb40a2484b0d7191d5f648fbae7983ba4a4ce46"
+  },
+  {
+    "path": "en/terms-of-service.html",
+    "id": "events-terms--en",
+    "hash": "982211260448916ddb2be12b8a46010493d1ce49e267403fa3bfabfcd97bf63c"
+  }
+]

@@ -137,6 +137,7 @@ function copyGalleryPlugin() {
       const controllerDest = path.resolve(__dirname, 'dist/js/favicon.js')
       fs.mkdirSync(path.dirname(controllerDest), { recursive: true })
       fs.copyFileSync(controllerSrc, controllerDest)
+      fs.copyFileSync(path.resolve(__dirname, 'js/legal-reader.js'), path.resolve(__dirname, 'dist/js/legal-reader.js'))
     }
   }
 }
