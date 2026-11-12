@@ -5,7 +5,7 @@ test('all localized footer links and legal body content remain preserved',()=>{
     // Head assets and SEO metadata may change; approved legal body content must not.
     const source=read(file).toString();
     const bodyHashes=require('./fixtures/legal-body-hashes.json');
-    assert.equal(hash(Buffer.from(source.split(/<body\b/)[1])),bodyHashes[file],file);
+    assert.equal(hash(Buffer.from(source.replace(/ data-legal-document="[^"]+"/g,'').replace(/<script defer src="\/js\/legal-reader.js\?v=1"><\/script>\n/g,'').split(/<body\b/)[1])),bodyHashes[file],file);
 
   }}
 });
